@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Welcome to the ADF Tutorial &#8212; ADF Tutorial</title>
+    <title>Welcome to the AMWG Diagnostics Framework (ADF) Tutorial &#8212; ADF Tutorial</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -54,7 +54,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="What is the ADF" href="notebooks/basics/adf.html" />
+    <link rel="next" title="Intro to the ADF" href="notebooks/intro/adf.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -95,7 +95,7 @@ const thebe_selector_output = ".output, .cell_output"
         
       
       
-      <img src="_static/ncar_logo.png" class="logo" alt="logo">
+      <img src="_static/_6e5c5f85-aa2c-401c-995a-c8a6e5da0811.jpeg" class="logo" alt="logo">
       
       
       <h1 class="site-logo" id="site-title">ADF Tutorial</h1>
@@ -110,7 +110,7 @@ const thebe_selector_output = ".output, .cell_output"
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1 current active">
                 <a class="reference internal" href="#">
-                    Welcome to the ADF Tutorial
+                    Welcome to the AMWG Diagnostics Framework (ADF) Tutorial
                 </a>
             </li>
         </ul>
@@ -121,8 +121,13 @@ const thebe_selector_output = ".output, .cell_output"
 </p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="notebooks/basics/adf.html">
-   What is the ADF
+  <a class="reference internal" href="notebooks/intro/adf.html">
+   Intro to the ADF
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="notebooks/intro/output.html">
+   What do you get?
   </a>
  </li>
 </ul>
@@ -137,9 +142,192 @@ const thebe_selector_output = ".output, .cell_output"
    Setting up ADF
   </a>
  </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  ADF Basics
+ </span>
+</p>
+<ul class="nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="notebooks/install/non_cisl.html">
-   Non NCAR Machines
+  <a class="reference internal" href="notebooks/basics/adf_basics.html">
+   Intro
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="notebooks/basics/yaml_basics.html">
+   YAML files
+  </a>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="notebooks/basics/run_basics.html">
+   Setting up
+   <strong>
+    your
+   </strong>
+   ADF run - optional
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="notebooks/basics/run_basics/adf_run.html">
+     Running
+     <strong>
+      your
+     </strong>
+     ADF
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="notebooks/basics/run_basics/outputs.html">
+     Exploring
+     <strong>
+      your
+     </strong>
+     ADF outputs
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Guided Examples
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="notebooks/basic_examples/readme.html">
+   ADF Demo Setup
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="notebooks/basic_examples/model_model_run.html">
+   CAM vs CAM
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="notebooks/basic_examples/model_obs_run.html">
+   CAM vs Obs
+  </a>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="notebooks/exercises/custom_defaults.html">
+   Custom Variable Defaults For the ADF
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="notebooks/exercises/custom_defaults/single_variable.html">
+     Customize Single Variable
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="notebooks/exercises/custom_defaults/custom_file.html">
+     Customized File
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="notebooks/exercises/custom_observations.html">
+   Custom Set of Observations
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="notebooks/exercises/custom_script.html">
+   Adding custom script to your ADF
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="notebooks/basic_examples/jupyter.html">
+   ADF in Jupyter
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  ADF - Reference
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="notebooks/reference/intro.html">
+   ADF Basics
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="notebooks/reference/layout/lib.html">
+     Libraries
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="notebooks/reference/layout/scripts.html">
+     Scripts
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="notebooks/reference/yaml.html">
+   YAML Config Files
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="notebooks/reference/yaml/basics.html">
+     YAML File Basics
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="notebooks/reference/yaml/config_cam_baseline_example.html">
+     Run Time - config_cam_baseline_example.yaml
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="notebooks/reference/yaml/adf_variable_defaults.html">
+     Variable Defaults - adf_variable_defaults.yaml
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="notebooks/reference/outputs.html">
+   Explore ADF Outputs
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Troubleshooting
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="notebooks/help/contact.html">
+   Contact
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="notebooks/help/faqs.html">
+   FAQS
   </a>
  </li>
 </ul>
@@ -211,7 +399,7 @@ title="Fullscreen mode"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="https://github.com/justin-richling/ADF-Demo"
+        <a href="https://github.com/justin-richling/ADF-Tutorial"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -228,7 +416,7 @@ title="Source repository"
       </li>
       
       <li>
-        <a href="https://github.com/justin-richling/ADF-Demo/issues/new?title=Issue%20on%20page%20%2FREADME.html&body=Your%20issue%20content%20here."
+        <a href="https://github.com/justin-richling/ADF-Tutorial/issues/new?title=Issue%20on%20page%20%2FREADME.html&body=Your%20issue%20content%20here."
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -305,7 +493,7 @@ title="Print to PDF"
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Welcome to the ADF Tutorial</h1>
+                <h1>Welcome to the AMWG Diagnostics Framework (ADF) Tutorial</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -317,13 +505,67 @@ title="Print to PDF"
                 
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="welcome-to-the-adf-tutorial">
-<h1>Welcome to the <a class="reference external" href="https://justin-richling.github.io/ADF-Tutorial/README.html">ADF Tutorial</a><a class="headerlink" href="#welcome-to-the-adf-tutorial" title="Permalink to this headline">#</a></h1>
-<p><br><br></p>
+  <section class="tex2jax_ignore mathjax_ignore" id="welcome-to-the-amwg-diagnostics-framework-adf-tutorial">
+<h1>Welcome to the AMWG Diagnostics Framework (ADF) Tutorial<a class="headerlink" href="#welcome-to-the-amwg-diagnostics-framework-adf-tutorial" title="Permalink to this headline">#</a></h1>
+<br>
 <p><u><strong>AMWG</strong></u> <u><strong>D</strong></u>iagnostic <u><strong>F</strong></u>ramework</p>
-<p><br><br></p>
-<div>
+<a class="reference internal image-reference" href="_images/adf_stats_image.jpeg"><img alt="_images/adf_stats_image.jpeg" class="align-center" src="_images/adf_stats_image.jpeg" style="height: 450px;" /></a>
+<br>
+<div></div>
 <p>This material is based upon work supported by the National Center for Atmospheric Research (NCAR), which is a major facility sponsored by the National Science Foundation (NSF) under Cooperative Agreement No. 1852977. Staff time on this project was also supported by NSF award numbers <???></p>
+<p>The purpose of this tutorial/demo is to give some exposure to what the ADF is and who could benefit from using it. This tutorial is meant to encompass basic to advanced uses of the ADF with guided examples to follow with sample data. It could also be used for a quick how-to for folks eager to try it with their own cases/data.</p>
+<p>There is a reference section that is meant to dive deeper into aspects of the ADF as well as a Frequently Asked Questions (FAQ) section at the end for some common questions/gotchas that can arise from using the ADF.</p>
+<h5>Feel free to explore this tutorial in any order you wish, but the layout is as follows:</h5>
+<h3><u>Intro to the ADF</u></h3>
+<ul class="simple">
+<li><p>key features</p></li>
+<li><p>ADF comparisons</p></li>
+<li><p>ADF flow/layout/setup</p></li>
+<li><p>outputs</p></li>
+</ul>
+<h3><u>Installation and Setup</u></h3>
+<h3><u>ADF Basics</u></h3>
+<ul>
+<li><p>use of YAML files for configuring the ADF</p></li>
+<li><p>quick ADF setup</p>
+<p>-&gt; meant for users that have cases ready to try with the ADF</p>
+</li>
+</ul>
+<h3><u>Guided Examples</u></h3>
+<ul>
+<li><p>step by step process to run the ADF with supplied sample data</p>
+<p>-&gt; meant for users who want to try the ADF in an example setting</p>
+</li>
+<li><p>several examples including:</p>
+<ul class="simple">
+<li><p>CAM vs CAM diagnostics</p></li>
+<li><p>CAM vs Obs/Reanalysis diagnostics</p></li>
+<li><p>customization of conifguration files</p></li>
+<li><p>adding custom plots to user’s ADF (advanced)</p></li>
+<li><p>using the ADF in a Jupyter session (Jupyter Hub/Notebook)</p></li>
+</ul>
+</li>
+</ul>
+<h3><u>ADF Reference</u></h3>
+<ul class="simple">
+<li><p>detailed information about the ADF</p>
+<ul>
+<li><p>libraries and python scripts</p></li>
+<li><p>config yaml files</p></li>
+</ul>
+</li>
+</ul>
+<h3><u>Troubleshooting the ADF</u></h3>
+<ul class="simple">
+<li><p>ways of contact for support</p></li>
+<li><p>frequently asked questions</p></li>
+</ul>
+<div class="toctree-wrapper compound">
+</div>
+<div class="toctree-wrapper compound">
+</div>
+<div class="toctree-wrapper compound">
+</div>
 <div class="toctree-wrapper compound">
 </div>
 <div class="toctree-wrapper compound">
@@ -359,10 +601,10 @@ title="Print to PDF"
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='right-next' id="next-link" href="notebooks/basics/adf.html" title="next page">
+    <a class='right-next' id="next-link" href="notebooks/intro/adf.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">What is the ADF</p>
+        <p class="prev-next-title">Intro to the ADF</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

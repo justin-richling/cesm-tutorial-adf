@@ -1,0 +1,1319 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Adding custom script to your ADF &#8212; ADF Tutorial</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../../../../../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../../../../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../../../../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/mine.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/.ipynb_checkpoints/mine-checkpoint.css" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../../../../../" id="documentation_options" src="../../../../../_static/documentation_options.js"></script>
+    <script src="../../../../../_static/jquery.js"></script>
+    <script src="../../../../../_static/underscore.js"></script>
+    <script src="../../../../../_static/doctools.js"></script>
+    <script src="../../../../../_static/clipboard.min.js"></script>
+    <script src="../../../../../_static/copybutton.js"></script>
+    <script src="../../../../../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../../../../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../../../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../../../../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../../search.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../../../../../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../../../../../_static/_6e5c5f85-aa2c-401c-995a-c8a6e5da0811.jpeg" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">ADF Tutorial</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../../../../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../../../../README.html">
+                    Welcome to the AMWG Diagnostics Framework (ADF) Tutorial
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  ADF
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../../../notebooks/intro/adf.html">
+   Intro to the ADF
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../../../notebooks/intro/output.html">
+   What do you get?
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Installing the ADF
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../../../notebooks/install/setup.html">
+   Setting up ADF
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  ADF Basics
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../../../notebooks/basics/adf_basics.html">
+   Intro
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../../../notebooks/basics/yaml_basics.html">
+   YAML files
+  </a>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../../../../notebooks/basics/run_basics.html">
+   Setting up
+   <strong>
+    your
+   </strong>
+   ADF run - optional
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../../../notebooks/basics/run_basics/adf_run.html">
+     Running
+     <strong>
+      your
+     </strong>
+     ADF
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../../../notebooks/basics/run_basics/outputs.html">
+     Exploring
+     <strong>
+      your
+     </strong>
+     ADF outputs
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Guided Examples
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../../../notebooks/basic_examples/readme.html">
+   ADF Demo Setup
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../../../notebooks/basic_examples/model_model_run.html">
+   CAM vs CAM
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../../../notebooks/basic_examples/model_obs_run.html">
+   CAM vs Obs
+  </a>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../../../../notebooks/exercises/custom_defaults.html">
+   Custom Variable Defaults For the ADF
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../../../notebooks/exercises/custom_defaults/single_variable.html">
+     Customize Single Variable
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../../../notebooks/exercises/custom_defaults/custom_file.html">
+     Customized File
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../../../notebooks/exercises/custom_observations.html">
+   Custom Set of Observations
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../../../notebooks/exercises/custom_script.html">
+   Adding custom script to your ADF
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../../../notebooks/basic_examples/jupyter.html">
+   ADF in Jupyter
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  ADF - Reference
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../../../../notebooks/reference/intro.html">
+   ADF Basics
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../../../notebooks/reference/layout/lib.html">
+     Libraries
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../../../notebooks/reference/layout/scripts.html">
+     Scripts
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../../../../notebooks/reference/yaml.html">
+   YAML Config Files
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../../../notebooks/reference/yaml/basics.html">
+     YAML File Basics
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../../../notebooks/reference/yaml/config_cam_baseline_example.html">
+     Run Time - config_cam_baseline_example.yaml
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../../../notebooks/reference/yaml/adf_variable_defaults.html">
+     Variable Defaults - adf_variable_defaults.yaml
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../../../notebooks/reference/outputs.html">
+   Explore ADF Outputs
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Troubleshooting
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../../../notebooks/help/contact.html">
+   Contact
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../../../notebooks/help/faqs.html">
+   FAQS
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/justin-richling/ADF-Tutorial/main?urlpath=tree/docs/tutorial_material/_build/jupyter_execute/notebooks/exercises/custom_script.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../../../../../_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/justin-richling/ADF-Tutorial"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/justin-richling/ADF-Tutorial/issues/new?title=Issue%20on%20page%20%2Ftutorial_material/_build/jupyter_execute/notebooks/exercises/custom_script.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../../../../../_sources/tutorial_material/_build/jupyter_execute/notebooks/exercises/custom_script.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#standalone-plotting-script-for-integration">
+   Standalone Plotting Script for Integration
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#modifying-our-script-for-the-adf">
+   Modifying our script for the ADF
+  </a>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Adding custom script to your ADF</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#standalone-plotting-script-for-integration">
+   Standalone Plotting Script for Integration
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#modifying-our-script-for-the-adf">
+   Modifying our script for the ADF
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section class="tex2jax_ignore mathjax_ignore" id="adding-custom-script-to-your-adf">
+<h1>Adding custom script to your ADF<a class="headerlink" href="#adding-custom-script-to-your-adf" title="Permalink to this headline">#</a></h1>
+<p>Since individual scientists like to look at specific diagnostics, not every script can be brought in to the ADF. A handy option for your ADF package could be implementing your own custom scripts. This may not be a trivial process, but hopefully this example will help if you want to add your own scripts to your ADF.</p>
+<p>This is not a required step if you have your own diagnostics, you could always keep them out of the ADF and run them post ADF. If this makes more sense, please see the <a href="https://justin-richling.github.io/ADF-Tutorial/notebooks/basic_examples/jupyter.html">ADF in Jupyter</a> section.</p>
+<p>For this demo, we will be taking an annual time series plotting script and adding it to the ADF infrastructure.</p>
+<section id="standalone-plotting-script-for-integration">
+<h2>Standalone Plotting Script for Integration<a class="headerlink" href="#standalone-plotting-script-for-integration" title="Permalink to this headline">#</a></h2>
+<p>Time Series Plotting Script:</p>
+<div class="seealso admonition">
+<p class="admonition-title">Note</p>
+<p>Don’t be intimidated by the code below, this is meant to simulate what your external script may look like prior to incorporating into the ADF.</p>
+</div>
+<div class="full-width docutils">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os.path</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+<span class="kn">import</span> <span class="nn">glob</span>
+<span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
+
+<span class="c1"># Import necessary packages for the new script</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">matplotlib.ticker</span> <span class="kn">import</span> <span class="n">MultipleLocator</span>
+<span class="kn">from</span> <span class="nn">matplotlib.lines</span> <span class="kn">import</span> <span class="n">Line2D</span>
+<span class="kn">import</span> <span class="nn">matplotlib.ticker</span> <span class="k">as</span> <span class="nn">ticker</span>
+<span class="kn">import</span> <span class="nn">xarray</span> <span class="k">as</span> <span class="nn">xr</span>
+
+
+<span class="c1"># Main plotting routine</span>
+
+<span class="k">def</span> <span class="nf">time_series_plot</span><span class="p">(</span><span class="n">var_list</span><span class="p">,</span> <span class="n">all_case_names</span><span class="p">,</span> <span class="n">case_ts_locs</span><span class="p">,</span> <span class="n">all_nicknames</span><span class="p">,</span> <span class="n">plot_type</span><span class="p">,</span> <span class="n">plot_location</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    This script plots time series.</span>
+<span class="sd">    Compare CAM time series against other</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="c1">#Notify user that script has started:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">  Generating time series plots...&quot;</span><span class="p">)</span>
+    
+    <span class="c1"># Get number of cases</span>
+    <span class="n">case_num</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">all_case_names</span><span class="p">)</span>
+
+    <span class="c1">#Location to save plot:</span>
+    <span class="n">plot_location</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">plot_location</span><span class="p">)</span>
+
+
+    <span class="c1">#Set up the plots</span>
+    <span class="c1">#################</span>
+
+    <span class="c1">#Add more colors as needed for number of test cases</span>
+    <span class="c1">#** Baseline is already added as green dashed line in plotting function **</span>
+    <span class="c1">#matplotlib colors here: https://matplotlib.org/stable/gallery/color/named_colors.html</span>
+    <span class="n">colors</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;k&quot;</span><span class="p">,</span> <span class="s2">&quot;aqua&quot;</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">,</span> <span class="s2">&quot;b&quot;</span><span class="p">,</span> <span class="s2">&quot;magenta&quot;</span><span class="p">,</span>
+              <span class="s2">&quot;orange&quot;</span><span class="p">,</span> <span class="s2">&quot;slategrey&quot;</span><span class="p">,</span> <span class="s2">&quot;rosybrown&quot;</span><span class="p">]</span>
+    
+    <span class="c1">#Annual global weighted</span>
+    <span class="c1">#######################</span>
+    <span class="n">season</span> <span class="o">=</span> <span class="s2">&quot;ANN&quot;</span>
+
+    <span class="c1">#Loop over variables:</span>
+    <span class="k">for</span> <span class="n">var</span> <span class="ow">in</span> <span class="n">var_list</span><span class="p">:</span>
+        <span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mi">8</span><span class="p">))</span>
+        <span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">111</span><span class="p">)</span>
+
+        <span class="n">title_var</span> <span class="o">=</span> <span class="s2">&quot;Global&quot;</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\t</span><span class="s2"> - time series plot for </span><span class="si">{</span><span class="n">var</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+        <span class="c1">#Loop over test cases:</span>
+        <span class="c1">#----------------------</span>
+        <span class="k">for</span> <span class="n">case_idx</span><span class="p">,</span> <span class="n">case_name</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">all_case_names</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">case_idx</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+                <span class="n">color_dict</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;color&quot;</span><span class="p">:</span><span class="s1">&#39;g&#39;</span><span class="p">,</span><span class="s2">&quot;marker&quot;</span><span class="p">:</span><span class="s2">&quot;--&quot;</span><span class="p">}</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">color_dict</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;color&quot;</span><span class="p">:</span><span class="n">colors</span><span class="p">[</span><span class="n">case_idx</span><span class="p">],</span><span class="s2">&quot;marker&quot;</span><span class="p">:</span><span class="s2">&quot;-&quot;</span><span class="p">}</span>
+            <span class="c1">#End if</span>
+            
+            <span class="c1">#Generate input file path:</span>
+            <span class="n">input_location</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">case_ts_locs</span><span class="p">[</span><span class="n">case_idx</span><span class="p">])</span>
+            <span class="n">ts_filenames</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">case_name</span><span class="si">}</span><span class="s1">.*.</span><span class="si">{</span><span class="n">var</span><span class="si">}</span><span class="s1">.*nc&#39;</span>
+            <span class="n">ts_files</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">input_location</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="n">ts_filenames</span><span class="p">))</span>
+            <span class="n">data</span> <span class="o">=</span> <span class="n">_load_data</span><span class="p">(</span><span class="n">ts_files</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">var</span><span class="p">)</span>
+
+            <span class="c1">#Extract units string, if available:</span>
+            <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="s1">&#39;units&#39;</span><span class="p">):</span>
+                <span class="n">unit_str</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">units</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">unit_str</span> <span class="o">=</span> <span class="s1">&#39;--&#39;</span>
+
+            <span class="c1">#Check if variable has a vertical coordinate:</span>
+            <span class="k">if</span> <span class="s1">&#39;lev&#39;</span> <span class="ow">in</span> <span class="n">data</span><span class="o">.</span><span class="n">coords</span> <span class="ow">or</span> <span class="s1">&#39;ilev&#39;</span> <span class="ow">in</span> <span class="n">data</span><span class="o">.</span><span class="n">coords</span><span class="p">:</span>
+                <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\t</span><span class="s2">   Variable &#39;</span><span class="si">{</span><span class="n">var</span><span class="si">}</span><span class="s2">&#39; has a vertical dimension, &quot;</span><span class="o">+</span>\
+                      <span class="s2">&quot;which is currently not supported for the AMWG Table. Skipping...&quot;</span><span class="p">)</span>
+                <span class="c1">#Skip this variable and move to the next variable in var_list:</span>
+                <span class="k">continue</span>
+            <span class="c1">#End if</span>
+
+            <span class="c1"># we should check if we need to do area averaging:</span>
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">dims</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+                <span class="c1"># flags that we have spatial dimensions</span>
+                <span class="c1"># Note: that could be &#39;lev&#39; which should trigger different behavior</span>
+                <span class="c1"># Note: we should be able to handle (lat, lon) or (ncol,) cases, at least</span>
+                <span class="n">data</span> <span class="o">=</span> <span class="n">spatial_average</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>  <span class="c1"># changes data &quot;in place&quot;</span>
+
+            <span class="c1">#Get yearly averages for all available years</span>
+            <span class="n">vals_case</span> <span class="o">=</span> <span class="n">annual_mean</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">whole_years</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">time_name</span><span class="o">=</span><span class="s1">&#39;time&#39;</span><span class="p">)</span>
+
+            <span class="c1">#Get years for plotting on x-axis</span>
+            <span class="n">yrs</span> <span class="o">=</span> <span class="n">vals_case</span><span class="o">.</span><span class="n">year</span><span class="o">.</span><span class="n">values</span>
+
+            <span class="n">name</span> <span class="o">=</span> <span class="n">all_nicknames</span><span class="p">[</span><span class="n">case_idx</span><span class="p">]</span>
+            <span class="k">if</span> <span class="n">case_idx</span> <span class="o">==</span> <span class="p">(</span><span class="n">case_num</span><span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+                <span class="n">name</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2"> (baseline)&quot;</span>
+
+            <span class="c1">#Add case to plot (ax)</span>
+            <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">yrs</span><span class="p">,</span> <span class="n">vals_case</span><span class="p">,</span> <span class="n">color_dict</span><span class="p">[</span><span class="s2">&quot;marker&quot;</span><span class="p">],</span> <span class="n">c</span><span class="o">=</span><span class="n">color_dict</span><span class="p">[</span><span class="s2">&quot;color&quot;</span><span class="p">],</span><span class="n">label</span><span class="o">=</span><span class="n">name</span><span class="p">)</span>
+
+            <span class="c1">#For the minor ticks, use no labels; default NullFormatter.</span>
+            <span class="n">ax</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">which</span><span class="o">=</span><span class="s1">&#39;major&#39;</span><span class="p">,</span> <span class="n">length</span><span class="o">=</span><span class="mi">7</span><span class="p">)</span>
+            <span class="n">ax</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">which</span><span class="o">=</span><span class="s1">&#39;minor&#39;</span><span class="p">,</span> <span class="n">length</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+        <span class="c1">#End for (case names)</span>
+
+        <span class="c1">#Set Main title for subplots:</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Time Series </span><span class="si">{</span><span class="n">title_var</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">var</span><span class="si">}</span><span class="s2"> - </span><span class="si">{</span><span class="n">season</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span><span class="n">loc</span><span class="o">=</span><span class="s2">&quot;left&quot;</span><span class="p">)</span>
+        
+        <span class="c1"># Format the axes</span>
+        <span class="n">ax</span> <span class="o">=</span> <span class="n">_format_yaxis</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">case_num</span><span class="p">,</span> <span class="n">unit_str</span><span class="p">)</span>
+        <span class="n">ax</span> <span class="o">=</span> <span class="n">_format_xaxis</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">yrs</span><span class="p">)</span>
+
+        <span class="c1">#Set up legend</span>
+        <span class="n">fig</span> <span class="o">=</span> <span class="n">_make_fig_legend</span><span class="p">(</span><span class="n">case_num</span><span class="p">,</span> <span class="n">fig</span><span class="p">)</span>
+
+        <span class="c1">#Save plot</span>
+        <span class="n">plot_name</span> <span class="o">=</span> <span class="n">plot_location</span> <span class="o">/</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">var</span><span class="si">}</span><span class="s2">_</span><span class="si">{</span><span class="n">season</span><span class="si">}</span><span class="s2">_TimeSeries_Mean.</span><span class="si">{</span><span class="n">plot_type</span><span class="si">}</span><span class="s2">&quot;</span>
+
+        <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="n">plot_name</span><span class="p">,</span> <span class="n">facecolor</span><span class="o">=</span><span class="s1">&#39;w&#39;</span><span class="p">)</span>
+        <span class="c1">#plt.close()</span>
+    
+
+
+<span class="c1">##################</span>
+<span class="c1"># Helper Functions</span>
+<span class="c1">##################</span>
+
+
+<span class="k">def</span> <span class="nf">_load_data</span><span class="p">(</span><span class="n">dataloc</span><span class="p">,</span> <span class="n">varname</span><span class="p">):</span>
+    <span class="kn">import</span> <span class="nn">xarray</span> <span class="k">as</span> <span class="nn">xr</span>
+    <span class="n">ds</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_dataset</span><span class="p">(</span><span class="n">dataloc</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">ds</span><span class="p">[</span><span class="n">varname</span><span class="p">]</span>
+
+<span class="c1">########</span>
+
+<span class="k">def</span> <span class="nf">spatial_average</span><span class="p">(</span><span class="n">indata</span><span class="p">,</span> <span class="n">weights</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">spatial_dims</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Compute spatial average.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    indata : xr.DataArray</span>
+<span class="sd">        input data</span>
+<span class="sd">    weights : np.ndarray or xr.DataArray, optional</span>
+<span class="sd">        the weights to apply, see Notes for default behavior</span>
+<span class="sd">    spatial_dims : list, optional</span>
+<span class="sd">        list of dimensions to average, see Notes for default behavior</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    xr.DataArray</span>
+<span class="sd">        weighted average of `indata`</span>
+
+<span class="sd">    Notes</span>
+<span class="sd">    -----</span>
+<span class="sd">    When `weights` is not provided, tries to find sensible values.</span>
+<span class="sd">    If there is a &#39;lat&#39; dimension, use `cos(lat)`.</span>
+<span class="sd">    If there is a &#39;ncol&#39; dimension, looks for `area` in `indata`.</span>
+<span class="sd">    Otherwise, set to equal weights.</span>
+
+<span class="sd">    Makes an attempt to identify the spatial variables when `spatial_dims` is None.</span>
+<span class="sd">    Will average over `ncol` if present, and then will check for `lat` and `lon`.</span>
+<span class="sd">    When none of those three are found, raise an AdfError.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="kn">import</span> <span class="nn">warnings</span>
+
+    <span class="k">if</span> <span class="n">weights</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="c1">#Calculate spatial weights:</span>
+        <span class="k">if</span> <span class="s1">&#39;lat&#39;</span> <span class="ow">in</span> <span class="n">indata</span><span class="o">.</span><span class="n">coords</span><span class="p">:</span>
+            <span class="n">weights</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">deg2rad</span><span class="p">(</span><span class="n">indata</span><span class="o">.</span><span class="n">lat</span><span class="p">))</span>
+            <span class="n">weights</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;weights&quot;</span>
+        <span class="k">elif</span> <span class="s1">&#39;ncol&#39;</span> <span class="ow">in</span> <span class="n">indata</span><span class="o">.</span><span class="n">dims</span><span class="p">:</span>
+            <span class="k">if</span> <span class="s1">&#39;area&#39;</span> <span class="ow">in</span> <span class="n">indata</span><span class="p">:</span>
+                <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="s2">&quot;area variable being used to generated normalized weights.&quot;</span><span class="p">)</span>
+                <span class="n">weights</span> <span class="o">=</span> <span class="n">indata</span><span class="p">[</span><span class="s1">&#39;area&#39;</span><span class="p">]</span> <span class="o">/</span> <span class="n">indata</span><span class="p">[</span><span class="s1">&#39;area&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="s2">&quot;We need a way to get area variable. Using equal weights.&quot;</span><span class="p">)</span>
+                <span class="n">weights</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">DataArray</span><span class="p">(</span><span class="mf">1.</span><span class="p">)</span>
+            <span class="n">weights</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;weights&quot;</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">weights</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">DataArray</span><span class="p">(</span><span class="mf">1.</span><span class="p">)</span>
+            <span class="n">weights</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;weights&quot;</span>
+            <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="s2">&quot;Un-recognized spatial dimensions: using equal weights for all grid points.&quot;</span><span class="p">)</span>
+        <span class="c1">#End if</span>
+    <span class="c1">#End if</span>
+
+    <span class="c1">#Apply weights to input data:</span>
+    <span class="n">weighted</span> <span class="o">=</span> <span class="n">indata</span><span class="o">.</span><span class="n">weighted</span><span class="p">(</span><span class="n">weights</span><span class="p">)</span>
+
+    <span class="c1"># we want to average over all non-time dimensions</span>
+    <span class="k">if</span> <span class="n">spatial_dims</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">if</span> <span class="s1">&#39;ncol&#39;</span> <span class="ow">in</span> <span class="n">indata</span><span class="o">.</span><span class="n">dims</span><span class="p">:</span>
+            <span class="n">spatial_dims</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;ncol&#39;</span><span class="p">]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">spatial_dims</span> <span class="o">=</span> <span class="p">[</span><span class="n">dimname</span> <span class="k">for</span> <span class="n">dimname</span> <span class="ow">in</span> <span class="n">indata</span><span class="o">.</span><span class="n">dims</span> <span class="k">if</span> <span class="p">((</span><span class="s1">&#39;lat&#39;</span> <span class="ow">in</span> <span class="n">dimname</span><span class="o">.</span><span class="n">lower</span><span class="p">())</span> <span class="ow">or</span> <span class="p">(</span><span class="s1">&#39;lon&#39;</span> <span class="ow">in</span> <span class="n">dimname</span><span class="o">.</span><span class="n">lower</span><span class="p">()))]</span>
+
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">spatial_dims</span><span class="p">:</span>
+        <span class="c1">#Scripts using this function likely expect the horizontal dimensions</span>
+        <span class="c1">#to be removed via the application of the mean. So in order to avoid</span>
+        <span class="c1">#possibly unexpected behavior due to arrays being incorrectly dimensioned</span>
+        <span class="c1">#(which could be difficult to debug) the ADF should die here:</span>
+        <span class="n">emsg</span> <span class="o">=</span> <span class="s2">&quot;spatial_average: No spatial dimensions were identified,&quot;</span>
+        <span class="n">emsg</span> <span class="o">+=</span> <span class="s2">&quot; so can not perform average.&quot;</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">emsg</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">weighted</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="n">spatial_dims</span><span class="p">)</span>
+
+<span class="c1">########</span>
+
+<span class="k">def</span> <span class="nf">global_average</span><span class="p">(</span><span class="n">fld</span><span class="p">,</span> <span class="n">wgt</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;A simple, pure numpy global average.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    fld : np.ndarray</span>
+<span class="sd">        an input ndarray</span>
+<span class="sd">    wgt : np.ndarray</span>
+<span class="sd">        a 1-dimensional array of weights, should be same size as one dimension of `fld`</span>
+<span class="sd">    verbose : bool, optional</span>
+<span class="sd">        prints information when `True`</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    weighted average of `fld`</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">s</span> <span class="o">=</span> <span class="n">fld</span><span class="o">.</span><span class="n">shape</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">s</span><span class="p">)):</span>
+        <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="n">fld</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span><span class="n">wgt</span><span class="p">):</span>
+            <span class="n">a</span> <span class="o">=</span> <span class="n">i</span>
+            <span class="k">break</span>
+    <span class="n">fld2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ma</span><span class="o">.</span><span class="n">masked_invalid</span><span class="p">(</span><span class="n">fld</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">verbose</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;(global_average)-- fraction of mask that is True: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">count_nonzero</span><span class="p">(</span><span class="n">fld2</span><span class="o">.</span><span class="n">mask</span><span class="p">)</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="n">fld2</span><span class="p">)))</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;(global_average)-- apply ma.average along axis = </span><span class="si">{}</span><span class="s2"> // validate: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">fld2</span><span class="o">.</span><span class="n">shape</span><span class="p">))</span>
+    <span class="n">avg1</span><span class="p">,</span> <span class="n">sofw</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ma</span><span class="o">.</span><span class="n">average</span><span class="p">(</span><span class="n">fld2</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="n">a</span><span class="p">,</span> <span class="n">weights</span><span class="o">=</span><span class="n">wgt</span><span class="p">,</span> <span class="n">returned</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="c1"># sofw is sum of weights</span>
+
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">ma</span><span class="o">.</span><span class="n">average</span><span class="p">(</span><span class="n">avg1</span><span class="p">)</span>
+
+<span class="c1">########</span>
+
+<span class="k">def</span> <span class="nf">annual_mean</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">whole_years</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">time_name</span><span class="o">=</span><span class="s1">&#39;time&#39;</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Calculate annual averages from monthly time series data.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    data : xr.DataArray or xr.Dataset</span>
+<span class="sd">        monthly data values with temporal dimension</span>
+<span class="sd">    whole_years : bool, optional</span>
+<span class="sd">        whether to restrict endpoints of the average to</span>
+<span class="sd">        start at first January and end at last December</span>
+<span class="sd">    time_name : str, optional</span>
+<span class="sd">        name of the time dimension, defaults to `time`</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    result : xr.DataArray or xr.Dataset</span>
+<span class="sd">        `data` reduced to annual averages</span>
+
+<span class="sd">    Notes</span>
+<span class="sd">    -----</span>
+<span class="sd">    This function assumes monthly data, and weights the average by the</span>
+<span class="sd">    number of days in each month.</span>
+
+<span class="sd">    `result` includes an attribute that reports the date range used for the average.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">assert</span> <span class="n">time_name</span> <span class="ow">in</span> <span class="n">data</span><span class="o">.</span><span class="n">coords</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;Did not find the expected time coordinate &#39;</span><span class="si">{</span><span class="n">time_name</span><span class="si">}</span><span class="s2">&#39; in the data&quot;</span>
+    <span class="k">if</span> <span class="n">whole_years</span><span class="p">:</span>
+        <span class="n">first_january</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argwhere</span><span class="p">((</span><span class="n">data</span><span class="o">.</span><span class="n">time</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">month</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">values</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">item</span><span class="p">()</span>
+        <span class="n">last_december</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argwhere</span><span class="p">((</span><span class="n">data</span><span class="o">.</span><span class="n">time</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">month</span> <span class="o">==</span> <span class="mi">12</span><span class="p">)</span><span class="o">.</span><span class="n">values</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">item</span><span class="p">()</span>
+        <span class="n">data_to_avg</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">isel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="nb">slice</span><span class="p">(</span><span class="n">first_january</span><span class="p">,</span><span class="n">last_december</span><span class="o">+</span><span class="mi">1</span><span class="p">))</span> <span class="c1"># PLUS 1 BECAUSE SLICE DOES NOT INCLUDE END POINT</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">data_to_avg</span> <span class="o">=</span> <span class="n">data</span>
+    <span class="n">date_range_string</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">data_to_avg</span><span class="p">[</span><span class="s1">&#39;time&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s2"> -- </span><span class="si">{</span><span class="n">data_to_avg</span><span class="p">[</span><span class="s1">&#39;time&#39;</span><span class="p">][</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span>
+
+    <span class="c1"># this provides the normalized monthly weights in each year</span>
+    <span class="c1"># -- do it for each year to allow for non-standard calendars (360-day)</span>
+    <span class="c1"># -- and also to provision for data with leap years</span>
+    <span class="n">days_gb</span> <span class="o">=</span> <span class="n">data_to_avg</span><span class="o">.</span><span class="n">time</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">daysinmonth</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;time.year&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span> <span class="o">/</span> <span class="n">x</span><span class="o">.</span><span class="n">sum</span><span class="p">())</span>
+    <span class="c1"># weighted average with normalized weights: &lt;x&gt; = SUM x_i * w_i  (implied division by SUM w_i)</span>
+    <span class="n">result</span> <span class="o">=</span>  <span class="p">(</span><span class="n">data_to_avg</span> <span class="o">*</span> <span class="n">days_gb</span><span class="p">)</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;time.year&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="s1">&#39;time&#39;</span><span class="p">)</span>
+    <span class="n">result</span><span class="o">.</span><span class="n">attrs</span><span class="p">[</span><span class="s1">&#39;averaging_period&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">date_range_string</span>
+    <span class="k">return</span> <span class="n">result</span>
+
+<span class="c1">########</span>
+
+<span class="k">def</span> <span class="nf">_set_ymargin</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">top</span><span class="p">,</span> <span class="n">bottom</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Allow for custom padding of plot lines and axes borders</span>
+<span class="sd">    -----</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_ymargin</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">autoscale_view</span><span class="p">()</span>
+    <span class="n">lim</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">get_ylim</span><span class="p">()</span>
+    <span class="n">delta</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">lim</span><span class="p">)</span>
+    <span class="n">top</span> <span class="o">=</span> <span class="n">lim</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">delta</span><span class="o">*</span><span class="n">top</span>
+    <span class="n">bottom</span> <span class="o">=</span> <span class="n">lim</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="n">delta</span><span class="o">*</span><span class="n">bottom</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="n">bottom</span><span class="p">,</span><span class="n">top</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">ax</span>
+
+<span class="c1">########</span>
+
+<span class="k">def</span> <span class="nf">_format_yaxis</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">case_num</span><span class="p">,</span> <span class="n">unit</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Gather variable data and format y-axis</span>
+<span class="sd">    -----</span>
+<span class="sd">        - Set the y-axis plot limits to guarantee data range from all cases (including baseline)</span>
+<span class="sd">        - Pad the top of plot to allow for flexible-sized legend in top left corner</span>
+<span class="sd">            -&gt; For multi-case, this will pad the plot according to number of cases</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="n">unit</span><span class="p">,</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span><span class="n">labelpad</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+
+    <span class="c1">#Attempt flexible pad based on number of cases for both single and</span>
+    <span class="n">pad</span> <span class="o">=</span> <span class="mf">0.075</span><span class="o">*</span><span class="n">case_num</span>
+    <span class="n">ax</span> <span class="o">=</span> <span class="n">_set_ymargin</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">top</span><span class="o">=</span><span class="n">pad</span><span class="p">,</span> <span class="n">bottom</span><span class="o">=</span><span class="mf">0.1</span><span class="p">)</span>
+    
+    <span class="k">return</span> <span class="n">ax</span>
+
+<span class="c1">########</span>
+
+<span class="k">def</span> <span class="nf">_format_xaxis</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">yrs</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Gather climo year data and format x-axis</span>
+<span class="sd">    -----</span>
+<span class="sd">        - Set the x-axis plot limits to guarantee data range from all cases (including baseline)</span>
+<span class="sd">        - Set minor and major locators based on number of years</span>
+<span class="sd">        - Round the range to the nearest 5-year interval for cleaner appearance</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="c1"># Grab first and last years</span>
+    <span class="n">last_year</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">max</span><span class="p">(</span><span class="n">yrs</span><span class="p">))</span>
+    <span class="n">first_year</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">min</span><span class="p">(</span><span class="n">yrs</span><span class="p">))</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="n">first_year</span><span class="p">,</span> <span class="n">last_year</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="n">first_year</span><span class="p">,</span> <span class="n">last_year</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;Years&quot;</span><span class="p">,</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">15</span><span class="p">,</span><span class="n">labelpad</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_major_locator</span><span class="p">(</span><span class="n">MultipleLocator</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
+
+    <span class="k">return</span> <span class="n">ax</span>
+
+<span class="c1">########</span>
+
+<span class="k">def</span> <span class="nf">_make_fig_legend</span><span class="p">(</span><span class="n">case_num</span><span class="p">,</span> <span class="n">fig</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Defualt matplotlib legend</span>
+<span class="sd">    -----</span>
+<span class="sd">        Function to generate legend and labels for all plots</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    
+    <span class="c1">#Gather labels based on case names and plotted line format (color, style, etc)</span>
+    <span class="n">lines_labels</span> <span class="o">=</span> <span class="p">[</span><span class="n">ax</span><span class="o">.</span><span class="n">get_legend_handles_labels</span><span class="p">()</span> <span class="k">for</span> <span class="n">ax</span> <span class="ow">in</span> <span class="n">fig</span><span class="o">.</span><span class="n">axes</span><span class="p">]</span>
+    <span class="n">lines</span><span class="p">,</span> <span class="n">labels</span> <span class="o">=</span> <span class="p">[</span><span class="nb">sum</span><span class="p">(</span><span class="n">lol</span><span class="p">,</span> <span class="p">[])</span> <span class="k">for</span> <span class="n">lol</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="o">*</span><span class="n">lines_labels</span><span class="p">)]</span>
+
+    <span class="n">fig</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">lines</span><span class="p">[:</span><span class="n">case_num</span><span class="o">+</span><span class="mi">1</span><span class="p">],</span> <span class="n">labels</span><span class="p">[:</span><span class="n">case_num</span><span class="o">+</span><span class="mi">1</span><span class="p">],</span><span class="n">loc</span><span class="o">=</span><span class="s2">&quot;upper left&quot;</span><span class="p">,</span>
+                <span class="c1">#bbox_to_anchor=(0.12, 1.025,.042,.05*(case_num-1))</span>
+                <span class="n">bbox_to_anchor</span><span class="o">=</span><span class="p">(</span><span class="mf">0.12</span><span class="p">,</span> <span class="mf">0.835</span><span class="p">,</span><span class="mf">.042</span><span class="p">,</span><span class="mf">.05</span><span class="p">)</span>
+                <span class="p">)</span> <span class="c1">#bbox_to_anchor(x0, y0, width, height)</span>
+
+    <span class="k">return</span> <span class="n">fig</span>
+
+
+<span class="c1">####################################################################################</span>
+
+
+<span class="c1"># Run the script</span>
+<span class="c1">################</span>
+
+<span class="c1"># Plot and case setup info</span>
+<span class="c1"># List of desired time series plotting variables</span>
+<span class="n">var_list</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;TS&quot;</span><span class="p">]</span>
+
+<span class="c1"># Case names</span>
+<span class="n">all_case_names</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;f.cam6_3_132.FCLTHIST_ne30.001&quot;</span><span class="p">,</span> <span class="s2">&quot;f.cam6_3_132.FLTHIST_ne30.001&quot;</span><span class="p">]</span>
+
+<span class="c1"># Time series file locations</span>
+<span class="n">case_ts_locs</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;/glade/scratch/richling/adf-output/ADF-data/timeseries/f.cam6_3_132.FCLTHIST_ne30.001/2000-2011/&quot;</span><span class="p">,</span> 
+                <span class="s2">&quot;/glade/scratch/richling/adf-output/ADF-data/timeseries/f.cam6_3_132.FLTHIST_ne30.001/2000-2011/&quot;</span><span class="p">]</span>
+
+<span class="c1"># Set case nicknames</span>
+<span class="n">all_nicknames</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;FCLTHIST&quot;</span><span class="p">,</span> <span class="s2">&quot;FLTHIST&quot;</span><span class="p">]</span>
+
+<span class="c1"># Set plot file type:</span>
+<span class="n">plot_type</span> <span class="o">=</span> <span class="s1">&#39;png&#39;</span>
+
+<span class="c1"># Set saved plot location</span>
+<span class="n">plot_location</span> <span class="o">=</span> <span class="s2">&quot;./&quot;</span>
+
+<span class="c1"># Run the time series function with inputs</span>
+<span class="n">time_series</span><span class="p">(</span><span class="n">var_list</span><span class="p">,</span> <span class="n">all_case_names</span><span class="p">,</span> <span class="n">case_ts_locs</span><span class="p">,</span> <span class="n">all_nicknames</span><span class="p">,</span> <span class="n">plot_type</span><span class="p">,</span> <span class="n">plot_location</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<h3>Output Image</h3>
+<figure class="align-default" id="directive-fig">
+<a class="reference internal image-reference" href="tutorial_material/_build/jupyter_execute/notebooks/exercises/TS_ANN_TimeSeries_Mean.png"><img alt="tutorial_material/_build/jupyter_execute/notebooks/exercises/TS_ANN_TimeSeries_Mean.png" src="tutorial_material/_build/jupyter_execute/notebooks/exercises/TS_ANN_TimeSeries_Mean.png" style="width: 650px;" /></a>
+</figure>
+</section>
+<hr class="docutils" />
+<section id="modifying-our-script-for-the-adf">
+<h2>Modifying our script for the ADF<a class="headerlink" href="#modifying-our-script-for-the-adf" title="Permalink to this headline">#</a></h2>
+<p>What we will want to do next is to reuse a lot of our code, but now we just need to incorporate instances from the ADF object. This sounds complicated and in most cases it isn’t, but it will vary depending on the code you might be trying to integrate in.</p>
+<p>Typically one should expect certain variables to always have an ADF equivalent, such as case names, file locations (time series, climo, etc.), climo years, …</p>
+<p>For this time series plot scenario, we will want to bring in the input variables into the actual <code class="docutils literal notranslate"><span class="pre">time_series</span></code> function and let the ADF object populate (in this case) all of those for us:</p>
+<ul class="simple">
+<li><p>var_list</p></li>
+<li><p>all_case_names</p></li>
+<li><p>case_ts_locs</p></li>
+<li><p>all_nicknames</p></li>
+<li><p>plot_type</p></li>
+<li><p>plot_location</p></li>
+</ul>
+<div class="full-width docutils">
+<p>The ADF will create these variables as:</p>
+<p><strong>var_list</strong></p>
+<p style="margin-top: -5px;">&emsp;&ensp; <code class="docutils literal notranslate"><span class="pre" style="color:black">var_list = </span></code><code class="docutils literal notranslate"><span class="pre">adfobj.diag_var_list</span></code></p>
+<p><strong>all_case_names</strong></p>
+<p style="margin-top: -5px;">&emsp;&ensp; <code class="docutils literal notranslate"><span class="pre" style="color:black">case_name = </span></code><code class="docutils literal notranslate"><span class="pre">adfobj.get_cam_info("cam_case_name", required=True)</span></code> -> comes out as a list</p>
+<p style="margin-top: -5px;">&emsp;&ensp; <code class="docutils literal notranslate"><span class="pre" style="color:black">baseline_name = </span></code><code class="docutils literal notranslate"><span class="pre">adfobj.get_baseline_info("cam_case_name", required=True)</span></code></p>
+<p style="margin-top: -5px;">&emsp;&ensp; <code class="docutils literal notranslate"><span class="pre" style="color:black">all_case_names = </span></code><code class="docutils literal notranslate"><span class="pre" style="color:black">case_name + [baseline_name]</span></code></p>
+<p><strong>case_ts_locs</strong></p>
+<p style="margin-top: -5px;">&emsp;&ensp; <code class="docutils literal notranslate"><span class="pre" style="color:black">case_ts_loc = </span></code><code class="docutils literal notranslate"><span class="pre">adfobj.get_cam_info("cam_ts_loc", required=True)</span></code> -> comes out as a list</p>
+<p style="margin-top: -5px;">&emsp;&ensp; <code class="docutils literal notranslate"><span class="pre" style="color:black">baseline_ts_loc = </span></code><code class="docutils literal notranslate"><span class="pre">adfobj.get_baseline_info("cam_ts_loc", required=True)</span></code></p>
+<p style="margin-top: -5px;">&emsp;&ensp; <code class="docutils literal notranslate"><span class="pre" style="color:black">case_ts_locs = </span></code><code class="docutils literal notranslate"><span class="pre" style="color:black">case_ts_loc + [baseline_ts_loc]</span></code></p>
+<p><strong>all_nicknames</strong></p>
+<p style="margin-top: -5px;">&emsp;&ensp; <code class="docutils literal notranslate"><span class="pre" style="color:black">case_nickname = </span></code><code class="docutils literal notranslate"><span class="pre">adfobj.case_nicknames["test_nicknames"]</span></code> -> comes out as a list</p>
+<p style="margin-top: -5px;">&emsp;&ensp; <code class="docutils literal notranslate"><span class="pre" style="color:black">baseline_nickname = </span></code><code class="docutils literal notranslate"><span class="pre">adfobj.case_nicknames["base_nickname"]</span></code></p>
+<p style="margin-top: -5px;">&emsp;&ensp; <code class="docutils literal notranslate"><span class="pre" style="color:black">all_nicknames = </span></code><code class="docutils literal notranslate"><span class="pre" style="color:black">case_nickname + [baseline_nickname]</span></code></p>
+<p><strong>plot_type</strong></p>
+<p style="margin-top: -5px;">&emsp;&ensp; <code class="docutils literal notranslate"><span class="pre" style="color:black">basic_info_dict = </span></code><code class="docutils literal notranslate"><span class="pre">adfobj.read_config_var("diag_basic_info", required=True)</span></code></p>
+<p style="margin-top: -5px;">&emsp;&ensp; <code class="docutils literal notranslate"><span class="pre" style="color:black">plot_type = </span></code><code class="docutils literal notranslate"><span class="pre" style="color:black">basic_info_dict.get('plot_type', 'png')</span></code></p>
+<p><strong>plot_location</strong></p>
+<p style="margin-top: -5px;">&emsp;&ensp; <code class="docutils literal notranslate"><span class="pre" style="color:black">plot_location = </span></code><code class="docutils literal notranslate"><span class="pre">adfobj.get_basic_info("cam_diag_plot_loc")</span></code></p>
+</div>
+<h4><u>Some important notes:</u></h4>
+<ul class="simple">
+<li><p>the name of the function (<code class="docutils literal notranslate"><span class="pre">time_series_plot</span></code>) must match the name of the script (minus the .py) you are adding in the ADF.</p>
+<ul>
+<li><p>in our case, we will save the python file in the plotting directory: <code class="docutils literal notranslate"><span class="pre">scripts/plotting/time_series_plot.py</span></code></p></li>
+</ul>
+</li>
+<li><p>the only input for your function should be the ADF python object (<code class="docutils literal notranslate"><span class="pre">adfobj</span></code>)</p></li>
+<li><p>you can take advantage of the variable defaults file the ADF provides to really refine your plotting and calculations for variable by variable basis. This is done below with the lines:<br>
+<code class="docutils literal notranslate"><span class="pre">res</span> <span class="pre">=</span> <span class="pre">adfobj.variable_defaults</span></code> (grab info about all variables) and<br>
+<code class="docutils literal notranslate"><span class="pre">vres</span> <span class="pre">=</span> <span class="pre">res[var]</span></code> (specify info about specific variable)</p></li>
+</ul>
+<div class="full-width docutils">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">time_series_plot</span><span class="p">(</span><span class="n">adfobj</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    This script plots time series.</span>
+<span class="sd">    Compare CAM climatologies against other</span>
+<span class="sd">    climatological data (observations or baseline runs).</span>
+
+<span class="sd">    Description of needed inputs from ADF:</span>
+<span class="sd">    case_name        -&gt; Name of CAM case provided by &quot;cam_case_name&quot;.</span>
+
+<span class="sd">    ts_loc           -&gt; Location of CAM time series files provided by &quot;cam_ts_loc&quot;.</span>
+
+<span class="sd">    data_name        -&gt; Name of data set CAM case is being compared against,</span>
+<span class="sd">                        which is always either &quot;obs&quot; or the baseline CAM case name,</span>
+<span class="sd">                        depending on whether &quot;compare_obs&quot; is true or false.</span>
+
+<span class="sd">    ts_var_list      -&gt; List of CAM output variables provided by &quot;timeseries_var_list&quot;.</span>
+
+<span class="sd">    data_list        -&gt; List of data sets CAM will be compared against, which</span>
+<span class="sd">                        is simply the baseline case name in situations when</span>
+<span class="sd">                        &quot;compare_obs&quot; is false.</span>
+
+<span class="sd">    plot_location    -&gt; Location where plot files will be written to, which is</span>
+<span class="sd">                        specified by &quot;cam_diag_plot_loc&quot;.</span>
+<span class="sd">    Notes:</span>
+<span class="sd">        * This script runs annual/seasonal and global weighting.</span>
+<span class="sd">        * It will be pretty flexible for the variables plotted and layout of figure.</span>
+<span class="sd">        * This currently only works for single case comparison</span>
+<span class="sd">            - multi-case comparison is in the works. 02/2023 - JR</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="c1">#Notify user that script has started:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">  Generating time series plots...&quot;</span><span class="p">)</span>
+
+    <span class="c1">#Extract needed quantities from ADF object:</span>
+    <span class="c1">#-----------------------------------------</span>
+
+    <span class="c1"># Case names</span>
+    <span class="n">case_names</span> <span class="o">=</span> <span class="n">adfobj</span><span class="o">.</span><span class="n">get_cam_info</span><span class="p">(</span><span class="s1">&#39;cam_case_name&#39;</span><span class="p">,</span> <span class="n">required</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    
+    <span class="c1"># Case time series file locations</span>
+    <span class="n">case_ts_loc</span> <span class="o">=</span> <span class="n">adfobj</span><span class="o">.</span><span class="n">get_cam_info</span><span class="p">(</span><span class="s2">&quot;cam_ts_loc&quot;</span><span class="p">,</span> <span class="n">required</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+    <span class="c1">#Grab all case nickname(s)</span>
+    <span class="n">test_nicknames</span> <span class="o">=</span> <span class="n">adfobj</span><span class="o">.</span><span class="n">case_nicknames</span><span class="p">[</span><span class="s2">&quot;test_nicknames&quot;</span><span class="p">]</span>
+    <span class="n">base_nickname</span> <span class="o">=</span> <span class="n">adfobj</span><span class="o">.</span><span class="n">case_nicknames</span><span class="p">[</span><span class="s2">&quot;base_nickname&quot;</span><span class="p">]</span>
+
+    <span class="c1">#CAUTION:</span>
+    <span class="c1">#&quot;data&quot; here refers to either obs or a baseline simulation,</span>
+    <span class="c1">#Until those are both treated the same (via intake-esm or similar)</span>
+    <span class="c1">#we will do a simple check and switch options as needed:</span>
+    <span class="k">if</span> <span class="n">adfobj</span><span class="o">.</span><span class="n">get_basic_info</span><span class="p">(</span><span class="s2">&quot;compare_obs&quot;</span><span class="p">):</span>
+
+        <span class="c1">#Extract variable-obs dictionary:</span>
+        <span class="n">var_obs_dict</span> <span class="o">=</span> <span class="n">adfobj</span><span class="o">.</span><span class="n">var_obs_dict</span>
+        <span class="n">base_nickname</span> <span class="o">=</span> <span class="s2">&quot;Obs&quot;</span>
+
+        <span class="c1">#If dictionary is empty, then there are no observations to compare against,</span>
+        <span class="c1">#so quit here:</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">var_obs_dict</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;No observations found to plot against. So just the test case will be plotted.</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+            <span class="c1">#Bundle all case names</span>
+            <span class="n">all_case_names</span> <span class="o">=</span> <span class="n">case_names</span>
+            <span class="c1">#Gather all nicknames</span>
+            <span class="n">all_nicknames</span> <span class="o">=</span> <span class="n">test_nicknames</span>
+            <span class="n">case_ts_locs</span> <span class="o">=</span> <span class="n">case_ts_loc</span>
+            <span class="n">all_nicknames</span> <span class="o">=</span> <span class="n">test_nicknames</span>
+
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">data_name</span> <span class="o">=</span> <span class="n">adfobj</span><span class="o">.</span><span class="n">get_baseline_info</span><span class="p">(</span><span class="s2">&quot;cam_case_name&quot;</span><span class="p">)</span>
+        <span class="n">data_ts_loc</span> <span class="o">=</span> <span class="n">adfobj</span><span class="o">.</span><span class="n">get_baseline_info</span><span class="p">(</span><span class="s2">&quot;cam_ts_loc&quot;</span><span class="p">)</span>
+        <span class="c1">#Bundle all case names</span>
+        <span class="n">all_case_names</span> <span class="o">=</span> <span class="n">case_names</span> <span class="o">+</span> <span class="p">[</span><span class="n">data_name</span><span class="p">]</span>
+        <span class="n">case_ts_locs</span> <span class="o">=</span> <span class="n">case_ts_loc</span> <span class="o">+</span> <span class="p">[</span><span class="n">data_ts_loc</span><span class="p">]</span>
+        <span class="n">all_nicknames</span> <span class="o">=</span> <span class="n">test_nicknames</span> <span class="o">+</span> <span class="p">[</span><span class="n">base_nickname</span><span class="p">]</span>
+    <span class="c1">#End if</span>
+
+    <span class="c1">#Get number of cases for plotting</span>
+    <span class="n">case_num</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">all_case_names</span><span class="p">)</span>
+
+    <span class="c1">#ADF variable which contains the output path for plots:</span>
+    <span class="n">plot_location</span> <span class="o">=</span> <span class="n">adfobj</span><span class="o">.</span><span class="n">get_basic_info</span><span class="p">(</span><span class="s2">&quot;cam_diag_plot_loc&quot;</span><span class="p">)</span>
+    <span class="n">plot_location</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">plot_location</span><span class="p">)</span>
+    <span class="c1">#Check if plot output directory exists, and if not, then create it:</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">plot_location</span><span class="o">.</span><span class="n">is_dir</span><span class="p">():</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\t</span><span class="s2">    &#39;</span><span class="si">{</span><span class="n">plot_location</span><span class="si">}</span><span class="s2">&#39; not found, making new directory&quot;</span><span class="p">)</span>
+        <span class="n">plot_location</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">parents</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+    <span class="c1">#Read in info from the variable defaults yaml file</span>
+    <span class="n">res</span> <span class="o">=</span> <span class="n">adfobj</span><span class="o">.</span><span class="n">variable_defaults</span> <span class="c1">#dict of variable-specific plot preferences</span>
+    <span class="c1">#or an empty dictionary if use_defaults was not specified in config (YAML) file.</span>
+
+    <span class="c1">#Set plot file type:</span>
+    <span class="c1">#-- this should be set in basic_info_dict, but is not required</span>
+    <span class="c1">#-- So check for it, and default to png</span>
+    <span class="n">basic_info_dict</span> <span class="o">=</span> <span class="n">adfobj</span><span class="o">.</span><span class="n">read_config_var</span><span class="p">(</span><span class="s2">&quot;diag_basic_info&quot;</span><span class="p">,</span> <span class="n">required</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">plot_type</span> <span class="o">=</span> <span class="n">basic_info_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;plot_type&#39;</span><span class="p">,</span> <span class="s1">&#39;png&#39;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\t</span><span class="s2"> NOTE: Plot type is set to </span><span class="si">{</span><span class="n">plot_type</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+    <span class="c1">#Check if existing plots need to be redone</span>
+    <span class="n">redo_plot</span> <span class="o">=</span> <span class="n">adfobj</span><span class="o">.</span><span class="n">get_basic_info</span><span class="p">(</span><span class="s1">&#39;redo_plot&#39;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\t</span><span class="s2"> NOTE: redo_plot is set to &#39;</span><span class="si">{</span><span class="n">redo_plot</span><span class="si">}</span><span class="s2">&#39;&quot;</span><span class="p">)</span>
+
+
+    <span class="c1">#Set up the plots</span>
+    <span class="c1">#################</span>
+
+    <span class="c1">#Add more colors as needed for number of test cases</span>
+    <span class="c1">#** Baseline is already added as green dashed line in plotting function **</span>
+    <span class="c1">#matplotlib colors here: https://matplotlib.org/stable/gallery/color/named_colors.html</span>
+    <span class="n">colors</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;k&quot;</span><span class="p">,</span> <span class="s2">&quot;aqua&quot;</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">,</span> <span class="s2">&quot;b&quot;</span><span class="p">,</span> <span class="s2">&quot;magenta&quot;</span><span class="p">,</span>
+              <span class="s2">&quot;orange&quot;</span><span class="p">,</span> <span class="s2">&quot;slategrey&quot;</span><span class="p">,</span> <span class="s2">&quot;rosybrown&quot;</span><span class="p">]</span>
+    
+    <span class="c1">#Annual global weighted</span>
+    <span class="c1">#######################</span>
+    <span class="n">season</span> <span class="o">=</span> <span class="s2">&quot;ANN&quot;</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">  Generating time series for </span><span class="si">{</span><span class="n">season</span><span class="si">}</span><span class="s2">...&quot;</span><span class="p">)</span>
+
+    <span class="c1">#Loop over variables:</span>
+    <span class="k">for</span> <span class="n">var</span> <span class="ow">in</span> <span class="n">var_list</span><span class="p">:</span>
+        <span class="c1">#Check res for any variable specific options that need to be used BEFORE going to the plot:</span>
+        <span class="k">if</span> <span class="n">var</span> <span class="ow">in</span> <span class="n">res</span><span class="p">:</span>
+            <span class="n">vres</span> <span class="o">=</span> <span class="n">res</span><span class="p">[</span><span class="n">var</span><span class="p">]</span>
+            <span class="c1">#If found then notify user, assuming debug log is enabled:</span>
+            <span class="n">adfobj</span><span class="o">.</span><span class="n">debug_log</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;time_series: Found variable defaults for </span><span class="si">{</span><span class="n">var</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">vres</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="c1">#End if</span>
+
+        <span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mi">8</span><span class="p">))</span>
+        <span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">111</span><span class="p">)</span>
+
+        <span class="n">title_var</span> <span class="o">=</span> <span class="s2">&quot;Global&quot;</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\t</span><span class="s2"> - time series for </span><span class="si">{</span><span class="n">var</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+        <span class="c1">#Loop over test cases:</span>
+        <span class="c1">#----------------------</span>
+        <span class="c1">#Create lists to hold all min/max values for var data (for each case)</span>
+        <span class="n">mins</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">maxs</span> <span class="o">=</span> <span class="p">[]</span>
+
+        <span class="k">for</span> <span class="n">case_idx</span><span class="p">,</span> <span class="n">case_name</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">all_case_names</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">case_name</span> <span class="o">==</span> <span class="n">data_name</span><span class="p">:</span>
+                <span class="n">color_dict</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;color&quot;</span><span class="p">:</span><span class="s1">&#39;g&#39;</span><span class="p">,</span><span class="s2">&quot;marker&quot;</span><span class="p">:</span><span class="s2">&quot;--&quot;</span><span class="p">}</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">color_dict</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;color&quot;</span><span class="p">:</span><span class="n">colors</span><span class="p">[</span><span class="n">case_idx</span><span class="p">],</span><span class="s2">&quot;marker&quot;</span><span class="p">:</span><span class="s2">&quot;-&quot;</span><span class="p">}</span>
+            <span class="c1">#End if</span>
+            
+            <span class="c1">#Generate input file path:</span>
+            <span class="n">input_location</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">case_ts_locs</span><span class="p">[</span><span class="n">case_idx</span><span class="p">])</span>
+            <span class="n">ts_filenames</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">case_name</span><span class="si">}</span><span class="s1">.*.</span><span class="si">{</span><span class="n">var</span><span class="si">}</span><span class="s1">.*nc&#39;</span>
+            <span class="n">ts_files</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">input_location</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="n">ts_filenames</span><span class="p">))</span>
+            <span class="n">data</span> <span class="o">=</span> <span class="n">_load_data</span><span class="p">(</span><span class="n">ts_files</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">var</span><span class="p">)</span>
+
+            <span class="c1">#Extract units string, if available:</span>
+            <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="s1">&#39;units&#39;</span><span class="p">):</span>
+                <span class="n">unit_str</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">units</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">unit_str</span> <span class="o">=</span> <span class="s1">&#39;--&#39;</span>
+
+            <span class="c1">#Check if variable has a vertical coordinate:</span>
+            <span class="k">if</span> <span class="s1">&#39;lev&#39;</span> <span class="ow">in</span> <span class="n">data</span><span class="o">.</span><span class="n">coords</span> <span class="ow">or</span> <span class="s1">&#39;ilev&#39;</span> <span class="ow">in</span> <span class="n">data</span><span class="o">.</span><span class="n">coords</span><span class="p">:</span>
+                <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\t</span><span class="s2">   Variable &#39;</span><span class="si">{</span><span class="n">var</span><span class="si">}</span><span class="s2">&#39; has a vertical dimension, &quot;</span><span class="o">+</span>\
+                      <span class="s2">&quot;which is currently not supported for the AMWG Table. Skipping...&quot;</span><span class="p">)</span>
+                <span class="c1">#Skip this variable and move to the next variable in var_list:</span>
+                <span class="k">continue</span>
+            <span class="c1">#End if</span>
+
+            <span class="c1"># we should check if we need to do area averaging:</span>
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">dims</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+                <span class="c1"># flags that we have spatial dimensions</span>
+                <span class="c1"># Note: that could be &#39;lev&#39; which should trigger different behavior</span>
+                <span class="c1"># Note: we should be able to handle (lat, lon) or (ncol,) cases, at least</span>
+                <span class="n">data</span> <span class="o">=</span> <span class="n">spatial_average</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>  <span class="c1"># changes data &quot;in place&quot;</span>
+            
+            
+            <span class="c1">#Get yearly averages for all available years</span>
+            <span class="n">vals_case</span> <span class="o">=</span> <span class="n">annual_mean</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">whole_years</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">time_name</span><span class="o">=</span><span class="s1">&#39;time&#39;</span><span class="p">)</span>
+
+            <span class="c1">#Grab min and max vals from each test case</span>
+            <span class="n">mins</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">nanmin</span><span class="p">(</span><span class="n">vals_case</span><span class="p">))</span>
+            <span class="n">maxs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">nanmax</span><span class="p">(</span><span class="n">vals_case</span><span class="p">))</span>
+
+            <span class="c1">#Get int of years for plotting on x-axis</span>
+            <span class="n">yrs</span> <span class="o">=</span> <span class="n">vals_case</span><span class="o">.</span><span class="n">year</span><span class="o">.</span><span class="n">values</span>
+
+            <span class="n">name</span> <span class="o">=</span> <span class="n">all_nicknames</span><span class="p">[</span><span class="n">case_idx</span><span class="p">]</span>
+            <span class="c1">#If case is baseline case, add text to legend string</span>
+            <span class="k">if</span> <span class="n">case_idx</span> <span class="o">==</span> <span class="p">(</span><span class="n">case_num</span><span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+                <span class="n">name</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2"> (baseline)&quot;</span>
+
+            <span class="c1">#Add case to plot (ax)</span>
+            <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">yrs</span><span class="p">,</span> <span class="n">vals_case</span><span class="p">,</span> <span class="n">color_dict</span><span class="p">[</span><span class="s2">&quot;marker&quot;</span><span class="p">],</span> <span class="n">c</span><span class="o">=</span><span class="n">color_dict</span><span class="p">[</span><span class="s2">&quot;color&quot;</span><span class="p">],</span><span class="n">label</span><span class="o">=</span><span class="n">name</span><span class="p">)</span>
+
+            <span class="c1">#For the minor ticks, use no labels; default NullFormatter.</span>
+            <span class="n">ax</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">which</span><span class="o">=</span><span class="s1">&#39;major&#39;</span><span class="p">,</span> <span class="n">length</span><span class="o">=</span><span class="mi">7</span><span class="p">)</span>
+            <span class="n">ax</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">which</span><span class="o">=</span><span class="s1">&#39;minor&#39;</span><span class="p">,</span> <span class="n">length</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+        <span class="c1">#End for (case names)</span>
+
+        <span class="c1">#Set Main title for subplots:</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Time Series </span><span class="si">{</span><span class="n">title_var</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">var</span><span class="si">}</span><span class="s2"> - </span><span class="si">{</span><span class="n">season</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span><span class="n">loc</span><span class="o">=</span><span class="s2">&quot;left&quot;</span><span class="p">)</span>
+        
+        <span class="c1">#Minor tweak to not plot variables that have vertical levels.</span>
+        <span class="c1">#TODO: Clean up this check - JR</span>
+        <span class="c1">#mins and maxs are blank lists when trying to ignore variables...</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">mins</span><span class="p">)</span> <span class="ow">or</span> <span class="p">(</span><span class="n">maxs</span><span class="p">):</span>
+            <span class="n">ax</span> <span class="o">=</span> <span class="n">_format_yaxis</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">case_num</span><span class="p">,</span> <span class="n">unit_str</span><span class="p">,</span> <span class="o">**</span><span class="n">vres</span><span class="p">)</span>
+            <span class="n">ax</span> <span class="o">=</span> <span class="n">_format_xaxis</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">yrs</span><span class="p">)</span>
+
+            <span class="c1">#Set up legend</span>
+            <span class="n">fig</span> <span class="o">=</span> <span class="n">_make_fig_legend</span><span class="p">(</span><span class="n">case_num</span><span class="p">,</span> <span class="n">fig</span><span class="p">)</span>
+
+            <span class="c1">#Save plot</span>
+            <span class="c1">#plot_name = plot_loc / f&quot;{var}_{season}_TimeSeries_Mean.{plot_type}&quot;</span>
+            <span class="n">plot_name</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;./</span><span class="si">{</span><span class="n">var</span><span class="si">}</span><span class="s2">_</span><span class="si">{</span><span class="n">season</span><span class="si">}</span><span class="s2">_TimeSeries_Mean_ADF_tutorial.</span><span class="si">{</span><span class="n">plot_type</span><span class="si">}</span><span class="s2">&quot;</span>
+
+            <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="n">plot_name</span><span class="p">,</span> <span class="n">facecolor</span><span class="o">=</span><span class="s1">&#39;w&#39;</span><span class="p">)</span>
+            <span class="n">plt</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "npl-2023b"
+        },
+        kernelOptions: {
+            name: "npl-2023b",
+            path: "./tutorial_material/_build/jupyter_execute/notebooks/exercises"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'npl-2023b'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Justin Richling<br/>
+  
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>
