@@ -1,0 +1,80 @@
+# Table of contents
+# Learn more at https://jupyterbook.org/customize/toc.html
+
+format: jb-book
+root: README
+
+parts:
+- caption: ADF
+  chapters:
+    - file: notebooks/basics/adf
+
+- caption: Installing the ADF
+  chapters:
+    - file: notebooks/install/setup
+    - file: notebooks/install/non_cisl
+    
+- caption: ADF - Reference
+  chapters:
+    - file: notebooks/intro/intro
+      sections:
+      - file: notebooks/intro/layout/lib
+      - file: notebooks/intro/layout/scripts
+    - file: notebooks/intro/yaml
+      sections:
+      - file: notebooks/intro/yaml/basics
+      - file: notebooks/intro/yaml/config_cam_baseline_example
+      - file: notebooks/intro/yaml/adf_variable_defaults
+    
+- caption: Running the ADF
+  chapters:
+    - file: notebooks/run/basics
+    #- file: notebooks/run/terminal
+    #- file: notebooks/run/Jupyter
+      #sections:
+      #- file: notebooks/run/Jupyter/jupyter_adf_analysis
+      #- file: notebooks/run/Jupyter/jupyter_adf_run
+    - file: notebooks/run/examples
+      sections:
+      - file: notebooks/run/examples/single_case
+        sections:
+        - file: notebooks/run/examples/single_case/cam_vs_cam
+        - file: notebooks/run/examples/single_case/cam_vs_obs
+        - file: notebooks/run/examples/single_case/cam_vs_cmip
+        
+      - file: notebooks/run/examples/multi_case
+        sections:
+        - file: notebooks/run/examples/multi_case/cam_vs_cam
+        
+      - file: notebooks/run/Jupyter
+        sections:
+        - file: notebooks/run/Jupyter/jupyter_adf_analysis
+        - file: notebooks/run/Jupyter/jupyter_adf_run
+      
+- caption: Exploring the Outputs
+  chapters:
+    - file: notebooks/outputs/local
+    - file: notebooks/outputs/website
+
+- caption: Customizing the ADF
+  chapters:
+    - file: notebooks/customize/add
+
+- caption: Exercises
+  chapters:
+    - file: notebooks/exercises/single_case
+      sections:
+      - file: notebooks/exercises/single_case/custom_defaults
+    #- file: notebooks/exercises/multi_case
+    - file: notebooks/exercises/jupyter
+      sections:
+      - file: notebooks/exercises/jupyter/adf_analysis
+      - file: notebooks/exercises/jupyter/adf_run
+
+- caption: Troubleshooting
+  chapters:
+    - file: notebooks/help/github
+    - file: notebooks/help/email
+    - file: notebooks/help/hackathon
+
+  

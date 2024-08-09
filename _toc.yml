@@ -1,0 +1,76 @@
+# Table of contents
+# Learn more at https://jupyterbook.org/customize/toc.html
+
+format: jb-book
+root: README
+
+parts:
+- caption: ADF
+  chapters:
+    - file: notebooks/intro/adf
+    #- file: notebooks/intro/adf
+    - file: notebooks/intro/output
+    #- file: notebooks/intro/jb_html_css_tips_tricks
+
+- caption: Installing the ADF
+  chapters:
+    - file: notebooks/install/setup
+    #- file: notebooks/install/non_cisl
+    
+- caption: ADF Basics
+  chapters:
+    - file: notebooks/basics/adf_basics
+    - file: notebooks/basics/yaml_basics
+    - file: notebooks/basics/run_basics
+      sections:
+      - file: notebooks/basics/run_basics/adf_run
+      - file: notebooks/basics/run_basics/outputs #Output
+    #- file: notebooks/basic_examples/jupyter
+
+#- caption: Guided Examples
+#  chapters:
+#    - file: notebooks/basic_examples/readme
+#    - file: notebooks/basic_examples/model_model_run
+#    - file: notebooks/basic_examples/model_obs_run
+#    #- file: notebooks/basic_examples/model_cmip_run
+#      #sections:
+#      #- file: notebooks/basic_examples/jupyter/ummm
+#      #- file: notebooks/basic_examples/jupyter/hmmmm
+#    #- file: notebooks/basic_examples/multi_model_model_run
+#    - file: notebooks/exercises/custom_defaults
+#      sections:
+#      - file: notebooks/exercises/custom_defaults/single_variable
+#      - file: notebooks/exercises/custom_defaults/custom_file
+#    - file: notebooks/exercises/custom_observations
+#    - file: notebooks/exercises/custom_script
+#    - file: notebooks/basic_examples/jupyter
+    
+- caption: ADF - Reference
+  chapters:
+    - file: notebooks/reference/intro
+      sections:
+      - file: notebooks/reference/layout/lib
+      - file: notebooks/reference/layout/scripts
+    - file: notebooks/reference/yaml
+      sections:
+      - file: notebooks/reference/yaml/basics
+      - file: notebooks/reference/yaml/config_cam_baseline_example
+      - file: notebooks/reference/yaml/adf_variable_defaults
+      #- file: notebooks/run/basics-tutorial
+    - file: notebooks/reference/outputs
+    
+#- caption: ADF Exercises
+#  chapters:    
+#    - file: notebooks/exercises/custom_defaults
+#      sections:
+#      - file: notebooks/exercises/custom_defaults/single_variable
+#      - file: notebooks/exercises/custom_defaults/custom_file
+#    - file: notebooks/exercises/custom_observations
+#    - file: notebooks/exercises/jupyter
+#      sections:
+#      - file: notebooks/exercises/jupyter/git_branch
+    
+- caption: Troubleshooting
+  chapters:
+    - file: notebooks/help/contact
+    - file: notebooks/help/faqs

@@ -1,0 +1,2186 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Run Time - config_cam_baseline_example.yaml &#8212; ADF Tutorial</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mine.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/.ipynb_checkpoints/mine-checkpoint.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/clipboard.min.js"></script>
+    <script src="../../../_static/copybutton.js"></script>
+    <script src="../../../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="Variable Defaults - adf_variable_defaults.yaml" href="adf_variable_defaults.html" />
+    <link rel="prev" title="YAML File Basics" href="basics.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../../../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../../../_static/_6e5c5f85-aa2c-401c-995a-c8a6e5da0811.jpeg" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">ADF Tutorial</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../../README.html">
+                    Welcome to the AMWG Diagnostics Framework (ADF) Tutorial
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  ADF
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../intro/adf.html">
+   Intro to the ADF
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../intro/output.html">
+   What do you get?
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Installing the ADF
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../install/setup.html">
+   Setting up ADF
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  ADF Basics
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../basics/adf_basics.html">
+   Intro
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../basics/yaml_basics.html">
+   YAML files
+  </a>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../basics/run_basics.html">
+   Setting up
+   <strong>
+    your
+   </strong>
+   ADF run - optional
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../basics/run_basics/adf_run.html">
+     Running
+     <strong>
+      your
+     </strong>
+     ADF
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../basics/run_basics/outputs.html">
+     Exploring
+     <strong>
+      your
+     </strong>
+     ADF outputs
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Guided Examples
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../basic_examples/readme.html">
+   ADF Demo Setup
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../basic_examples/model_model_run.html">
+   CAM vs CAM
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../basic_examples/model_obs_run.html">
+   CAM vs Obs
+  </a>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../exercises/custom_defaults.html">
+   Custom Variable Defaults For the ADF
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../exercises/custom_defaults/single_variable.html">
+     Customize Single Variable
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../exercises/custom_defaults/custom_file.html">
+     Customized File
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../exercises/custom_observations.html">
+   Custom Set of Observations
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../exercises/custom_script.html">
+   Adding custom script to your ADF
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../basic_examples/jupyter.html">
+   ADF in Jupyter
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  ADF - Reference
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../intro.html">
+   ADF Basics
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../layout/lib.html">
+     Libraries
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../layout/scripts.html">
+     Scripts
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="../yaml.html">
+   YAML Config Files
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="basics.html">
+     YAML File Basics
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Run Time - config_cam_baseline_example.yaml
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="adf_variable_defaults.html">
+     Variable Defaults - adf_variable_defaults.yaml
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../outputs.html">
+   Explore ADF Outputs
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Troubleshooting
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../help/contact.html">
+   Contact
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../help/faqs.html">
+   FAQS
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/justin-richling/ADF-Tutorial/main?urlpath=tree/docs/notebooks/reference/yaml/config_cam_baseline_example.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../../../_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/justin-richling/ADF-Tutorial"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/justin-richling/ADF-Tutorial/issues/new?title=Issue%20on%20page%20%2Fnotebooks/reference/yaml/config_cam_baseline_example.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../../../_sources/notebooks/reference/yaml/config_cam_baseline_example.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Run Time - config_cam_baseline_example.yaml
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#introduction">
+     Introduction
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#u-subsections-u">
+   <u>
+    Subsections
+   </u>
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#strong-diag-basic-info-strong">
+     <strong>
+      diag_basic_info
+     </strong>
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#code-class-docutils-literal-notranslate-span-class-pre-compare-obs-span-code">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         compare_obs
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#code-class-docutils-literal-notranslate-span-class-pre-obs-data-loc-span-code">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         obs_data_loc
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#code-class-docutils-literal-notranslate-span-class-pre-cam-regrid-loc-span-code">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         cam_regrid_loc
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#code-class-docutils-literal-notranslate-span-class-pre-cam-overwrite-regrid-span-code">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         cam_overwrite_regrid
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#code-class-docutils-literal-notranslate-span-class-pre-cam-diag-plot-loc-span-code">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         cam_diag_plot_loc
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#code-class-docutils-literal-notranslate-span-class-pre-hist-num-span-code">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         hist_num
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#code-class-docutils-literal-notranslate-span-class-pre-defaults-file-span-code">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         defaults_file
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#code-class-docutils-literal-notranslate-span-class-pre-plot-press-levels-span-code">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         plot_press_levels
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#code-class-docutils-literal-notranslate-span-class-pre-central-longitude-span-code">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         central_longitude
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#code-class-docutils-literal-notranslate-span-class-pre-num-procs-span-code">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         num_procs
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#code-class-docutils-literal-notranslate-span-class-pre-redo-plot-span-code">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         redo_plot
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#code-class-docutils-literal-notranslate-span-class-pre-create-html-span-code">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         create_html
+        </span>
+       </code>
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#strong-diag-cam-climo-strong">
+     <strong>
+      diag_cam_climo
+     </strong>
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#code-class-docutils-literal-notranslate-span-class-pre-calc-cam-climo-span-code">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         calc_cam_climo
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#code-class-docutils-literal-notranslate-span-class-pre-cam-overwrite-climo-span-code">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         cam_overwrite_climo
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#code-class-docutils-literal-notranslate-span-class-pre-cam-case-name-span-a-style-color-red-font-size-10-strong-required-strong-a-code">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         cam_case_name
+        </span>
+        <a style="color: red; font-size: 10">
+         <strong>
+          - ** Required **
+         </strong>
+        </a>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#code-class-docutils-literal-notranslate-span-class-pre-case-nickname-span-code">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         case_nickname
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#code-class-docutils-literal-notranslate-span-class-pre-cam-hist-loc-span-code">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         cam_hist_loc
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#code-class-docutils-literal-notranslate-span-class-pre-cam-climo-loc-span-code">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         cam_climo_loc
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#code-class-docutils-literal-notranslate-span-class-pre-start-year-span-code">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         start_year
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#code-class-docutils-literal-notranslate-span-class-pre-end-year-span-code">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         end_year
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#code-class-docutils-literal-notranslate-span-class-pre-cam-ts-done-span-code">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         cam_ts_done
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#code-class-docutils-literal-notranslate-span-class-pre-cam-ts-save-span-code">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         cam_ts_save
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#code-class-docutils-literal-notranslate-span-class-pre-cam-overwrite-ts-span-code">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         cam_overwrite_ts
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#code-class-docutils-literal-notranslate-span-class-pre-cam-ts-loc-span-code">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         cam_ts_loc
+        </span>
+       </code>
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#strong-diag-cam-baseline-climo-strong">
+     <strong>
+      diag_cam_baseline_climo
+     </strong>
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id1">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         calc_cam_climo
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id2">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         cam_overwrite_climo
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#code-class-docutils-literal-notranslate-span-class-pre-cam-case-name-span-code">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         cam_case_name
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id3">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         case_nickname
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id4">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         cam_hist_loc
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id5">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         cam_climo_loc
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id6">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         start_year
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id7">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         end_year
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id8">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         cam_ts_done
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id9">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         cam_ts_save
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id10">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         cam_overwrite_ts
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id11">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         cam_ts_loc
+        </span>
+       </code>
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#strong-diag-cvdp-info-strong">
+     <strong>
+      diag_cvdp_info
+     </strong>
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#code-class-docutils-literal-notranslate-span-class-pre-cvdp-run-span-code">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         cvdp_run
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#code-class-docutils-literal-notranslate-span-class-pre-cvdp-codebase-loc-span-code">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         cvdp_codebase_loc
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#code-class-docutils-literal-notranslate-span-class-pre-cvdp-loc-span-code">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         cvdp_loc
+        </span>
+       </code>
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#diagnostic-scripts-subsections">
+     Diagnostic Scripts “Subsections”
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#strong-time-averaging-scripts-strong">
+       <strong>
+        time_averaging_scripts
+       </strong>
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#strong-regridding-scripts-strong">
+       <strong>
+        regridding_scripts
+       </strong>
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#strong-analysis-scripts-strong">
+       <strong>
+        analysis_scripts
+       </strong>
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#strong-plotting-scripts-strong">
+       <strong>
+        plotting_scripts
+       </strong>
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#strong-diag-var-list-strong">
+       <strong>
+        diag_var_list
+       </strong>
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#strong-tem-info-strong">
+       <strong>
+        tem_info
+       </strong>
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#strong-region-multicase-strong">
+       <strong>
+        region_multicase
+       </strong>
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Run Time - config_cam_baseline_example.yaml</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Run Time - config_cam_baseline_example.yaml
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#introduction">
+     Introduction
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#u-subsections-u">
+   <u>
+    Subsections
+   </u>
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#strong-diag-basic-info-strong">
+     <strong>
+      diag_basic_info
+     </strong>
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#code-class-docutils-literal-notranslate-span-class-pre-compare-obs-span-code">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         compare_obs
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#code-class-docutils-literal-notranslate-span-class-pre-obs-data-loc-span-code">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         obs_data_loc
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#code-class-docutils-literal-notranslate-span-class-pre-cam-regrid-loc-span-code">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         cam_regrid_loc
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#code-class-docutils-literal-notranslate-span-class-pre-cam-overwrite-regrid-span-code">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         cam_overwrite_regrid
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#code-class-docutils-literal-notranslate-span-class-pre-cam-diag-plot-loc-span-code">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         cam_diag_plot_loc
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#code-class-docutils-literal-notranslate-span-class-pre-hist-num-span-code">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         hist_num
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#code-class-docutils-literal-notranslate-span-class-pre-defaults-file-span-code">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         defaults_file
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#code-class-docutils-literal-notranslate-span-class-pre-plot-press-levels-span-code">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         plot_press_levels
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#code-class-docutils-literal-notranslate-span-class-pre-central-longitude-span-code">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         central_longitude
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#code-class-docutils-literal-notranslate-span-class-pre-num-procs-span-code">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         num_procs
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#code-class-docutils-literal-notranslate-span-class-pre-redo-plot-span-code">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         redo_plot
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#code-class-docutils-literal-notranslate-span-class-pre-create-html-span-code">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         create_html
+        </span>
+       </code>
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#strong-diag-cam-climo-strong">
+     <strong>
+      diag_cam_climo
+     </strong>
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#code-class-docutils-literal-notranslate-span-class-pre-calc-cam-climo-span-code">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         calc_cam_climo
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#code-class-docutils-literal-notranslate-span-class-pre-cam-overwrite-climo-span-code">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         cam_overwrite_climo
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#code-class-docutils-literal-notranslate-span-class-pre-cam-case-name-span-a-style-color-red-font-size-10-strong-required-strong-a-code">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         cam_case_name
+        </span>
+        <a style="color: red; font-size: 10">
+         <strong>
+          - ** Required **
+         </strong>
+        </a>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#code-class-docutils-literal-notranslate-span-class-pre-case-nickname-span-code">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         case_nickname
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#code-class-docutils-literal-notranslate-span-class-pre-cam-hist-loc-span-code">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         cam_hist_loc
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#code-class-docutils-literal-notranslate-span-class-pre-cam-climo-loc-span-code">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         cam_climo_loc
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#code-class-docutils-literal-notranslate-span-class-pre-start-year-span-code">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         start_year
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#code-class-docutils-literal-notranslate-span-class-pre-end-year-span-code">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         end_year
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#code-class-docutils-literal-notranslate-span-class-pre-cam-ts-done-span-code">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         cam_ts_done
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#code-class-docutils-literal-notranslate-span-class-pre-cam-ts-save-span-code">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         cam_ts_save
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#code-class-docutils-literal-notranslate-span-class-pre-cam-overwrite-ts-span-code">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         cam_overwrite_ts
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#code-class-docutils-literal-notranslate-span-class-pre-cam-ts-loc-span-code">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         cam_ts_loc
+        </span>
+       </code>
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#strong-diag-cam-baseline-climo-strong">
+     <strong>
+      diag_cam_baseline_climo
+     </strong>
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id1">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         calc_cam_climo
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id2">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         cam_overwrite_climo
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#code-class-docutils-literal-notranslate-span-class-pre-cam-case-name-span-code">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         cam_case_name
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id3">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         case_nickname
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id4">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         cam_hist_loc
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id5">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         cam_climo_loc
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id6">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         start_year
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id7">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         end_year
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id8">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         cam_ts_done
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id9">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         cam_ts_save
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id10">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         cam_overwrite_ts
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id11">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         cam_ts_loc
+        </span>
+       </code>
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#strong-diag-cvdp-info-strong">
+     <strong>
+      diag_cvdp_info
+     </strong>
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#code-class-docutils-literal-notranslate-span-class-pre-cvdp-run-span-code">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         cvdp_run
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#code-class-docutils-literal-notranslate-span-class-pre-cvdp-codebase-loc-span-code">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         cvdp_codebase_loc
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#code-class-docutils-literal-notranslate-span-class-pre-cvdp-loc-span-code">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         cvdp_loc
+        </span>
+       </code>
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#diagnostic-scripts-subsections">
+     Diagnostic Scripts “Subsections”
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#strong-time-averaging-scripts-strong">
+       <strong>
+        time_averaging_scripts
+       </strong>
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#strong-regridding-scripts-strong">
+       <strong>
+        regridding_scripts
+       </strong>
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#strong-analysis-scripts-strong">
+       <strong>
+        analysis_scripts
+       </strong>
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#strong-plotting-scripts-strong">
+       <strong>
+        plotting_scripts
+       </strong>
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#strong-diag-var-list-strong">
+       <strong>
+        diag_var_list
+       </strong>
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#strong-tem-info-strong">
+       <strong>
+        tem_info
+       </strong>
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#strong-region-multicase-strong">
+       <strong>
+        region_multicase
+       </strong>
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section class="tex2jax_ignore mathjax_ignore" id="run-time-config-cam-baseline-example-yaml">
+<h1>Run Time - config_cam_baseline_example.yaml<a class="headerlink" href="#run-time-config-cam-baseline-example-yaml" title="Permalink to this headline">#</a></h1>
+<section id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">#</a></h2>
+<style>
+.tooltip {
+  position: relative;
+  display: inline-block;
+  border-bottom: 1px dotted black;
+}
+
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 120px;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+  position: absolute;
+  z-index: 1;
+  bottom: 150%;
+  left: 50%;
+  margin-left: -60px;
+}
+
+.tooltip .tooltiptext::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: black transparent transparent transparent;
+}
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+}
+</style>
+<p>This is probably the most important file for the ADF. This stores all the necessary information that the ADF needs to run as well as all the relevant information about the case and baseline/observation/cmip runs.</p>
+<p>Each section of the yaml file represent grouped subsets of information sent to the ADF and each have variable names that get fed into the ADF in a specific fashion. In this yaml file variables can be set and called with the <code class="docutils literal notranslate"><span class="pre">${}</span></code> syntax.</p>
+<p>IE if we set a <code class="docutils literal notranslate"><span class="pre">user</span></code> variable <code class="docutils literal notranslate"><span class="pre">user:</span> <span class="pre">richling</span></code> we can call this by <code class="docutils literal notranslate"><span class="pre">${user}</span></code> and <code class="docutils literal notranslate"><span class="pre">richling</span></code> wil be used where ever it is referenced.</p>
+<p>BIG CAVEAT:<br>
+In this particular yaml file, we have built subsections in which variables set in a subsection are only callable by referencing the subsection first with a “<code class="docutils literal notranslate"><span class="pre">.</span></code>” then variable name.</p>
+<p>IE: Say we want to set the climo years in the test <strong>case</strong> subsection `diag_cam_climo` and call them in the <strong>baseline</strong> subsection `diag_cam_baseline_climo`<br> 
+<p>diag_cam_climo:<br></p>
+<p>   start_year: 1995  -&gt; we would reference this with diag_cam_climo.start_year<br>
+   end_year: 2000  -&gt; we would reference this with diag_cam_climo.end_year<br></p>
+<p>Now if we wanted to reference these climo years in the <strong>baseline</strong> subsection:<br></p>
+<p>diag_cam_baseline_climo:<br></p>
+<p>   start_year:  ${diag_cam_climo.start_year}<br>
+   end_year:  ${diag_cam_climo.end_year}</p>
+</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p><strong>Please do not modify this file!</strong></p>
+<p>It is recommended to make a copy of this file, make modifications in that copy, and then run that with the ADF.</p>
+<div class="seealso admonition">
+<p class="admonition-title">Example</p>
+<p>From the ADF root directory</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>cp config_cam_example.yaml config_your_run.yaml
+</pre></div>
+</div>
+<p>Then do your editing in <code class="docutils literal notranslate"><span class="pre">config_your_run.yaml</span></code></p>
+</div>
+</div>
+<p>Nested listed variables:
+  Variables <strong>cannot</strong> be used in nested varaibles lists. The multi-case setup is one example of nested listign for variables.<br></p>
+<div class="error admonition">
+<p class="admonition-title">** does not work **</p>
+<p><strong>user:</strong> richling<br>
+<strong>case:</strong> some_run<br>
+<strong>some_path:</strong><br>
+&ensp;&ensp;&ensp;- /glade/u/home/${user}<br>
+&ensp;&ensp;&ensp;- /glade/u/home/${user}/${case}
+</p>
+</div>
+<div class="admonition-works admonition">
+<p class="admonition-title">** works **</p>
+<p><strong>some_path:</strong><br>
+&ensp;&ensp;&ensp;- /glade/u/home/richling<br>
+&ensp;&ensp;&ensp;- /glade/u/home/richling/some_run
+</p>
+</div>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="u-subsections-u">
+<h1><u>Subsections</u><a class="headerlink" href="#u-subsections-u" title="Permalink to this headline">#</a></h1>
+<p>The subsections that may need to be customized for your run are:</p>
+<ul class="simple">
+<li><p>diag_basic_info</p>
+<ul>
+<li><p>Basic overall run variables</p></li>
+</ul>
+</li>
+<li><p>diag_cam_climo</p>
+<ul>
+<li><p>Test (experiment) case variables</p></li>
+</ul>
+</li>
+<li><p>diag_cam_baseline_climo</p>
+<ul>
+<li><p>Baseline (control) case variables</p></li>
+<li><p>Note: these are the same variables as <code class="docutils literal notranslate"><span class="pre">diag_cam_climo</span></code> just for the baseline case</p></li>
+</ul>
+</li>
+<li><p>diag_cvdp_info</p>
+<ul>
+<li><p>For running the Climate Variability Diagnostics Package <a class="reference external" href="https://www.cesm.ucar.edu/projects/cvdp">https://www.cesm.ucar.edu/projects/cvdp</a></p></li>
+<li><p>This will run in the background of the ADF</p></li>
+</ul>
+</li>
+<li><p>time_averaging_scripts</p>
+<ul>
+<li><p>Climotology file creation</p></li>
+</ul>
+</li>
+<li><p>regridding_scripts</p>
+<ul>
+<li><p>Regridding of climo files</p></li>
+</ul>
+</li>
+<li><p>analysis_scripts</p>
+<ul>
+<li><p>AMWG statisics tables</p></li>
+</ul>
+</li>
+<li><p>plotting_scripts</p>
+<ul>
+<li><p>Various plotting scripts</p></li>
+</ul>
+</li>
+<li><p>diag_var_list</p>
+<ul>
+<li><p>List of CAM variables for ADF to run</p></li>
+</ul>
+</li>
+</ul>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>If variable strings start with a <strong>zero</strong>, the quantity must be in quotes in this yaml file.</p>
+<ul>
+    <li><p>example: desired nick name 026b</p></li>
+</ul>
+<p>case_nickname: "026b" (notice the quotes for a leading zero)</p>
+</div>
+<section id="strong-diag-basic-info-strong">
+<h2><strong>diag_basic_info</strong><a class="headerlink" href="#strong-diag-basic-info-strong" title="Permalink to this headline">#</a></h2>
+<section id="code-class-docutils-literal-notranslate-span-class-pre-compare-obs-span-code">
+<h3>  <code class="docutils literal notranslate"><span class="pre">compare_obs</span></code><a class="headerlink" href="#code-class-docutils-literal-notranslate-span-class-pre-compare-obs-span-code" title="Permalink to this headline">#</a></h3>
+<p style="margin-top: -5px;">&emsp;&ensp; Is this a model vs observations comparison? - <code class="docutils literal notranslate"><span class="pre">true/false</span></code></p>
+<ul>
+<li><p>If <code class="docutils literal notranslate"><span class="pre">false</span></code> or missing, then a model-model comparison is assumed</p></li>
+</ul>
+</section>
+<section id="code-class-docutils-literal-notranslate-span-class-pre-obs-data-loc-span-code">
+<h3>  <code class="docutils literal notranslate"><span class="pre">obs_data_loc</span></code><a class="headerlink" href="#code-class-docutils-literal-notranslate-span-class-pre-obs-data-loc-span-code" title="Permalink to this headline">#</a></h3>
+<p style="margin-top: -5px;">&emsp;&ensp; Location of observational datasets. NOTE: you can override this on a variable by variable basis in the variable defaults file</p>
+<ul>
+<li><p>Note: this only matters if <a href="https://justin-richling.github.io/ADF-Tutorial/notebooks/configs/yaml/runtime.html#compare-obs"><code class="docutils literal notranslate"><span class="pre">compare_obs</span></code></a> is <code class="docutils literal notranslate"><span class="pre">true</span></code> and the path isn't specified in the <a href="https://justin-richling.github.io/ADF-Tutorial/notebooks/configs/yaml/variable.html" target="_blank">variable defaults file</a>.</p></li>
+<li><p>default: <code class="docutils literal notranslate"><span class="pre">/glade/work/nusbaume/SE_projects/model_diagnostics/ADF_obs</span></code></p></li>
+<li><p>example: <code class="docutils literal notranslate"><span class="pre">/path/to/your/obs/files/</span></code></p></li>
+</ul>
+</section>
+<section id="code-class-docutils-literal-notranslate-span-class-pre-cam-regrid-loc-span-code">
+<h3>  <code class="docutils literal notranslate"><span class="pre">cam_regrid_loc</span></code><a class="headerlink" href="#code-class-docutils-literal-notranslate-span-class-pre-cam-regrid-loc-span-code" title="Permalink to this headline">#</a></h3>
+<p style="margin-top: -5px;">&emsp;&ensp; Location where re-gridded and interpolated CAM climatology files are stored</p>
+<p style="margin-top: -5px;">&emsp;&ensp; Required if regridding is desired and </p>
+<ul>
+<li><p>example: <code class="docutils literal notranslate"><span class="pre">/glade/scratch/${user}/ADF/regrid</span></code></p></li>
+</ul>
+</section>
+<section id="code-class-docutils-literal-notranslate-span-class-pre-cam-overwrite-regrid-span-code">
+<h3>  <code class="docutils literal notranslate"><span class="pre">cam_overwrite_regrid</span></code><a class="headerlink" href="#code-class-docutils-literal-notranslate-span-class-pre-cam-overwrite-regrid-span-code" title="Permalink to this headline">#</a></h3>
+<p style="margin-top: -5px;">&emsp;&ensp; Overwrite CAM re-gridded files? - <code class="docutils literal notranslate"><span class="pre">true/false</span></code></p>
+<ul>
+<li><p>If <code class="docutils literal notranslate"><span class="pre">false</span></code>, or missing, then regridding will be skipped for regridded variables that already exist in <a href="https://justin-richling.github.io/ADF-Tutorial/notebooks/configs/yaml/runtime.html#cam-regrid-loc"><code class="docutils literal notranslate"><span class="pre">cam_regrid_loc</span></code></a></p></li>
+</ul>
+</section>
+<section id="code-class-docutils-literal-notranslate-span-class-pre-cam-diag-plot-loc-span-code">
+<h3>  <code class="docutils literal notranslate"><span class="pre">cam_diag_plot_loc</span></code><a class="headerlink" href="#code-class-docutils-literal-notranslate-span-class-pre-cam-diag-plot-loc-span-code" title="Permalink to this headline">#</a></h3>
+<p style="margin-top: -5px;">&emsp;&ensp; Location where diagnostic plots are stored<br>The ADF will create a directory for the plots in this directory in the form of {cam_case_name}_{YYYY}_{YYYY}_vs_{baseline_name}_{YYYY}_{YYYY}
+</p>
+<ul>
+<li><p>example: <code class="docutils literal notranslate"><span class="pre">/glade/scratch/${user}/ADF/plots</span></code></p></li>
+</ul>
+</section>
+<section id="code-class-docutils-literal-notranslate-span-class-pre-hist-num-span-code">
+<h3>  <code class="docutils literal notranslate"><span class="pre">hist_num</span></code><a class="headerlink" href="#code-class-docutils-literal-notranslate-span-class-pre-hist-num-span-code" title="Permalink to this headline">#</a></h3>
+<p style="margin-top: -5px;">&emsp;&ensp; CAM history file number to use (h0, h1, h2, etc)</p>
+<ul>
+<li><p>Currently only affects timeseries generation, as everything else uses the timeseries files themselves.</p></li>
+<li><p>If this variable is not present then it will default to "cam.h0"</p></li>
+<li><p>example: cam.h4</p></li>
+</ul>
+</section>
+<section id="code-class-docutils-literal-notranslate-span-class-pre-defaults-file-span-code">
+<h3>  <code class="docutils literal notranslate"><span class="pre">defaults_file</span></code><a class="headerlink" href="#code-class-docutils-literal-notranslate-span-class-pre-defaults-file-span-code" title="Permalink to this headline">#</a></h3>
+<p style="margin-top: -5px;">&emsp;&ensp; Location of ADF variable plotting defaults YAML file if not using ADF default file: <code class="docutils literal notranslate"><span class="pre"> lib/adf_variable_defaults.yaml</span></code></p>
+<ul>
+<li><p>example: <code class="docutils literal notranslate"><span class="pre">/path/to/custom/defaults/file/my_variable_defaults.yaml</span></code></p>
+</li>
+</ul>
+</section>
+<section id="code-class-docutils-literal-notranslate-span-class-pre-plot-press-levels-span-code">
+<h3>  <code class="docutils literal notranslate"><span class="pre">plot_press_levels</span></code><a class="headerlink" href="#code-class-docutils-literal-notranslate-span-class-pre-plot-press-levels-span-code" title="Permalink to this headline">#</a></h3>
+<p style="margin-top: -5px;">&emsp;&ensp; Vertical pressure levels (in hPa) on which to plot 3-D variables when using horizontal (e.g. lat/lon) map projections
+<ul>
+<li><p>If this config option is missing, then no 3-D variables will be plotted on horizontal maps.  Please note too that pressure levels must currently match what is available in the observations file in order to be plotted in a model vs obs run:</p></li>
+<li><p>example: [200,850]</p></li>
+</ul>
+</section>
+<section id="code-class-docutils-literal-notranslate-span-class-pre-central-longitude-span-code">
+<h3>  <code class="docutils literal notranslate"><span class="pre">central_longitude</span></code><a class="headerlink" href="#code-class-docutils-literal-notranslate-span-class-pre-central-longitude-span-code" title="Permalink to this headline">#</a></h3>
+<p style="margin-top: -5px;">&emsp;&ensp; Longitude line on which to center all lat/lon maps</p>
+<ul>
+<li><p>If missing, then the central longitude will default to 180 degrees E.</p></li>
+<li><p>example: 0</p></li>
+</ul>
+</section>
+<section id="code-class-docutils-literal-notranslate-span-class-pre-num-procs-span-code">
+<h3>  <code class="docutils literal notranslate"><span class="pre">num_procs</span></code><a class="headerlink" href="#code-class-docutils-literal-notranslate-span-class-pre-num-procs-span-code" title="Permalink to this headline">#</a></h3>
+<p style="margin-top: -5px;">&emsp;&ensp; Number of processors on which to run the ADF</p>
+<ul>
+<li><p>If this config variable isn't present then the ADF defaults to one processor.</p></li>
+<li><p>If you set it to <code class="docutils literal notranslate"><span class="pre"> * </span></code> then it will default to all of the processors available on a single node/machine</p></li>
+<li><p>default: 8</p></li>
+</ul>
+</section>
+<section id="code-class-docutils-literal-notranslate-span-class-pre-redo-plot-span-code">
+<h3>  <code class="docutils literal notranslate"><span class="pre">redo_plot</span></code><a class="headerlink" href="#code-class-docutils-literal-notranslate-span-class-pre-redo-plot-span-code" title="Permalink to this headline">#</a></h3>
+<p style="margin-top: -5px;">&emsp;&ensp; Remake plots? - <code class="docutils literal notranslate"><span class="pre">true/false</span></code></p>
+<ul>
+<li><p>If set to <code class="docutils literal notranslate"><span class="pre">true</span></code>, redo all plots even if they already exist</p></li>
+<li><p>If set to <code class="docutils literal notranslate"><span class="pre">false</span></code>, a plot will be skipped if found</p></li>
+<li><p>default: false</p></li>
+</ul>
+</section>
+<section id="code-class-docutils-literal-notranslate-span-class-pre-create-html-span-code">
+<h3>  <code class="docutils literal notranslate"><span class="pre">create_html</span></code><a class="headerlink" href="#code-class-docutils-literal-notranslate-span-class-pre-create-html-span-code" title="Permalink to this headline">#</a></h3>
+<p style="margin-top: -5px;">&emsp;&ensp; Generate HTML website - <code class="docutils literal notranslate"><span class="pre">true/false</span></code></p>
+<ul>
+    <li><p>If <code class="docutils literal notranslate"><span class="pre">false</span></code> or missing, no html pages will be made</p></li>
+<li><p>If <code class="docutils literal notranslate"><span class="pre">true</span></code> The website files themselves will be located in the path specified by <a href="https://justin-richling.github.io/ADF-Tutorial/notebooks/configs/yaml/runtime.html#cam-diag-plot-loc"><code class="docutils literal notranslate"><span class="pre">cam_diag_plot_loc</span></code></a>, under the <code class="docutils literal notranslate"><span class="pre">{diag_run}/website</span></code> subdirectory, where <code class="docutils literal notranslate"><span class="pre">{diag_run}</span></code> is the subdirectory created for this particular diagnostics run (usually <code class="docutils literal notranslate"><span class="pre">{case}_YYYY_YYYY_vs_obs</span></code> or <code class="docutils literal notranslate"><span class="pre">{case}_YYYY_YYYY_vs_{baseline}_YYYY_YYYY</span></code>)</p>
+    </li>
+</ul></section>
+</section>
+<hr class="docutils" />
+<section id="strong-diag-cam-climo-strong">
+<h2><strong>diag_cam_climo</strong><a class="headerlink" href="#strong-diag-cam-climo-strong" title="Permalink to this headline">#</a></h2>
+<script>
+    p2 {margin-top: -10px;}
+</script>
+<section id="code-class-docutils-literal-notranslate-span-class-pre-calc-cam-climo-span-code">
+<h3>  <code class="docutils literal notranslate"><span class="pre">calc_cam_climo</span></code><a class="headerlink" href="#code-class-docutils-literal-notranslate-span-class-pre-calc-cam-climo-span-code" title="Permalink to this headline">#</a></h3>
+<p><p2>    Calculate climatology files? - <code class="docutils literal notranslate"><span class="pre">true/false</span></code></p2></p>
+<ul>
+<li><p>If <code class="docutils literal notranslate"><span class="pre">false</span></code>, the climatology files will not be created</p></li>
+<li><p>default: true</p></li>
+</ul>
+</section>
+<section id="code-class-docutils-literal-notranslate-span-class-pre-cam-overwrite-climo-span-code">
+<h3>  <code class="docutils literal notranslate"><span class="pre">cam_overwrite_climo</span></code><a class="headerlink" href="#code-class-docutils-literal-notranslate-span-class-pre-cam-overwrite-climo-span-code" title="Permalink to this headline">#</a></h3>
+<p style="margin-top: -5px;">&emsp;&ensp; Overwrite CAM climatology files? - <code class="docutils literal notranslate"><span class="pre">true/false</span></code></p>
+<ul>
+<li><p>If <code class="docutils literal notranslate"><span class="pre">false</span></code>, or not present, then already existing climatology files will be skipped</p></li>
+<li><p>default: false</p></li>
+</ul>
+</section>
+<section id="code-class-docutils-literal-notranslate-span-class-pre-cam-case-name-span-a-style-color-red-font-size-10-strong-required-strong-a-code">
+<h3>  <code class="docutils literal notranslate"><span class="pre">cam_case_name</span><a style="color: red; font-size: 10"><strong> - ** Required **</strong></a></code><a class="headerlink" href="#code-class-docutils-literal-notranslate-span-class-pre-cam-case-name-span-a-style-color-red-font-size-10-strong-required-strong-a-code" title="Permalink to this headline">#</a></h3>
+<p style="margin-top: -5px; color: red">&emsp;&ensp; <strong>** Required **</strong></p>
+<p style="margin-top: -5px;">&emsp;&ensp; Name of CAM run</p>
+<ul>
+<li><p>example: b.e20.BHIST.f09_g17.20thC.297_05</p></li>
+</ul>
+</section>
+<section id="code-class-docutils-literal-notranslate-span-class-pre-case-nickname-span-code">
+<h3>  <code class="docutils literal notranslate"><span class="pre">case_nickname</span></code><a class="headerlink" href="#code-class-docutils-literal-notranslate-span-class-pre-case-nickname-span-code" title="Permalink to this headline">#</a></h3>
+<p style="margin-top: -5px;">&emsp;&ensp; Case nickname to be used for plotting purposes as well as any custom place in the diagnsotics output if desired</p>
+<ul>
+    <li><p>If left blank, it will default to cam_case_name</p></li>
+    <li><p>example: cool_nickname</p></li>
+</ul>
+</section>
+<section id="code-class-docutils-literal-notranslate-span-class-pre-cam-hist-loc-span-code">
+<h3>  <code class="docutils literal notranslate"><span class="pre">cam_hist_loc</span></code><a class="headerlink" href="#code-class-docutils-literal-notranslate-span-class-pre-cam-hist-loc-span-code" title="Permalink to this headline">#</a></h3>
+<p style="margin-top: -5px; color: red">&emsp;&ensp; <strong>** Required **</strong></p>
+<p style="margin-top: -5px;">&emsp;&ensp; Location of CAM history (h0) files</p>
+<ul>
+<li><p>&ensp; example: <code class="docutils literal notranslate"><span class="pre">/glade/p/cesm/ADF/${diag_cam_climo.cam_case_name}</span></code></p></li>
+</ul>
+</section>
+<section id="code-class-docutils-literal-notranslate-span-class-pre-cam-climo-loc-span-code">
+<h3>  <code class="docutils literal notranslate"><span class="pre">cam_climo_loc</span></code><a class="headerlink" href="#code-class-docutils-literal-notranslate-span-class-pre-cam-climo-loc-span-code" title="Permalink to this headline">#</a></h3>
+<p style="margin-top: -5px;">&emsp;&ensp; Location of CAM climatologies (to be created and then used by this script)</p>
+<ul>
+<li><p>&ensp; example: <code class="docutils literal notranslate"><span class="pre">/glade/scratch/${user}/ADF/${diag_cam_climo.cam_case_name}/climo</span></code></p></li>
+</ul>
+</section>
+<section id="code-class-docutils-literal-notranslate-span-class-pre-start-year-span-code">
+<h3>  <code class="docutils literal notranslate"><span class="pre">start_year</span></code><a class="headerlink" href="#code-class-docutils-literal-notranslate-span-class-pre-start-year-span-code" title="Permalink to this headline">#</a></h3>
+<p style="margin-top: -5px;">&emsp;&ensp; Model year when time series files should start</p>
+<ul>
+<li><p>Note:  Leaving this entry blank will make time series start at earliest available year</p></li>
+<li><p>example: 1990</p></li>
+<li><p>example: 10</p></li>
+<li><p>example: 0010??</p></li>
+</ul>
+</section>
+<section id="code-class-docutils-literal-notranslate-span-class-pre-end-year-span-code">
+<h3>  <code class="docutils literal notranslate"><span class="pre">end_year</span></code><a class="headerlink" href="#code-class-docutils-literal-notranslate-span-class-pre-end-year-span-code" title="Permalink to this headline">#</a></h3>
+<p style="margin-top: -5px;">&emsp;&ensp; Model year when time series files should end</p>
+<ul>
+<li><p>Note:  Leaving this entry blank will make time series end at latest available year</p></li>
+<li><p>example: 1999</p></li>
+<li><p>example: 15</p></li>
+</ul>
+</section>
+<section id="code-class-docutils-literal-notranslate-span-class-pre-cam-ts-done-span-code">
+<h3>  <code class="docutils literal notranslate"><span class="pre">cam_ts_done</span></code><a class="headerlink" href="#code-class-docutils-literal-notranslate-span-class-pre-cam-ts-done-span-code" title="Permalink to this headline">#</a></h3>
+<p style="margin-top: -5px;">&emsp;&ensp; Do time series files need to be generated? - <code class="docutils literal notranslate"><span class="pre">true/false</span></code></p>
+<ul>
+<li><p>If <code class="docutils literal notranslate"><span class="pre">true</span></code>, then diagnostics assumes that model files are already time series</p></li>
+<li><p>If <code class="docutils literal notranslate"><span class="pre">false</span></code>, or if simply not present, then diagnostics will attempt to create time series files from history (time-slice) files</p></li>
+<li><p>default: false</p></li>
+</ul>
+</section>
+<section id="code-class-docutils-literal-notranslate-span-class-pre-cam-ts-save-span-code">
+<h3>  <code class="docutils literal notranslate"><span class="pre">cam_ts_save</span></code><a class="headerlink" href="#code-class-docutils-literal-notranslate-span-class-pre-cam-ts-save-span-code" title="Permalink to this headline">#</a></h3>
+<p style="margin-top: -5px;">&emsp;&ensp; Save interim time series files? - <code class="docutils literal notranslate"><span class="pre">true/false</span></code></p>
+<ul class="adom">
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>If <code class="docutils literal notranslate"><span class="pre">true</span></code>, this can take up a significant amount of space</p>
+</div>
+</ul>
+<ul>
+    <li><p>default: true</p></li>
+</ul>
+</section>
+<section id="code-class-docutils-literal-notranslate-span-class-pre-cam-overwrite-ts-span-code">
+<h3>  <code class="docutils literal notranslate"><span class="pre">cam_overwrite_ts</span></code><a class="headerlink" href="#code-class-docutils-literal-notranslate-span-class-pre-cam-overwrite-ts-span-code" title="Permalink to this headline">#</a></h3>
+<p style="margin-top: -5px;">&emsp;&ensp; Overwrite time series files, if found? - <code class="docutils literal notranslate"><span class="pre">true/false</span></code></p>
+<ul>
+<li><p>If set to <code class="docutils literal notranslate"><span class="pre">false</span></code>, then time series creation will be skipped if files are found</p></li>
+<li><p>default: false</p></li>
+</ul>
+</section>
+<section id="code-class-docutils-literal-notranslate-span-class-pre-cam-ts-loc-span-code">
+<h3>  <code class="docutils literal notranslate"><span class="pre">cam_ts_loc</span></code><a class="headerlink" href="#code-class-docutils-literal-notranslate-span-class-pre-cam-ts-loc-span-code" title="Permalink to this headline">#</a></h3>
+<p style="margin-top: -5px;">&emsp;&ensp; Location where time series files are (or will be) stored</p>
+<ul>
+<li><p>example: <code class="docutils literal notranslate"><span class="pre">/glade/scratch/${user}/ADF/${diag_cam_climo.cam_case_name}/ts</span></code></p></li>
+</ul>
+<ul class="adom">
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>If this is a CMIP-like case, this should be set to the same location as <code class="docutils literal notranslate"><span class="pre">cam_hist_loc</span></code></p>
+</div>
+</ul></section>
+</section>
+<section id="strong-diag-cam-baseline-climo-strong">
+<h2><strong>diag_cam_baseline_climo</strong><a class="headerlink" href="#strong-diag-cam-baseline-climo-strong" title="Permalink to this headline">#</a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>These are the same variable names as <a class="reference external" href="https://justin-richling.github.io/ADF-Tutorial/notebooks/configs/yaml/runtime.html#color-117284-textit-diag-cam-climo">diag_cam_climo</a> above, but for the baseline case</p>
+<p>They are not necessary if comapring against observations, and will be skipped</p>
+</div>
+<section id="id1">
+<h3>  <code class="docutils literal notranslate"><span class="pre">calc_cam_climo</span></code><a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h3>
+<p style="margin-top: -5px;">&emsp;&ensp; Calculate climatology files? - <code class="docutils literal notranslate"><span class="pre">true/false</span></code></p>
+<ul>
+    <li><p>If <code class="docutils literal notranslate"><span class="pre">false</span></code>, the climatology files will not be created</p></li>
+    <li><p>default: true</p></li>
+</ul>
+</section>
+<section id="id2">
+<h3>  <code class="docutils literal notranslate"><span class="pre">cam_overwrite_climo</span></code><a class="headerlink" href="#id2" title="Permalink to this headline">#</a></h3>
+<p style="margin-top: -5px;">&emsp;&ensp; Overwrite CAM climatology files? - <code class="docutils literal notranslate"><span class="pre">true/false</span></code></p>
+<ul>
+    <li><p>If <code class="docutils literal notranslate"><span class="pre">false</span></code>, or not present, then already existing climatology files will be skipped</p></li>
+    <li><p>default: false</p></li>
+</ul>
+</section>
+<section id="code-class-docutils-literal-notranslate-span-class-pre-cam-case-name-span-code">
+<h3>  <code class="docutils literal notranslate"><span class="pre">cam_case_name</span></code><a class="headerlink" href="#code-class-docutils-literal-notranslate-span-class-pre-cam-case-name-span-code" title="Permalink to this headline">#</a></h3>
+<p style="margin-top: -5px; color: red">&emsp;&ensp; <strong>** Required **</strong></p>
+<p style="margin-top: -5px;">&emsp;&ensp; Name of baseline case (or CAM/other run name)</p>
+<ul>
+    <li><p>example: b.e20.BHIST.f09_g16.20thC.125.02</p></li>
+</ul>
+</section>
+<section id="id3">
+<h3>  <code class="docutils literal notranslate"><span class="pre">case_nickname</span></code><a class="headerlink" href="#id3" title="Permalink to this headline">#</a></h3>
+<p style="margin-top: -5px;">&emsp;&emsp;&ensp; Baseline nickname to be used for plotting purposes as well as any custom place in the diagnsotics output if desired</p>
+<ul>
+    <li><p>If left blank, it will default to cam_case_name</p></li>
+    <li><p>example: cool_nickname</p></li>
+</ul>
+</section>
+<section id="id4">
+<h3>  <code class="docutils literal notranslate"><span class="pre">cam_hist_loc</span></code><a class="headerlink" href="#id4" title="Permalink to this headline">#</a></h3>
+<p style="margin-top: -5px; color: red">&emsp;&ensp; <strong>** Required **</strong></p>
+<p style="margin-top: -5px;">&emsp;&ensp; Location of baseline history (h0) files</p>
+<ul>
+    <li><p>&ensp; example: <code class="docutils literal notranslate"><span class="pre">/glade/p/cesm/ADF/${diag_cam_baseline_climo.cam_case_name}</span></code></p></li>
+</ul>
+</section>
+<section id="id5">
+<h3>  <code class="docutils literal notranslate"><span class="pre">cam_climo_loc</span></code><a class="headerlink" href="#id5" title="Permalink to this headline">#</a></h3>
+<p style="margin-top: -5px;">&emsp;&ensp; Location of baseline climatologies (to be created and then used by this script)</p>
+<ul>
+    <li><p>&ensp; example: <code class="docutils literal notranslate"><span class="pre">/glade/scratch/${user}/ADF/${diag_cam_baseline_climo.cam_case_name}/climo</span></code></p></li>
+</ul>
+</section>
+<section id="id6">
+<h3>  <code class="docutils literal notranslate"><span class="pre">start_year</span></code><a class="headerlink" href="#id6" title="Permalink to this headline">#</a></h3>
+<p style="margin-top: -5px;">&emsp;&ensp; Baseline year when time series files should start</p>
+<ul>
+    <li><p>Note:  Leaving this entry blank will make time series start at earliest available year</p></li>
+    <li><p>example: 1990</p></li>
+    <li><p>example: 10</p></li>
+    <li><p>example: 0010??</p></li>
+</ul>
+</section>
+<section id="id7">
+<h3>  <code class="docutils literal notranslate"><span class="pre">end_year</span></code><a class="headerlink" href="#id7" title="Permalink to this headline">#</a></h3>
+<p style="margin-top: -5px;">&emsp;&ensp; Baseline year when time series files should end</p>
+<ul>
+    <li><p>Note:  Leaving this entry blank will make time series end at latest available year</p></li>
+    <li><p>example: 1999</p></li>
+    <li><p>example: 15</p></li>
+</ul>
+</section>
+<section id="id8">
+<h3>  <code class="docutils literal notranslate"><span class="pre">cam_ts_done</span></code><a class="headerlink" href="#id8" title="Permalink to this headline">#</a></h3>
+<p style="margin-top: -5px;">&emsp;&ensp; Do time series files need to be generated? - <code class="docutils literal notranslate"><span class="pre">true/false</span></code></p>
+<ul>
+    <li><p>If <code class="docutils literal notranslate"><span class="pre">true</span></code>, then diagnostics assumes that baseline files are already time series</p></li>
+    <li><p>If <code class="docutils literal notranslate"><span class="pre">false</span></code>, or if simply not present, then diagnostics will attempt to create time series files from history (time-slice) files</p></li>
+    <li><p>default: false</p></li>
+</ul>
+</section>
+<section id="id9">
+<h3>  <code class="docutils literal notranslate"><span class="pre">cam_ts_save</span></code><a class="headerlink" href="#id9" title="Permalink to this headline">#</a></h3>
+<p style="margin-top: -5px;">&emsp;&ensp; Save interim time series files? - <code class="docutils literal notranslate"><span class="pre">true/false</span></code></p>
+<ul class="adom">
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>If <code class="docutils literal notranslate"><span class="pre">true</span></code>, this can take up a significant amount of space</p>
+</div>
+</ul>
+<ul>
+    <li><p>default: true</p></li>
+</ul>
+</section>
+<section id="id10">
+<h3>  <code class="docutils literal notranslate"><span class="pre">cam_overwrite_ts</span></code><a class="headerlink" href="#id10" title="Permalink to this headline">#</a></h3>
+<p style="margin-top: -5px;">&emsp;&ensp; Overwrite time series files, if found? - <code class="docutils literal notranslate"><span class="pre">true/false</span></code></p>
+<ul>
+    <li><p>If set to <code class="docutils literal notranslate"><span class="pre">false</span></code>, then time series creation will be skipped if files are found</p></li>
+    <li><p>default: false</p></li>
+</ul>
+</section>
+<section id="id11">
+<h3>  <code class="docutils literal notranslate"><span class="pre">cam_ts_loc</span></code><a class="headerlink" href="#id11" title="Permalink to this headline">#</a></h3>
+<p style="margin-top: -5px;">&emsp;&ensp; Location where time series files are (or will be) stored</p>
+<ul>
+    <li><p>example: <code class="docutils literal notranslate"><span class="pre">/glade/scratch/${user}/ADF/${diag_cam_baseline_climo.cam_case_name}/ts</span></code></p></li>
+</ul>
+<ul class="adom">
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>If this is a CMIP-like case, this should be set to the same location as <code class="docutils literal notranslate"><span class="pre">cam_hist_loc</span></code><p>
+</div>
+</ul>
+</section>
+</section>
+<hr class="docutils" />
+<section id="strong-diag-cvdp-info-strong">
+<h2><strong>diag_cvdp_info</strong><a class="headerlink" href="#strong-diag-cvdp-info-strong" title="Permalink to this headline">#</a></h2>
+<section id="code-class-docutils-literal-notranslate-span-class-pre-cvdp-run-span-code">
+<h3>  <code class="docutils literal notranslate"><span class="pre">cvdp_run</span></code><a class="headerlink" href="#code-class-docutils-literal-notranslate-span-class-pre-cvdp-run-span-code" title="Permalink to this headline">#</a></h3>
+<p style="margin-top: -5px;">&emsp;&ensp; Run the CVDP in the background? - <code class="docutils literal notranslate"><span class="pre">true/false</span></code></p>
+<ul>
+    <li><p>default: <code class="docutils literal notranslate"><span class="pre">false</span></code></p></li>
+</ul>
+</section>
+<section id="code-class-docutils-literal-notranslate-span-class-pre-cvdp-codebase-loc-span-code">
+<h3>  <code class="docutils literal notranslate"><span class="pre">cvdp_codebase_loc</span></code><a class="headerlink" href="#code-class-docutils-literal-notranslate-span-class-pre-cvdp-codebase-loc-span-code" title="Permalink to this headline">#</a></h3>
+<p style="margin-top: -5px;">&emsp;&ensp; Set location of CVDP codebase</p>
+<ul>
+    <li><p>CGD systems path = /home/asphilli/CESM-diagnostics/CVDP/Release/v5.2.0/</p></li>
+    <li><p>CISL systems path = /glade/u/home/asphilli/CESM-diagnostics/CVDP/Release/v5.2.0/</p></li>
+    <li><p>github location = https://github.com/NCAR/CVDP-ncl</p></li>
+    <li><p>default: <code class="docutils literal notranslate"><span class="pre">/glade/u/home/asphilli/CESM-diagnostics/CVDP/Release/v5.2.0/</span></code></p></li>
+</ul>
+</section>
+<section id="code-class-docutils-literal-notranslate-span-class-pre-cvdp-loc-span-code">
+<h3>  <code class="docutils literal notranslate"><span class="pre">cvdp_loc</span></code><a class="headerlink" href="#code-class-docutils-literal-notranslate-span-class-pre-cvdp-loc-span-code" title="Permalink to this headline">#</a></h3>
+<p style="margin-top: -5px;">&emsp;&ensp; Location where the CVDP files will be stored</p>
+<ul>
+    <li><p>example: <code class="docutils literal notranslate"><span class="pre">/glade/scratch/${user}/cvdp/</span></code></p></li>
+</ul></section>
+</section>
+<section id="diagnostic-scripts-subsections">
+<h2>Diagnostic Scripts “Subsections”<a class="headerlink" href="#diagnostic-scripts-subsections" title="Permalink to this headline">#</a></h2>
+<p>Each of the following sets are also considered subsections. These are all components of the actual diagnostics workflow of the ADF.</p><section id="strong-time-averaging-scripts-strong">
+<h3><strong>time_averaging_scripts</strong><a class="headerlink" href="#strong-time-averaging-scripts-strong" title="Permalink to this headline">#</a></h3>
+<p>This section allows for any time averaging scripts</p>
+<ul>
+<li><p>Must be located in scripts/averaging within the ADF root directory:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>scripts/averaging/create_climo_files.py
+scripts/averaging/create_TEM_files.py
+</pre></div>
+</div>
+</li>
+<li><p>In this yaml file they would be listed as:</p></li>
+</ul>
+<p>time_averaging_scripts:<br>
+  - create_climo_files<br>
+  - create_TEM_files</p>
+</section>
+<section id="strong-regridding-scripts-strong">
+<h3><strong>regridding_scripts</strong><a class="headerlink" href="#strong-regridding-scripts-strong" title="Permalink to this headline">#</a></h3>
+<p>This section allows for any regridding scripts</p>
+<ul>
+<li><p>Must be located in scripts/regridding!</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>- scripts/regridding/regrid_and_vert_interp.py
+</pre></div>
+</div>
+</li>
+</ul>
+<p>In this yaml file they would be listed as:</p>
+<p>regridding_scripts:<br>
+  - create_climo_files<br></p>
+</section>
+<section id="strong-analysis-scripts-strong">
+<h3><strong>analysis_scripts</strong><a class="headerlink" href="#strong-analysis-scripts-strong" title="Permalink to this headline">#</a></h3>
+<p>This section allows for a broad spectra of data analysis scripts</p>
+<ul>
+<li><p>Must be located in scripts/analysis!</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>- scripts/analysis/amwg_table.py
+
+Possible addition examples:
+- scripts/analysis/amwg_chem_table.py
+- scripts/analysis/amwg_aerosol_table.py
+</pre></div>
+</div>
+</li>
+</ul>
+<p>In this yaml file they would be listed as:</p>
+<p>analysis_scripts:<br>
+  - amwg_table<br>
+Possible addition examples:<br>
+  - amwg_chem_table<br>
+  - amwg_aerosol_table</p>
+</section>
+<section id="strong-plotting-scripts-strong">
+<h3><strong>plotting_scripts</strong><a class="headerlink" href="#strong-plotting-scripts-strong" title="Permalink to this headline">#</a></h3>
+<p>Set of plotting scripts, both ADF default as well as any custom scripts</p>
+<ul>
+<li><p>Must be located in scripts/plotting!</p>
+<ul class="simple">
+<li><p>scripts/plotting/cam_taylor_diagram.py</p></li>
+<li><p>scripts/plotting/global_latlon_map.py</p></li>
+<li><p>scripts/plotting/…</p></li>
+</ul>
+<p>Possible addition examples:</p>
+<ul class="simple">
+<li><p>scripts/plotting/time_series.py</p></li>
+</ul>
+</li>
+</ul>
+<p>In this yaml file they would be listed as:</p>
+<p>plotting_scripts:<br>
+  - global_latlon_map<br>
+  - zonal_mean<br>
+  - meridional_mean<br>
+  - polar_map<br>
+  - global_latlon_vect_map<br>
+  - cam_taylor_diagram<br>
+  - qbo<br>
+  - tem -&gt; requires more setup info with <code class="docutils literal notranslate"><span class="pre"><a href="https://justin-richling.github.io/ADF-Tutorial/notebooks/intro/yaml/config_cam_baseline_example.html#strong-tem-info-strong">tem_info</a></span></code><br>
+  - regional_map_multicase -&gt; requires more setup info with <code class="docutils literal notranslate"><span class="pre"><a href="https://justin-richling.github.io/ADF-Tutorial/notebooks/intro/yaml/config_cam_baseline_example.html#strong-region-multicase-strong">region_multicase</a></span></code></p>
+</section>
+<section id="strong-diag-var-list-strong">
+<h3><strong>diag_var_list</strong><a class="headerlink" href="#strong-diag-var-list-strong" title="Permalink to this headline">#</a></h3>
+<p>List of variables to be executed in the ADF</p>
+<p>These usually are the CAM variables, but nocesessarily the only ones, ie RESTOM can be added to this list and the ADF will attempt to calculate based off constituents.</p>
+<p>If the ADF searches for time series/climo/regridded/tem, etc. files for a given variable from this list and does not find one in the data files, it will skip that variable with an explaination in most cases. The ADF will not crash, but continue on to the next variable in the list.</p>
+</section>
+<section id="strong-tem-info-strong">
+<h3><strong>tem_info</strong><a class="headerlink" href="#strong-tem-info-strong" title="Permalink to this headline">#</a></h3>
+<p>Options for TEM diagnostics (./averaging/create_TEM_files.py and ./plotting/temp.py)<br>
+tem_info:<br>
+&emsp; #Location where TEM files are stored:<br>
+&emsp; #If path not specified or commented out, skip TEM calculation<br>
+&emsp; tem_loc: /glade/scratch/richling/adf-output/ADF-data/TEM/TEST/<br>
+&emsp; #TEM history file number<br>
+&emsp; hist_num: h4<br>
+<p>  #Overwrite TEM files, if found?<br>
+  overwrite_tem_case: false<br></p>
+<p>  #For multiple test cases<br>
+  #overwrite_tem_case<br>
+  #    - false<br>
+  #    - true<br></p>
+<p>  overwrite_tem_base: false</p>
+</section>
+<section id="strong-region-multicase-strong">
+<h3><strong>region_multicase</strong><a class="headerlink" href="#strong-region-multicase-strong" title="Permalink to this headline">#</a></h3>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./notebooks/reference/yaml"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="basics.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">YAML File Basics</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="adf_variable_defaults.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Variable Defaults - adf_variable_defaults.yaml</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Justin Richling<br/>
+  
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>

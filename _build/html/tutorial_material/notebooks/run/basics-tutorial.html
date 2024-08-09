@@ -1,0 +1,847 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Running ADF Basics &#8212; ADF Tutorial</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mine.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/.ipynb_checkpoints/mine-checkpoint.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/clipboard.min.js"></script>
+    <script src="../../../_static/copybutton.js"></script>
+    <script src="../../../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../../../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../../../_static/_6e5c5f85-aa2c-401c-995a-c8a6e5da0811.jpeg" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">ADF Tutorial</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../../README.html">
+                    Welcome to the AMWG Diagnostics Framework (ADF) Tutorial
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  ADF
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../notebooks/intro/adf.html">
+   Intro to the ADF
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../notebooks/intro/output.html">
+   What do you get?
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Installing the ADF
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../notebooks/install/setup.html">
+   Setting up ADF
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  ADF Basics
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../notebooks/basics/adf_basics.html">
+   Intro
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../notebooks/basics/yaml_basics.html">
+   YAML files
+  </a>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../../notebooks/basics/run_basics.html">
+   Setting up
+   <strong>
+    your
+   </strong>
+   ADF run - optional
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../notebooks/basics/run_basics/adf_run.html">
+     Running
+     <strong>
+      your
+     </strong>
+     ADF
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../notebooks/basics/run_basics/outputs.html">
+     Exploring
+     <strong>
+      your
+     </strong>
+     ADF outputs
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Guided Examples
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../notebooks/basic_examples/readme.html">
+   ADF Demo Setup
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../notebooks/basic_examples/model_model_run.html">
+   CAM vs CAM
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../notebooks/basic_examples/model_obs_run.html">
+   CAM vs Obs
+  </a>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../../notebooks/exercises/custom_defaults.html">
+   Custom Variable Defaults For the ADF
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../notebooks/exercises/custom_defaults/single_variable.html">
+     Customize Single Variable
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../notebooks/exercises/custom_defaults/custom_file.html">
+     Customized File
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../notebooks/exercises/custom_observations.html">
+   Custom Set of Observations
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../notebooks/exercises/custom_script.html">
+   Adding custom script to your ADF
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../notebooks/basic_examples/jupyter.html">
+   ADF in Jupyter
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  ADF - Reference
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../../notebooks/reference/intro.html">
+   ADF Basics
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../notebooks/reference/layout/lib.html">
+     Libraries
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../notebooks/reference/layout/scripts.html">
+     Scripts
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../../notebooks/reference/yaml.html">
+   YAML Config Files
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../notebooks/reference/yaml/basics.html">
+     YAML File Basics
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../notebooks/reference/yaml/config_cam_baseline_example.html">
+     Run Time - config_cam_baseline_example.yaml
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../notebooks/reference/yaml/adf_variable_defaults.html">
+     Variable Defaults - adf_variable_defaults.yaml
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../notebooks/reference/outputs.html">
+   Explore ADF Outputs
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Troubleshooting
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../notebooks/help/contact.html">
+   Contact
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../notebooks/help/faqs.html">
+   FAQS
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/justin-richling/ADF-Tutorial/main?urlpath=tree/docs/tutorial_material/notebooks/run/basics-tutorial.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../../../_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/justin-richling/ADF-Tutorial"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/justin-richling/ADF-Tutorial/issues/new?title=Issue%20on%20page%20%2Ftutorial_material/notebooks/run/basics-tutorial.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../../../_sources/tutorial_material/notebooks/run/basics-tutorial.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#how-to-run-the-adf">
+   How to run the ADF
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#types-of-adf-comparisons">
+   Types of ADF Comparisons
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#available-comparison-cases">
+   Available Comparison Cases
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#single-case-comparison">
+     Single Case Comparison
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#cam-vs-cam">
+       CAM vs CAM
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Running ADF Basics</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#how-to-run-the-adf">
+   How to run the ADF
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#types-of-adf-comparisons">
+   Types of ADF Comparisons
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#available-comparison-cases">
+   Available Comparison Cases
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#single-case-comparison">
+     Single Case Comparison
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#cam-vs-cam">
+       CAM vs CAM
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section class="tex2jax_ignore mathjax_ignore" id="running-adf-basics">
+<h1>Running ADF Basics<a class="headerlink" href="#running-adf-basics" title="Permalink to this headline">#</a></h1>
+<p>Now that the environment is setup with the required modules loaded and the ADF cloned let’s put it all together and do a CAM vs CAM comparison!</p>
+<section id="how-to-run-the-adf">
+<h2>How to run the ADF<a class="headerlink" href="#how-to-run-the-adf" title="Permalink to this headline">#</a></h2>
+<p>There are two ways to run the ADF, the first and most stright forward is runnning the ADF in the terminal and the second is via Jupyter.</p>
+<p>The first steps are to set the desired (and required) variables in the config yaml file(s). In this demo, we will run the ADF standard variable defaults file (<code class="docutils literal notranslate"><span class="pre">adf_variable_defaults.yaml</span></code>), but feel free to explore making your own, please refer back to the <a href="https://justin-richling.github.io/ADF-Tutorial/notebooks/intro/yaml/adf_variable_defaults.html" target="_blank">Variable Defaults</a> yaml section.</p>
+</section>
+<section id="types-of-adf-comparisons">
+<h2>Types of ADF Comparisons<a class="headerlink" href="#types-of-adf-comparisons" title="Permalink to this headline">#</a></h2>
+<p>There are a couple different ADF runs one can do:</p>
+<p>Single Case Comparison</p>
+<p>Multiple Case Comparison**</p>
+<p style="margin-top: -15px;">&ensp; ** In progress, will not be part of this tutorial currently :(</p>
+</section>
+<section id="available-comparison-cases">
+<h2>Available Comparison Cases<a class="headerlink" href="#available-comparison-cases" title="Permalink to this headline">#</a></h2>
+<p>There are essentially 3 types of comparisons:</p>
+<ul class="simple">
+<li><p>CAM vs CAM</p></li>
+<li><p>CAM vs Observations/Reanalysis</p></li>
+<li><p>CAM vs CMIP</p></li>
+</ul>
+<p>Each have their own requirements for the run-time config file (eg <code class="docutils literal notranslate"><span class="pre">config_cam_baseline_example</span></code>). The requirements for each type of comparison will be addressed in their respective sections of this tutorial.</p>
+<section id="single-case-comparison">
+<h3>Single Case Comparison<a class="headerlink" href="#single-case-comparison" title="Permalink to this headline">#</a></h3>
+<p>By default the ADF will run a single CAM test simulation (experiment) case vs baseline (control) case.</p>
+<hr class="docutils" />
+<p>First step: Setup the Run-time config file</p>
+<p>Navigate to the ADF root directory if you’re not already there.</p>
+<p>ADF/</p>
+<section id="cam-vs-cam">
+<h4>CAM vs CAM<a class="headerlink" href="#cam-vs-cam" title="Permalink to this headline">#</a></h4>
+<p>Make a copy of the <code class="docutils literal notranslate"><span class="pre">config_cam_baseline_example.yaml</span></code> file</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cp</span> <span class="n">config_cam_baseline_example</span><span class="o">.</span><span class="n">yaml</span> <span class="n">config_cam_vs_cam_demo</span><span class="o">.</span><span class="n">yaml</span>
+
+</pre></div>
+</div>
+<p>Then, open <code class="docutils literal notranslate"><span class="pre">config_cam_vs_cam_demo.yaml</span></code> in your favorite editor.</p>
+<p>We will do a simple run of two CAM siumulations, with the sample data living at:</p>
+<p>test case: f.cam6_3_106.FLTHIST_v0a.ne30.dcs_effgw_rdg.001 (1995-2012)
+<code class="docutils literal notranslate"><span class="pre">/glade/work/richling/ADF/adf-tutorials/data/f.cam6_3_106.FLTHIST_v0a.ne30.dcs_effgw_rdg.001</span></code></p>
+<p>baseline case: f.cam6_3_105.FLTHIST_v0a.ne30.001 (1979-2002)
+<code class="docutils literal notranslate"><span class="pre">/glade/work/richling/ADF/adf-tutorials/data/f.cam6_3_105.FLTHIST_v0a.ne30.001</span></code></p>
+<p>Let’s pick a couple of years that are in common with these two datasets.</p>
+<p>NOTE: it is not necessary that the climo years match between cases, which is typical, especially when comparing against obs or AMIP/CMIP cases.</p>
+<h3><strong>config_cam_vs_cam_demo.yaml</strong></h3>
+<div class="admonition">
+<p># This file doesn't (yet) read environment variables, so the user must<br>
+# set this themselves. It is also a good idea to search the doc for 'user'<br>
+# to see what default paths are being set for output/working files.<br>
+#<br>
+# Note that the string 'USER-NAME-NOT-SET' is used in the jupyter script<br>
+# to check for a failure to customize<br>
+#</p>
+<div class="admonition attention">
+<p><strong>user:</strong> 'USER-NAME-NOT-SET' -> <font color="red">CHANGE ME!</font></p>
+</div>
+<p>#This first set of variables specify basic info used by all diagnostic runs:<br>
+<strong><a href="https://justin-richling.github.io/ADF-Tutorial/notebooks/intro/yaml/config_cam_baseline_example.html#strong-diag-basic-info-strong" target="_blank">diag_basic_info:</a></strong></p>
+<p>&emsp;#History file string to match (eg. cam.h0 or ocn.pop.h.ecosys.nday1)<br>
+&emsp;# Only affects timeseries as everything else uses timeseries <br>
+&emsp;# Leave off trailing '.'<br>
+&emsp;#Default: cam.h0<br>
+&emsp;<strong>hist_str:</strong> cam.h0 </p>          
+<p>&emsp;#Is this a model vs observations comparison?<br>
+&emsp;#If "false" or missing, then a model-model comparison is assumed:<br>
+&emsp;<strong>compare_obs:</strong> false</p>
+<p>&emsp;#Generate HTML website (assumed false if missing):<br>
+&emsp;#Note:  The website files themselves will be located in the path<br>
+&emsp;#specified by "cam_diag_plot_loc", under the "diag_run/website" subdirectory,<br>
+&emsp;#where "diag_run" is the subdirectory created for this particular diagnostics run<br>
+&emsp;#(usually "case_vs_obs_XXX" or "case_vs_baseline_XXX").<br>
+&emsp;<strong>create_html:</strong> true</p>
+<p>&emsp;#Location of observational datasets:<br>
+&emsp;#Note: this only matters if "compare_obs" is true and the path<br>
+&emsp;#isn't specified in the variable defaults file.<br>
+&emsp;<strong>obs_data_loc:</strong> /glade/work/nusbaume/SE_projects/model_diagnostics/ADF_obs</p>
+<div class="admonition attention">
+<p>&emsp;#Location where re-gridded and interpolated CAM climatology files are stored:<br>
+&emsp;<strong>cam_regrid_loc:</strong> /glade/scratch/${user}/ADF/regrid -> <span style="color:red">Change if desired!</span></p>
+</div>
+<p>&emsp;#Overwrite CAM re-gridded files?<br>
+&emsp;<strong>cam_overwrite_regrid</strong>: false</p>
+<div class="admonition attention">
+<p>&emsp;#Location where diagnostic plots are stored:<br>
+&emsp;<strong>cam_diag_plot_loc:</strong> /glade/scratch/${user}/ADF/plots -> <span style="color:red">Change if desired!</span></p>
+</div>
+<p>&emsp;#Use default variable plot settings?<br>
+&emsp;#If "true", then variable-specific plotting attributes as defined in<br>
+&emsp;#ADF/lib/adf_variable_defaults.yaml will be used:<br>
+&emsp;<strong>use_defaults:</strong> true</p>
+<p>&emsp;#Location of ADF variable plotting defaults YAML file<br>
+&emsp;#if not using the one in ADF/lib:<br>
+&emsp;<strong>#defaults_file:</strong> /some/path/to/defaults/file</p>
+<p>&emsp;#Vertical pressure levels (in hPa) on which to plot 3-D variables<br>
+&emsp;#when using horizontal (e.g. lat/lon) map projections.<br>
+&emsp;#If this config option is missing, then no 3-D variables will be plotted on<br>
+&emsp;#horizontal maps.  Please note too that pressure levels must currently match<br>
+&emsp;#what is available in the observations file in order to be plotted in a<br>
+&emsp;#model vs obs run:<br>
+&emsp;<strong>plot_press_levels:</strong> [200,850]</p>
+<p>&emsp;#Longitude line on which to center all lat/lon maps.<br>
+&emsp;#If this config option is missing then the central<br>
+&emsp;#longitude will default to 180 degrees E.<br>
+&emsp;<strong>central_longitude:</strong> 180</p>
+<p>&emsp;#Number of processors on which to run the ADF.<br>
+&emsp;#If this config variable isn't present then<br>
+&emsp;#the ADF defaults to one processor.  Also, if<br>
+&emsp;#you set it to "*" then it will default<br>
+&emsp;#to all of the processors available on a<br>
+&emsp;#single node/machine:<br>
+&emsp;<strong>num_procs:</strong> 8</p>
+<p>&emsp;#If set to true, then redo all plots even if they already exist.<br>
+&emsp;#If set to false, then if a plot is found it will be skipped:<br>
+&emsp;<strong>redo_plot:</strong> false</p>
+<p>#This second set of variables provides info for the CAM simulation(s) being diagnosed:<br>
+<strong><a href="https://justin-richling.github.io/ADF-Tutorial/notebooks/intro/yaml/config_cam_baseline_example.html#strong-diag-cam-climo-strong" target="_blank">diag_cam_climo:</a></strong></p>
+<p>&emsp;#Calculate climatologies?<br>
+&emsp;#If false, the climatology files will not be created:<br>
+&emsp;<strong>calc_cam_climo:</strong> true</p>
+<p>&emsp;#Overwrite CAM climatology files?<br>
+&emsp;#If false, or not prsent, then already existing climatology files will be skipped:<br>
+&emsp;<strong>cam_overwrite_climo:</strong> false</p>
+<div class="admonition attention">
+<p>&emsp;#Name of CAM case (or CAM run name):<br>
+&emsp;<strong>cam_case_name:</strong> b.e20.BHIST.f09_g17.20thC.297_05</p>
+</div>
+<p>&emsp;#Case nickname<br>
+&emsp;#NOTE: if nickname starts with '0' - nickname must be in quotes!<br>
+&emsp;# ie '026a' as opposed to 026a<br>
+&emsp;#If missing or left blank, will default to cam_case_name<br>
+&emsp;<strong>case_nickname:</strong> #cool nickname</p>
+<div class="admonition attention">
+<p>&emsp;#Location of CAM history (h0) files:<br>
+&emsp;#Example test files<br>
+&emsp;<strong>cam_hist_loc:</strong> /glade/p/cesm/ADF/${diag_cam_climo.cam_case_name}</p>
+</div>
+<div class="admonition attention">
+<p>&emsp;#Location of CAM climatologies (to be created and then used by this script)<br>
+&emsp;<strong>cam_climo_loc:</strong> /glade/scratch/${user}/ADF/${diag_cam_climo.cam_case_name}/climo</p>
+</div>
+<div class="admonition attention">
+<p>&emsp;#model year when time series files should start:<br>
+&emsp;#Note:  Leaving this entry blank will make time series<br>
+&emsp;#       start at earliest available year.<br>
+&emsp;<strong>start_year:</strong> 1990</p>
+</div>
+<div class="admonition attention">
+<p>&emsp;#model year when time series files should end:<br>
+&emsp;#Note:  Leaving this entry blank will make time series<br>
+&emsp;#       end at latest available year.<br>
+&emsp;<strong>end_year:</strong> 1999</p>
+</div>
+<p>&emsp;#Do time series files exist?<br>
+&emsp;#If True, then diagnostics assumes that model files are already time series.<br>
+&emsp;#If False, or if simply not present, then diagnostics will attempt to create<br>
+&emsp;#time series files from history (time-slice) files:<br>
+&emsp;<strong>cam_ts_done:</strong> false</p>
+<p>&emsp;#Save interim time series files?<br>
+&emsp;#WARNING:  This can take up a significant amount of space,<br>
+&emsp;#          but will save processing time the next time<br>
+&emsp;<strong>cam_ts_save:</strong> true</p>
+<p>&emsp;#Overwrite time series files, if found?<br>
+&emsp;#If set to false, then time series creation will be skipped if files are found:<br>
+&emsp;<strong>cam_overwrite_ts:</strong> false</p>
+<div class="admonition attention">
+<p>&emsp;#Location where time series files are (or will be) stored:<br>
+&emsp;<strong>cam_ts_loc:</strong> /glade/scratch/${user}/ADF/${diag_cam_climo.cam_case_name}/ts</p>
+</div>
+</div></section>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "cmip6-201910a"
+        },
+        kernelOptions: {
+            name: "cmip6-201910a",
+            path: "./tutorial_material/notebooks/run"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'cmip6-201910a'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Justin Richling<br/>
+  
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>

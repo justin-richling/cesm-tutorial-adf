@@ -1,0 +1,68 @@
+analysis_scripts:
+- amwg_table
+diag_basic_info:
+  cam_diag_plot_loc: ${diag_loc}diag-plot/
+  cam_overwrite_regrid: false
+  cam_regrid_loc: /glade/scratch/richling/ADF/tutorials/data/output/regrid/
+  central_longitude: 180
+  climo_loc: /glade/scratch/richling/ADF/tutorials/data/output/climos/
+  compare_obs: false
+  create_html: true
+  diag_loc: /glade/scratch/${user}/ADF_output/TEST/
+  hist_str: cam.h0
+  num_procs: 8
+  obs_data_loc: /glade/work/nusbaume/SE_projects/model_diagnostics/ADF_obs
+  plot_press_levels:
+  - 200
+  - 850
+  ts_loc: /glade/scratch/richling/ADF/tutorials/data/output/timeseries/
+  use_defaults: true
+  weight_season: true
+diag_cam_baseline_climo:
+  calc_cam_climo: true
+  cam_case_name: f.cam6_3_106.FLTHIST_v0a.ne30.dcs_non-ogw.001
+  cam_climo_loc: ${climo_loc}${diag_cam_baseline_climo.cam_case_name}/
+  cam_hist_loc: /glade/scratch/richling/ADF/tutorials/data/${diag_cam_baseline_climo.cam_case_name}/
+  cam_overwrite_climo: false
+  cam_overwrite_ts: false
+  cam_ts_done: false
+  cam_ts_loc: ${ts_loc}${diag_cam_baseline_climo.cam_case_name}/
+  cam_ts_save: true
+  case_nickname: ${diag_cam_baseline_climo.cam_case_name}
+  end_year: 2005
+  start_year: 2001
+diag_cam_climo:
+  calc_cam_climo: true
+  cam_case_name: f.cam6_3_106.FLTHIST_v0a.ne30.dcs_effgw_rdg.001
+  cam_climo_loc: ${climo_loc}${diag_cam_climo.cam_case_name}/
+  cam_hist_loc: /glade/scratch/richling/ADF/tutorials/data/${diag_cam_climo.cam_case_name}/
+  cam_overwrite_climo: false
+  cam_overwrite_ts: false
+  cam_ts_done: false
+  cam_ts_loc: ${ts_loc}${diag_cam_climo.cam_case_name}/
+  cam_ts_save: true
+  case_nickname: ${diag_cam_climo.cam_case_name}
+  end_year: 2005
+  start_year: 2001
+diag_var_list:
+- FLNT
+- FSNT
+- LWCF
+- PBLH
+- PS
+- PSL
+- Q
+- RELHUM
+- SST
+- SWCF
+- T
+- TS
+- U
+plotting_scripts:
+- global_latlon_map
+- zonal_mean
+regridding_scripts:
+- regrid_and_vert_interp
+time_averaging_scripts:
+- create_climo_files
+user: richling
