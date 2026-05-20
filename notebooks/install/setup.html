@@ -570,6 +570,11 @@ title="Print to PDF"
    Cloning the ADF
   </a>
  </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#connecting-to-compute-node">
+   Connecting to Compute Node
+  </a>
+ </li>
 </ul>
 
     </nav>
@@ -656,6 +661,11 @@ title="Print to PDF"
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#cloning-the-adf">
    Cloning the ADF
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#connecting-to-compute-node">
+   Connecting to Compute Node
   </a>
  </li>
 </ul>
@@ -777,6 +787,14 @@ title="Print to PDF"
     </button></div>
 </div>
 <p>This will create a new folder called <strong>ADF</strong> and will be the root directory: <code class="docutils literal notranslate"><span class="pre">/glade/work/{user}/ADF/</span></code>  This will house all the necessary scripts for the ADF to run and where custom scripts would be added if desired!</p>
+</section>
+<section id="connecting-to-compute-node">
+<h2>Connecting to Compute Node<a class="headerlink" href="#connecting-to-compute-node" title="Permalink to this headline">#</a></h2>
+<p>Since some of these calculations can be quite intensive like creating climatology files, especially if they are variables with vertical levels, it is highly recommended to run the ADF on Casper compute node. There are several ways but one way is to run this command from Capser’s terminal:</p>
+<p><code class="docutils literal notranslate"><span class="pre">execcasper</span> <span class="pre">-A</span> <span class="pre">&lt;charge</span> <span class="pre">code&gt;</span> <span class="pre">-l</span> <span class="pre">select=1:ncpus=4:mem=64GB</span> <span class="pre">-l</span> <span class="pre">walltime=06:00:00</span></code></p>
+<p>or</p>
+<p><code class="docutils literal notranslate"><span class="pre">qsub</span> <span class="pre">-I-X</span>&#160; <span class="pre">-l</span> <span class="pre">select=1:ncpus=4:mem=64GB</span> <span class="pre">-A</span> <span class="pre">&lt;charge</span> <span class="pre">code&gt;</span> <span class="pre">-q</span> <span class="pre">casper&#64;casper-pbs</span> <span class="pre">-l</span> <span class="pre">walltime=06:00:00</span></code></p>
+<p>You can change the wall time, number of cpus and memory</p>
 </section>
 </section>
 
