@@ -507,20 +507,18 @@ title="Print to PDF"
 <h1>Setting up <strong>your</strong> ADF run - optional<a class="headerlink" href="#setting-up-strong-your-strong-adf-run-optional" title="Permalink to this headline">#</a></h1>
 <p>If you have a case or cases you want to run the ADF with, this section will help with a quick setup. This will include basic information about the configuration yaml files and how to run the ADF for your cases!</p>
 <p>Instead, if you would like a guided demo of how to use the ADF with sample data, please skip to the <a href="https://justin-richling.github.io/ADF-Tutorial/notebooks/basic_examples/readme.html">GUIDED EXAMPLES</a> section.</p>
-<ol class="simple">
-<li><p>Make sure your ADF clone is the most up to date version</p></li>
-</ol>
+<p>1. Make sure your ADF clone is the most up to date version
 <ul class="simple">
-<li><p>Go to where you installed the ADF, make sure you’re on the correct branch and run <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">pull</span> <span class="pre">origin</span> <span class="pre">&lt;branch&gt;</span></code>. Most cases you’ll just use the main branch, but there are others (as of 05/2026) for:</p></li>
+<li><p>Go to where you installed the ADF, make sure you’re on the correct branch and run <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">pull</span> <span class="pre">origin</span> <span class="pre">&lt;branch&gt;</span></code>. Most cases you’ll just use the main branch, but there are others (as of 05/2026) for:</p></p></li>
 </ul>
 <ul>
 <li>Native Grid (gridding to lat/lon or unstructured plotting via `uxarray`) <code class="docutils literal notranslate"><span class="pre" style="color: #076E85;">native-grid</span></code></li>
 <li>Multi-Case <code class="docutils literal notranslate"><span class="pre" style="color: #076E85;">multi-case-diags</span></code></li>
 <li>WACCM diagnostics <code class="docutils literal notranslate"><span class="pre" style="color: #076E85;">waccm-diags</span></code></li>
 </ul>
-<p>1. make a copy of the config_cam_baseline_example.yaml file, feel free to name it something that makes sense to you. The yaml files are in the root folder of where you installed the ADF.</p>
+<p>2. make a copy of the config_cam_baseline_example.yaml file, feel free to name it something that makes sense to you. The yaml files are in the root folder of where you installed the ADF.</p>
 <p><code class="docutils literal notranslate"><span class="pre" style="color: #076E85;"> config_cam_baseline_example.yaml</span></code></p>
-</p>2. open that copied file and the main sections you'll want to change are:
+</p>3. open that copied file and the main sections you'll want to change are:
 <p><code class="docutils literal notranslate"><span class="pre" style="color: #076E85;">user</span></code> (optional) - use your NCAR username as a variable in the yaml file
 <p><code class="docutils literal notranslate"><span class="pre" style="color: #076E85;">diag_basic_info</span></code> - this is where you'll set some main run variables, the ones I usually change are:
 <p><code class="docutils literal notranslate"><span class="pre" style="color: #076E85;">compare_obs</span></code> - set true/false depending which run you want
@@ -535,7 +533,7 @@ title="Print to PDF"
 <p><code class="docutils literal notranslate"><span class="pre" style="color: #076E85;">cam_ts_loc</span></code>  - where you want time series files saved
 <p><code class="docutils literal notranslate"><span class="pre" style="color: #076E85;">diag_cam_baseline_climo</span></code> - same exact variables as the diag_cam_climo above, just set for the control (baseline) case. If using Obs, just ignore this section</p>
 <p>Then at the end of the config file are the plots and variables, set these as you like!</p></p>
-</p>3. To run the ADF (from the ADF root path) in a terminal just run: ./run_adf_diag your_new_yaml_file.yaml</p><div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="c1">#==============================</span><span class="w"></span>
+</p>4. To run the ADF (from the ADF root path) in a terminal just run: ./run_adf_diag your_new_yaml_file.yaml</p><div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="c1">#==============================</span><span class="w"></span>
 <span class="c1">#config_cam_baseline_example.yaml</span><span class="w"></span>
 
 <span class="c1">#This is the main CAM diagnostics config file</span><span class="w"></span>
