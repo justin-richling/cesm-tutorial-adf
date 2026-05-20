@@ -138,27 +138,8 @@
 # Here is my figure caption!
 # ```
 # 
-# ###### Transformed Eulerian Mean (TEM) plots
 # 
-# ```{figure} ./ANN_TEM_Mean_smaller.png
-# ---
-# height: 450px
-# name: directive-fig
-# ---
-# Here is my figure caption!
-# ```
-# 
-# ###### Time Series plots (under development)
-# 
-# ```{figure} ./TimeSeries_w26h_ANN.png
-# ---
-# height: 450px
-# name: directive-fig
-# ---
-# Here is my figure caption!
-# ```
-# 
-# ###### Tape Recorder plots of Q (under development)
+# ###### Tape Recorder plots of Q
 # 
 # ```{figure} ./Q_tape_recorder_FCLTHIST_vs_FLTHIST_2000_2011.png
 # ---
