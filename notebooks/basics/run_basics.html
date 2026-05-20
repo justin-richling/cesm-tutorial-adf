@@ -515,21 +515,24 @@ title="Print to PDF"
 </ul>
 <ol class="simple">
 <li><p>make a copy of the config_cam_baseline_example.yaml file, feel free to name it something that makes sense to you. The yaml files are in the root folder of where you installed the ADF.</p></li>
+</ol>
+<p><code class="docutils literal notranslate"><span class="pre" style="color: #076E85;"> config_cam_baseline_example.yaml</span></code></p>
+<ol class="simple">
 <li><p>open that copied file and the main sections you’ll want to change are:</p></li>
 </ol>
-<p>`user` (optional) - use your NCAR username as a variable in the yaml file
-<p>`diag_basic_info` - this is where you'll set some main run variables, the ones I usually change are:
-<p>`compare_obs` - set true/false depending which run you want
-<p>`cam_regrid_loc` - where the regridded files for the cases in this ADF run will be saved, you can change or use the default location, just take note
-<p>`cam_diag_loc` - where the diagnostic plots will be saved, again, you can change or use default
-<p>`diag_cam_climo` - for the experiment case (test), the ones I change are:
-<p>`cam_case_name` - just the name of the case run
-<p>`cam_hist_loc` - where the h# history files live
-<p>`case_nickname` - anything that would be easier than the case name if you want, it will default to the case name if left blank
-<p>`start/end_years` - climo years desired
-<p>`cam_climo_loc` - where you want climo files saved
-<p>`cam_ts_loc`  - where you want time series files saved
-<p>`diag_cam_baseline_climo` - same exact variables as the diag_cam_climo above, just set for the control (baseline) case. If using Obs, just ignore this section</p>
+<p><code class="docutils literal notranslate"><span class="pre" style="color: #076E85;">user</span></code> (optional) - use your NCAR username as a variable in the yaml file
+<p><code class="docutils literal notranslate"><span class="pre" style="color: #076E85;">diag_basic_info</span></code> - this is where you'll set some main run variables, the ones I usually change are:
+<p><code class="docutils literal notranslate"><span class="pre" style="color: #076E85;">compare_obs</span></code> - set true/false depending which run you want
+<p><code class="docutils literal notranslate"><span class="pre" style="color: #076E85;">cam_regrid_loc</span></code> - where the regridded files for the cases in this ADF run will be saved, you can change or use the default location, just take note
+<p><code class="docutils literal notranslate"><span class="pre" style="color: #076E85;">cam_diag_loc</span></code> - where the diagnostic plots will be saved, again, you can change or use default
+<p><code class="docutils literal notranslate"><span class="pre" style="color: #076E85;">diag_cam_climo</span></code> - for the experiment case (test), the ones I change are:
+<p><code class="docutils literal notranslate"><span class="pre" style="color: #076E85;">cam_case_name</span></code> - just the name of the case run
+<p><code class="docutils literal notranslate"><span class="pre" style="color: #076E85;">cam_hist_loc</span></code> - where the h# history files live
+<p><code class="docutils literal notranslate"><span class="pre" style="color: #076E85;">case_nickname</span></code> - anything that would be easier than the case name if you want, it will default to the case name if left blank
+<p><code class="docutils literal notranslate"><span class="pre" style="color: #076E85;">start/end_years</span></code> - climo years desired
+<p><code class="docutils literal notranslate"><span class="pre" style="color: #076E85;">cam_climo_loc</span></code> - where you want climo files saved
+<p><code class="docutils literal notranslate"><span class="pre" style="color: #076E85;">cam_ts_loc</span></code>  - where you want time series files saved
+<p><code class="docutils literal notranslate"><span class="pre" style="color: #076E85;">diag_cam_baseline_climo</span></code> - same exact variables as the diag_cam_climo above, just set for the control (baseline) case. If using Obs, just ignore this section</p>
 <p>Then at the end of the config file are the plots and variables, set these as you like!</p>
 <ol class="simple">
 <li><p>To run the ADF (from the ADF root path) in a terminal just run: ./run_adf_diag your_new_yaml_file.yaml</p></li>
