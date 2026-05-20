@@ -534,6 +534,544 @@ title="Print to PDF"
 <ol class="simple">
 <li><p>To run the ADF (from the ADF root path) in a terminal just run: ./run_adf_diag your_new_yaml_file.yaml</p></li>
 </ol>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="c1">#==============================</span><span class="w"></span>
+<span class="c1">#config_cam_baseline_example.yaml</span><span class="w"></span>
+
+<span class="c1">#This is the main CAM diagnostics config file</span><span class="w"></span>
+<span class="c1">#for doing comparisons of a CAM run against</span><span class="w"></span>
+<span class="c1">#another CAM run, or a CAM baseline simulation.</span><span class="w"></span>
+
+<span class="c1">#Currently, if one is on NCAR&#39;s Casper or</span><span class="w"></span>
+<span class="c1">#Cheyenne machine, then only the diagnostic output</span><span class="w"></span>
+<span class="c1">#paths are needed, at least to perform a quick test</span><span class="w"></span>
+<span class="c1">#run (these are indicated with &quot;MUST EDIT&quot; comments).</span><span class="w"></span>
+<span class="c1">#Running these diagnostics on a different machine,</span><span class="w"></span>
+<span class="c1">#or with a different, non-example simulation, will</span><span class="w"></span>
+<span class="c1">#require additional modifications.</span><span class="w"></span>
+<span class="c1">#</span><span class="w"></span>
+<span class="c1">#Config file Keywords:</span><span class="w"></span>
+<span class="c1">#--------------------</span><span class="w"></span>
+<span class="c1">#</span><span class="w"></span>
+<span class="c1">#1.  Using ${xxx} will substitute that text with the</span><span class="w"></span>
+<span class="c1">#    variable referenced by xxx. For example:</span><span class="w"></span>
+<span class="c1">#</span><span class="w"></span>
+<span class="c1">#    cam_case_name: cool_run</span><span class="w"></span>
+<span class="c1">#    cam_climo_loc: /some/where/${cam_case_name}</span><span class="w"></span>
+<span class="c1">#</span><span class="w"></span>
+<span class="c1">#    will set &quot;cam_climo_loc&quot; in the diagnostics package to:</span><span class="w"></span>
+<span class="c1">#    /some/where/cool_run</span><span class="w"></span>
+<span class="c1">#</span><span class="w"></span>
+<span class="c1">#    Please note that currently this will only work if the</span><span class="w"></span>
+<span class="c1">#    variable only exists in one location in the file.</span><span class="w"></span>
+<span class="c1">#</span><span class="w"></span>
+<span class="c1">#2.  Using ${&lt;top_level_section&gt;.xxx} will do the same as</span><span class="w"></span>
+<span class="c1">#    keyword 1 above, but specifies which sub-section the</span><span class="w"></span>
+<span class="c1">#    variable is coming from, which is necessary for variables</span><span class="w"></span>
+<span class="c1">#    that are repeated in different subsections.  For example:</span><span class="w"></span>
+<span class="c1">#</span><span class="w"></span>
+<span class="c1">#    diag_basic_info:</span><span class="w"></span>
+<span class="c1">#      cam_climo_loc:  /some/where/${diag_cam_climo.start_year}</span><span class="w"></span>
+<span class="c1">#</span><span class="w"></span>
+<span class="c1">#    diag_cam_climo:</span><span class="w"></span>
+<span class="c1">#      start_year: 1850</span><span class="w"></span>
+<span class="c1">#</span><span class="w"></span>
+<span class="c1">#    will set &quot;cam_climo_loc&quot; in the diagnostics package to:</span><span class="w"></span>
+<span class="c1">#    /some/where/1850</span><span class="w"></span>
+<span class="c1">#</span><span class="w"></span>
+<span class="c1">#Finally, please note that for both 1 and 2 the keywords must be lowercase.</span><span class="w"></span>
+<span class="c1">#This is because future developments will hopefully use other keywords</span><span class="w"></span>
+<span class="c1">#that are uppercase. Also please avoid using periods (&quot;.&quot;) in variable</span><span class="w"></span>
+<span class="c1">#names, as this will likely cause issues with the current file parsing</span><span class="w"></span>
+<span class="c1">#system.</span><span class="w"></span>
+<span class="c1">#--------------------</span><span class="w"></span>
+<span class="c1">#</span><span class="w"></span>
+<span class="c1">##==============================</span><span class="w"></span>
+<span class="c1">#</span><span class="w"></span>
+<span class="c1"># This file doesn&#39;t (yet) read environment variables, so the user must</span><span class="w"></span>
+<span class="c1"># set this themselves. It is also a good idea to search the doc for &#39;user&#39;</span><span class="w"></span>
+<span class="c1"># to see what default paths are being set for output/working files.</span><span class="w"></span>
+<span class="c1">#</span><span class="w"></span>
+<span class="c1"># Note that the string &#39;USER-NAME-NOT-SET&#39; is used in the jupyter script</span><span class="w"></span>
+<span class="c1"># to check for a failure to customize</span><span class="w"></span>
+<span class="c1">#</span><span class="w"></span>
+<span class="nt">user</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;USER-NAME-NOT-SET&#39;</span><span class="w"></span>
+
+
+<span class="c1">#This first set of variables specify basic info used by all diagnostic runs:</span><span class="w"></span>
+<span class="nt">diag_basic_info</span><span class="p">:</span><span class="w"></span>
+
+<span class="w">    </span><span class="c1">#Is this a model vs observations comparison?</span><span class="w"></span>
+<span class="w">    </span><span class="c1">#If &quot;false&quot; or missing, then a model-model comparison is assumed:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">compare_obs</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span><span class="w"></span>
+
+<span class="w">    </span><span class="c1">#Generate HTML website (assumed false if missing):</span><span class="w"></span>
+<span class="w">    </span><span class="c1">#Note:  The website files themselves will be located in the path</span><span class="w"></span>
+<span class="w">    </span><span class="c1">#specified by &quot;cam_diag_plot_loc&quot;, under the &quot;&lt;diag_run&gt;/website&quot; subdirectory,</span><span class="w"></span>
+<span class="w">    </span><span class="c1">#where &quot;&lt;diag_run&gt;&quot; is the subdirectory created for this particular diagnostics run</span><span class="w"></span>
+<span class="w">    </span><span class="c1">#(usually &quot;case_vs_obs_XXX&quot; or &quot;case_vs_baseline_XXX&quot;).</span><span class="w"></span>
+<span class="w">    </span><span class="nt">create_html</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w"></span>
+
+<span class="w">    </span><span class="c1">#Location of observational datasets:</span><span class="w"></span>
+<span class="w">    </span><span class="c1">#Note: this only matters if &quot;compare_obs&quot; is true and the path</span><span class="w"></span>
+<span class="w">    </span><span class="c1">#isn&#39;t specified in the variable defaults file.</span><span class="w"></span>
+<span class="w">    </span><span class="nt">obs_data_loc</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/glade/campaign/cgd/amp/amwg/ADF_obs</span><span class="w"></span>
+
+<span class="w">    </span><span class="c1">#Location where re-gridded and interpolated CAM climatology files are stored:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">cam_regrid_loc</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/glade/derecho/scratch/${user}/ADF/regrid</span><span class="w"></span>
+
+<span class="w">    </span><span class="c1">#Overwrite CAM re-gridded files?</span><span class="w"></span>
+<span class="w">    </span><span class="c1">#If false, or missing, then regridding will be skipped for regridded variables</span><span class="w"></span>
+<span class="w">    </span><span class="c1">#that already exist in &quot;cam_regrid_loc&quot;:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">cam_overwrite_regrid</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span><span class="w"></span>
+
+<span class="w">    </span><span class="c1">#Location where diagnostic plots are stored:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">cam_diag_plot_loc</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/glade/derecho/scratch/${user}/ADF/plots</span><span class="w"></span>
+
+<span class="w">    </span><span class="c1">#Location of ADF variable plotting defaults YAML file:</span><span class="w"></span>
+<span class="w">    </span><span class="c1">#If left blank or missing, ADF/lib/adf_variable_defaults.yaml will be used</span><span class="w"></span>
+<span class="w">    </span><span class="c1">#Uncomment and change path for custom variable defaults file</span><span class="w"></span>
+<span class="w">    </span><span class="c1">#defaults_file: /some/path/to/defaults/file.yaml</span><span class="w"></span>
+
+<span class="w">    </span><span class="c1">#Vertical pressure levels (in hPa) on which to plot 3-D variables</span><span class="w"></span>
+<span class="w">    </span><span class="c1">#when using horizontal (e.g. lat/lon) map projections.</span><span class="w"></span>
+<span class="w">    </span><span class="c1">#If this config option is missing, then no 3-D variables will be plotted on</span><span class="w"></span>
+<span class="w">    </span><span class="c1">#horizontal maps.  Please note too that pressure levels must currently match</span><span class="w"></span>
+<span class="w">    </span><span class="c1">#what is available in the observations file in order to be plotted in a</span><span class="w"></span>
+<span class="w">    </span><span class="c1">#model vs obs run:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">plot_press_levels</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">200</span><span class="p p-Indicator">,</span><span class="nv">850</span><span class="p p-Indicator">]</span><span class="w"></span>
+
+<span class="w">    </span><span class="c1">#Longitude line on which to center all lat/lon maps.</span><span class="w"></span>
+<span class="w">    </span><span class="c1">#If this config option is missing then the central</span><span class="w"></span>
+<span class="w">    </span><span class="c1">#longitude will default to 180 degrees E.</span><span class="w"></span>
+<span class="w">    </span><span class="nt">central_longitude</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">180</span><span class="w"></span>
+
+<span class="w">    </span><span class="c1">#Number of processors on which to run the ADF.</span><span class="w"></span>
+<span class="w">    </span><span class="c1">#If this config variable isn&#39;t present then</span><span class="w"></span>
+<span class="w">    </span><span class="c1">#the ADF defaults to one processor.  Also, if</span><span class="w"></span>
+<span class="w">    </span><span class="c1">#you set it to &quot;*&quot; then it will default</span><span class="w"></span>
+<span class="w">    </span><span class="c1">#to all of the processors available on a</span><span class="w"></span>
+<span class="w">    </span><span class="c1">#single node/machine:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">num_procs</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">8</span><span class="w"></span>
+
+<span class="w">    </span><span class="c1">#If set to true, then redo all plots even if they already exist.</span><span class="w"></span>
+<span class="w">    </span><span class="c1">#If set to false, then if a plot is found it will be skipped:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">redo_plot</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span><span class="w"></span>
+
+<span class="c1">#This second set of variables provides info for the CAM simulation(s) being diagnosed:</span><span class="w"></span>
+<span class="nt">diag_cam_climo</span><span class="p">:</span><span class="w"></span>
+
+<span class="w">    </span><span class="c1"># History file list of strings to match</span><span class="w"></span>
+<span class="w">    </span><span class="c1"># eg. cam.h0 or ocn.pop.h.ecosys.nday1 or hist_str: [cam.h2,cam.h0]  </span><span class="w"></span>
+<span class="w">    </span><span class="c1"># Only affects timeseries as everything else uses the created timeseries </span><span class="w"></span>
+<span class="w">    </span><span class="c1"># Default: </span><span class="w"></span>
+<span class="w">    </span><span class="nt">hist_str</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cam.h0a</span><span class="w"></span>
+
+<span class="w">    </span><span class="c1">#Calculate climatologies?</span><span class="w"></span>
+<span class="w">    </span><span class="c1">#If false, the climatology files will not be created:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">calc_cam_climo</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w"></span>
+
+<span class="w">    </span><span class="c1">#Overwrite CAM climatology files?</span><span class="w"></span>
+<span class="w">    </span><span class="c1">#If false, or not prsent, then already existing climatology files will be skipped:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">cam_overwrite_climo</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span><span class="w"></span>
+
+<span class="w">    </span><span class="c1">#Name of CAM case (or CAM run name):</span><span class="w"></span>
+<span class="w">    </span><span class="nt">cam_case_name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">b.e23_alpha17f.BLT1850.ne30_t232.098</span><span class="w"></span>
+
+<span class="w">    </span><span class="c1">#Case nickname</span><span class="w"></span>
+<span class="w">    </span><span class="c1">#NOTE: if nickname starts with &#39;0&#39; - nickname must be in quotes!</span><span class="w"></span>
+<span class="w">    </span><span class="c1"># ie &#39;026a&#39; as opposed to 026a</span><span class="w"></span>
+<span class="w">    </span><span class="c1">#If missing or left blank, will default to cam_case_name</span><span class="w"></span>
+<span class="w">    </span><span class="nt">case_nickname</span><span class="p">:</span><span class="w"> </span><span class="c1">#cool nickname</span><span class="w"></span>
+
+<span class="w">    </span><span class="c1">#Location of CAM history (h0) files:</span><span class="w"></span>
+<span class="w">    </span><span class="c1">#Example test files</span><span class="w"></span>
+<span class="w">    </span><span class="nt">cam_hist_loc</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/glade/campaign/cgd/amp/amwg/ADF_test_cases/${diag_cam_climo.cam_case_name}</span><span class="w"></span>
+
+<span class="w">    </span><span class="c1">#Location of CAM climatologies (to be created and then used by this script)</span><span class="w"></span>
+<span class="w">    </span><span class="nt">cam_climo_loc</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/glade/derecho/scratch/${user}/ADF/${diag_cam_climo.cam_case_name}/climo</span><span class="w"></span>
+
+<span class="w">    </span><span class="c1">#model year when time series files should start:</span><span class="w"></span>
+<span class="w">    </span><span class="c1">#Note:  Leaving this entry blank will make time series</span><span class="w"></span>
+<span class="w">    </span><span class="c1">#       start at earliest available year.</span><span class="w"></span>
+<span class="w">    </span><span class="nt">start_year</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10</span><span class="w"></span>
+
+<span class="w">    </span><span class="c1">#model year when time series files should end:</span><span class="w"></span>
+<span class="w">    </span><span class="c1">#Note:  Leaving this entry blank will make time series</span><span class="w"></span>
+<span class="w">    </span><span class="c1">#       end at latest available year.</span><span class="w"></span>
+<span class="w">    </span><span class="nt">end_year</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">14</span><span class="w"></span>
+
+<span class="w">    </span><span class="c1">#Do time series files exist?</span><span class="w"></span>
+<span class="w">    </span><span class="c1">#If True, then diagnostics assumes that model files are already time series.</span><span class="w"></span>
+<span class="w">    </span><span class="c1">#If False, or if simply not present, then diagnostics will attempt to create</span><span class="w"></span>
+<span class="w">    </span><span class="c1">#time series files from history (time-slice) files:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">cam_ts_done</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span><span class="w"></span>
+
+<span class="w">    </span><span class="c1">#Save interim time series files?</span><span class="w"></span>
+<span class="w">    </span><span class="c1">#WARNING:  This can take up a significant amount of space,</span><span class="w"></span>
+<span class="w">       </span><span class="c1">#          but will save processing time the next time</span><span class="w"></span>
+<span class="w">    </span><span class="nt">cam_ts_save</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w"></span>
+
+<span class="w">    </span><span class="c1">#Overwrite time series files, if found?</span><span class="w"></span>
+<span class="w">    </span><span class="c1">#If set to false, then time series creation will be skipped if files are found:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">cam_overwrite_ts</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span><span class="w"></span>
+
+<span class="w">    </span><span class="c1">#Location where time series files are (or will be) stored:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">cam_ts_loc</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/glade/derecho/scratch/${user}/ADF/${diag_cam_climo.cam_case_name}/ts</span><span class="w"></span>
+
+<span class="w">    </span><span class="c1">#TEM diagnostics</span><span class="w"></span>
+<span class="w">    </span><span class="c1">#---------------</span><span class="w"></span>
+<span class="w">    </span><span class="c1">#TEM history file number</span><span class="w"></span>
+<span class="w">    </span><span class="c1">#If missing or blank, ADF will default to h4</span><span class="w"></span>
+<span class="w">    </span><span class="nt">tem_hist_str</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cam.h4</span><span class="w"></span>
+
+<span class="w">    </span><span class="c1">#Location where TEM files are stored:</span><span class="w"></span>
+<span class="w">    </span><span class="c1">#NOTE: If path not specified or commented out, TEM calculation/plots will be skipped!</span><span class="w"></span>
+<span class="w">    </span><span class="nt">cam_tem_loc</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/glade/derecho/scratch/${user}/${diag_cam_climo.cam_case_name}/tem/</span><span class="w"></span>
+
+<span class="w">    </span><span class="c1">#Overwrite TEM files, if found?</span><span class="w"></span>
+<span class="w">    </span><span class="c1">#If set to false, then TEM creation will be skipped if files are found:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">overwrite_tem</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span><span class="w"></span>
+
+<span class="w">    </span><span class="c1">#----------------------</span><span class="w"></span>
+
+<span class="w">    </span><span class="c1">#You can alternatively provide a list of cases, which will make the ADF</span><span class="w"></span>
+<span class="w">    </span><span class="c1">#apply the same diagnostics to each case separately in a single ADF session.</span><span class="w"></span>
+<span class="w">    </span><span class="c1">#All of the config variables below show how it is done, and are the only ones</span><span class="w"></span>
+<span class="w">    </span><span class="c1">#that need to be lists.  This also automatically enables the generation of</span><span class="w"></span>
+<span class="w">    </span><span class="c1">#a &quot;main_website&quot; in &quot;cam_diag_plot_loc&quot; that brings all of the different cases</span><span class="w"></span>
+<span class="w">    </span><span class="c1">#together under a single website.</span><span class="w"></span>
+
+<span class="w">    </span><span class="c1">#Also please note that config keywords cannot currently be used in list mode.</span><span class="w"></span>
+
+<span class="w">    </span><span class="c1">#cam_case_name:</span><span class="w"></span>
+<span class="w">    </span><span class="c1">#    - b.e23_alpha17f.BLT1850.ne30_t232.098</span><span class="w"></span>
+<span class="w">    </span><span class="c1">#    - b.e23_alpha17f.BLT1850.ne30_t232.095</span><span class="w"></span>
+
+<span class="w">    </span><span class="c1">#Case nickname</span><span class="w"></span>
+<span class="w">    </span><span class="c1">#NOTE: if nickname starts with &#39;0&#39; - nickname must be in quotes!</span><span class="w"></span>
+<span class="w">    </span><span class="c1"># ie &#39;026a&#39; as opposed to 026a</span><span class="w"></span>
+<span class="w">    </span><span class="c1">#If missing or left blank, will default to cam_case_name</span><span class="w"></span>
+<span class="w">    </span><span class="c1">#case_nickname:</span><span class="w"></span>
+<span class="w">    </span><span class="c1">#    - cool nickname</span><span class="w"></span>
+<span class="w">    </span><span class="c1">#    - cool nickname 2</span><span class="w"></span>
+
+<span class="w">    </span><span class="c1">#calc_cam_climo:</span><span class="w"></span>
+<span class="w">    </span><span class="c1">#    - true</span><span class="w"></span>
+<span class="w">    </span><span class="c1">#    - true</span><span class="w"></span>
+
+<span class="w">    </span><span class="c1">#cam_overwrite_climo:</span><span class="w"></span>
+<span class="w">    </span><span class="c1">#    - false</span><span class="w"></span>
+<span class="w">    </span><span class="c1">#    - false</span><span class="w"></span>
+
+<span class="w">    </span><span class="c1">#cam_hist_loc:</span><span class="w"></span>
+<span class="w">    </span><span class="c1">#    - /glade/campaign/cgd/amp/amwg/ADF_test_cases/b.e23_alpha17f.BLT1850.ne30_t232.098</span><span class="w"></span>
+<span class="w">    </span><span class="c1">#    - /glade/campaign/cgd/amp/amwg/ADF_test_cases/b.e23_alpha17f.BLT1850.ne30_t232.095</span><span class="w"></span>
+
+<span class="w">    </span><span class="c1">#cam_climo_loc:</span><span class="w"></span>
+<span class="w">    </span><span class="c1">#    - /some/where/you/want/to/have/climo_files/ #MUST EDIT!</span><span class="w"></span>
+<span class="w">    </span><span class="c1">#    - /the/same/or/some/other/climo/files/location</span><span class="w"></span>
+
+<span class="w">    </span><span class="c1">#start_year:</span><span class="w"></span>
+<span class="w">    </span><span class="c1">#    - 10</span><span class="w"></span>
+<span class="w">    </span><span class="c1">#    - 10</span><span class="w"></span>
+
+<span class="w">    </span><span class="c1">#end_year:</span><span class="w"></span>
+<span class="w">    </span><span class="c1">#    - 14</span><span class="w"></span>
+<span class="w">    </span><span class="c1">#    - 14</span><span class="w"></span>
+
+<span class="w">    </span><span class="c1">#cam_ts_done:</span><span class="w"></span>
+<span class="w">    </span><span class="c1">#    - false</span><span class="w"></span>
+<span class="w">    </span><span class="c1">#    - false</span><span class="w"></span>
+
+<span class="w">    </span><span class="c1">#cam_ts_save:</span><span class="w"></span>
+<span class="w">    </span><span class="c1">#    - true</span><span class="w"></span>
+<span class="w">    </span><span class="c1">#    - true</span><span class="w"></span>
+
+<span class="w">    </span><span class="c1">#cam_overwrite_ts:</span><span class="w"></span>
+<span class="w">    </span><span class="c1">#    - false</span><span class="w"></span>
+<span class="w">    </span><span class="c1">#    - false</span><span class="w"></span>
+
+<span class="w">    </span><span class="c1">#cam_ts_loc:</span><span class="w"></span>
+<span class="w">    </span><span class="c1">#    - /some/where/you/want/to/have/time_series_files</span><span class="w"></span>
+<span class="w">    </span><span class="c1">#    - /same/or/different/place/you/want/files</span><span class="w"></span>
+
+<span class="w">    </span><span class="c1">#TEM diagnostics</span><span class="w"></span>
+<span class="w">    </span><span class="c1">#---------------</span><span class="w"></span>
+<span class="w">    </span><span class="c1">#TEM history file number</span><span class="w"></span>
+<span class="w">    </span><span class="c1">#If missing or blank, ADF will default to h4</span><span class="w"></span>
+<span class="w">    </span><span class="c1">#tem_hist_str:</span><span class="w"></span>
+<span class="w">    </span><span class="c1">#    - cam.h4</span><span class="w"></span>
+<span class="w">    </span><span class="c1">#    - cam.h#</span><span class="w"></span>
+
+<span class="w">    </span><span class="c1">#Location where TEM files are stored:</span><span class="w"></span>
+<span class="w">    </span><span class="c1">#NOTE: If path not specified or commented out, TEM calculation/plots will be skipped!</span><span class="w"></span>
+<span class="w">    </span><span class="c1">#cam_tem_loc:</span><span class="w"></span>
+<span class="w">    </span><span class="c1">#    - /some/where/you/want/to/have/TEM_files/</span><span class="w"></span>
+<span class="w">    </span><span class="c1">#    - /same/or/different/place/you/want/TEM_files/</span><span class="w"></span>
+
+<span class="w">    </span><span class="c1">#Overwrite TEM files, if found?</span><span class="w"></span>
+<span class="w">    </span><span class="c1">#If set to false, then TEM creation will be skipped if files are found:</span><span class="w"></span>
+<span class="w">    </span><span class="c1">#overwrite_tem:</span><span class="w"></span>
+<span class="w">    </span><span class="c1">#    - false</span><span class="w"></span>
+<span class="w">    </span><span class="c1">#    - true</span><span class="w"></span>
+
+<span class="w">    </span><span class="c1">#----------------------</span><span class="w"></span>
+
+
+<span class="c1">#This third set of variables provide info for the CAM baseline climatologies.</span><span class="w"></span>
+<span class="c1">#This only matters if &quot;compare_obs&quot; is false:</span><span class="w"></span>
+<span class="nt">diag_cam_baseline_climo</span><span class="p">:</span><span class="w"></span>
+
+<span class="w">    </span><span class="c1"># History file list of strings to match</span><span class="w"></span>
+<span class="w">    </span><span class="c1"># eg. cam.h0 or ocn.pop.h.ecosys.nday1 or hist_str: [cam.h2,cam.h0]  </span><span class="w"></span>
+<span class="w">    </span><span class="c1"># Only affects timeseries as everything else uses the created timeseries </span><span class="w"></span>
+<span class="w">    </span><span class="c1"># Default: </span><span class="w"></span>
+<span class="w">    </span><span class="nt">hist_str</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cam.h0a</span><span class="w"></span>
+
+<span class="w">    </span><span class="c1">#Calculate cam baseline climatologies?</span><span class="w"></span>
+<span class="w">    </span><span class="c1">#If false, the climatology files will not be created:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">calc_cam_climo</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w"></span>
+
+<span class="w">    </span><span class="c1">#Overwrite CAM climatology files?</span><span class="w"></span>
+<span class="w">    </span><span class="c1">#If false, or not present, then already existing climatology files will be skipped:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">cam_overwrite_climo</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span><span class="w"></span>
+
+<span class="w">    </span><span class="c1">#Name of CAM baseline case:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">cam_case_name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">b.e23_alpha17f.BLT1850.ne30_t232.093</span><span class="w"></span>
+
+<span class="w">    </span><span class="c1">#Baseline case nickname</span><span class="w"></span>
+<span class="w">    </span><span class="c1">#NOTE: if nickname starts with &#39;0&#39; - nickname must be in quotes!</span><span class="w"></span>
+<span class="w">    </span><span class="c1"># ie &#39;026a&#39; as opposed to 026a</span><span class="w"></span>
+<span class="w">    </span><span class="c1">#If missing or left blank, will default to cam_case_name</span><span class="w"></span>
+<span class="w">    </span><span class="nt">case_nickname</span><span class="p">:</span><span class="w"> </span><span class="c1">#cool nickname</span><span class="w"></span>
+
+<span class="w">    </span><span class="c1">#Location of CAM baseline history (h0) files:</span><span class="w"></span>
+<span class="w">    </span><span class="c1">#Example test files</span><span class="w"></span>
+<span class="w">    </span><span class="nt">cam_hist_loc</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/glade/campaign/cgd/amp/amwg/ADF_test_cases/${diag_cam_baseline_climo.cam_case_name}</span><span class="w"></span>
+
+<span class="w">    </span><span class="c1">#Location of baseline CAM climatologies:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">cam_climo_loc</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/glade/derecho/scratch/${user}/ADF/${diag_cam_baseline_climo.cam_case_name}/climo</span><span class="w"></span>
+
+<span class="w">    </span><span class="c1">#model year when time series files should start:</span><span class="w"></span>
+<span class="w">    </span><span class="c1">#Note:  Leaving this entry blank will make time series</span><span class="w"></span>
+<span class="w">    </span><span class="c1">#       start at earliest available year.</span><span class="w"></span>
+<span class="w">    </span><span class="nt">start_year</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10</span><span class="w"></span>
+
+<span class="w">    </span><span class="c1">#model year when time series files should end:</span><span class="w"></span>
+<span class="w">    </span><span class="c1">#Note:  Leaving this entry blank will make time series</span><span class="w"></span>
+<span class="w">    </span><span class="c1">#       end at latest available year.</span><span class="w"></span>
+<span class="w">    </span><span class="nt">end_year</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">14</span><span class="w"></span>
+
+<span class="w">    </span><span class="c1">#Do time series files need to be generated?</span><span class="w"></span>
+<span class="w">    </span><span class="c1">#If True, then diagnostics assumes that model files are already time series.</span><span class="w"></span>
+<span class="w">    </span><span class="c1">#If False, or if simply not present, then diagnostics will attempt to create</span><span class="w"></span>
+<span class="w">    </span><span class="c1">#time series files from history (time-slice) files:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">cam_ts_done</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span><span class="w"></span>
+
+<span class="w">    </span><span class="c1">#Save interim time series files for baseline run?</span><span class="w"></span>
+<span class="w">    </span><span class="c1">#WARNING:  This can take up a significant amount of space:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">cam_ts_save</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w"></span>
+
+<span class="w">    </span><span class="c1">#Overwrite baseline time series files, if found?</span><span class="w"></span>
+<span class="w">    </span><span class="c1">#If set to false, then time series creation will be skipped if files are found:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">cam_overwrite_ts</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span><span class="w"></span>
+
+<span class="w">    </span><span class="c1">#Location where time series files are (or will be) stored:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">cam_ts_loc</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/glade/derecho/scratch/${user}/ADF/${diag_cam_baseline_climo.cam_case_name}/ts</span><span class="w"></span>
+
+<span class="w">    </span><span class="c1">#TEM diagnostics</span><span class="w"></span>
+<span class="w">    </span><span class="c1">#---------------</span><span class="w"></span>
+<span class="w">    </span><span class="c1">#TEM history file number</span><span class="w"></span>
+<span class="w">    </span><span class="c1">#If missing or blank, ADF will default to h4</span><span class="w"></span>
+<span class="w">    </span><span class="nt">tem_hist_str</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cam.h4</span><span class="w"></span>
+
+<span class="w">    </span><span class="c1">#Location where TEM files are stored:</span><span class="w"></span>
+<span class="w">    </span><span class="c1">#NOTE: If path not specified or commented out, TEM calculation/plots will be skipped!</span><span class="w"></span>
+<span class="w">    </span><span class="nt">cam_tem_loc</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/glade/derecho/scratch/${user}/${diag_cam_baseline_climo.cam_case_name}/tem/</span><span class="w"></span>
+
+<span class="w">    </span><span class="c1">#Overwrite TEM files, if found?</span><span class="w"></span>
+<span class="w">    </span><span class="c1">#If set to false, then TEM creation will be skipped if files are found:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">overwrite_tem</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span><span class="w"></span>
+
+
+<span class="c1">#This fourth set of variables provides settings for calling the Climate Variability</span><span class="w"></span>
+<span class="c1"># Diagnostics Package (CVDP). If cvdp_run is set to true the CVDP will be set up and</span><span class="w"></span>
+<span class="c1"># run in background mode, likely completing after the ADF has completed.</span><span class="w"></span>
+<span class="c1"># If CVDP is to be run PSL, TREFHT, TS and PRECT (or PRECC and PRECL) should be listed</span><span class="w"></span>
+<span class="c1"># in the diag_var_list variable listing.</span><span class="w"></span>
+<span class="c1"># For more CVDP information: https://www.cesm.ucar.edu/working_groups/CVC/cvdp/</span><span class="w"></span>
+<span class="nt">diag_cvdp_info</span><span class="p">:</span><span class="w"></span>
+
+<span class="w">    </span><span class="c1"># Run the CVDP on the listed run(s)?</span><span class="w"></span>
+<span class="w">    </span><span class="nt">cvdp_run</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span><span class="w"></span>
+
+<span class="w">    </span><span class="c1"># CVDP code path, sets the location of the CVDP codebase</span><span class="w"></span>
+<span class="w">    </span><span class="c1">#  CGD systems path = /home/asphilli/CESM-diagnostics/CVDP/Release/v5.2.0/</span><span class="w"></span>
+<span class="w">    </span><span class="c1">#  CISL systems path = /glade/u/home/asphilli/CESM-diagnostics/CVDP/Release/v5.2.0/</span><span class="w"></span>
+<span class="w">    </span><span class="c1">#  github location = https://github.com/NCAR/CVDP-ncl</span><span class="w"></span>
+<span class="w">    </span><span class="nt">cvdp_codebase_loc</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/glade/u/home/asphilli/CESM-diagnostics/CVDP/Release/v5.2.0/</span><span class="w"></span>
+
+<span class="w">    </span><span class="c1"># Location where cvdp codebase will be copied to and diagnostic plots will be stored</span><span class="w"></span>
+<span class="w">    </span><span class="nt">cvdp_loc</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/glade/derecho/scratch/${user}/ADF/cvdp/</span><span class="w"></span>
+
+<span class="w">    </span><span class="c1"># tar up CVDP results?</span><span class="w"></span>
+<span class="w">    </span><span class="nt">cvdp_tar</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span><span class="w"></span>
+
+<span class="c1"># This set of variables provides settings for calling NOAA&#39;s</span><span class="w"></span>
+<span class="c1"># Model Diagnostic Task Force (MDTF) diagnostic package.</span><span class="w"></span>
+<span class="c1"># https://github.com/NOAA-GFDL/MDTF-diagnostics</span><span class="w"></span>
+<span class="c1">#</span><span class="w"></span>
+<span class="c1"># If mdtf_run: true, the MDTF will be set up and </span><span class="w"></span>
+<span class="c1"># run in background mode, likely completing after the ADF has completed.</span><span class="w"></span>
+<span class="c1">#</span><span class="w"></span>
+<span class="c1"># WARNING: This currently only runs on CASPER (not derecho)</span><span class="w"></span>
+<span class="c1">#</span><span class="w"></span>
+<span class="c1"># The variables required depend on the diagnostics (PODs) selected. </span><span class="w"></span>
+<span class="c1"># AMWG-developed PODS and their required variables:</span><span class="w"></span>
+<span class="c1">#   (Note that PRECT can be computed from PRECC &amp; PRECL)</span><span class="w"></span>
+<span class="c1">#  - MJO_suite: daily PRECT, FLUT, U850, U200, V200  (all required)</span><span class="w"></span>
+<span class="c1">#  - Wheeler-Kiladis Wavenumber Frequency Spectra: daily PRECT, FLUT, U200, U850, OMEGA500</span><span class="w"></span>
+<span class="c1">#              (will use what is available)</span><span class="w"></span>
+<span class="c1">#  - Blocking (Rich Neale):  daily OMEGA500</span><span class="w"></span>
+<span class="c1">#  - Precip Diurnal Cycle (Rich Neale): 3-hrly PRECT</span><span class="w"></span>
+<span class="c1">#</span><span class="w"></span>
+<span class="c1"># Many other diagnostics are available; see </span><span class="w"></span>
+<span class="c1"># https://mdtf-diagnostics.readthedocs.io/en/main/sphinx/start_overview.html</span><span class="w"></span>
+
+<span class="c1">#</span><span class="w"></span>
+<span class="nt">diag_mdtf_info</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="c1"># Run the MDTF on the model cases</span><span class="w"></span>
+<span class="w">    </span><span class="nt">mdtf_run</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span><span class="w"></span>
+
+<span class="w">    </span><span class="c1"># The file that will be written by ADF to input to MDTF. Call this whatever you want.</span><span class="w"></span>
+<span class="w">    </span><span class="nt">mdtf_input_settings_filename </span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mdtf_input.json</span><span class="w">   </span>
+
+<span class="w">    </span><span class="c1">## MDTF code path, sets the location of the MDTF codebase and pre-compiled conda envs</span><span class="w"></span>
+<span class="w">    </span><span class="c1">#  CHANGE if you have any: your own MDTF code, installed conda envs and/or obs_data</span><span class="w"></span>
+
+<span class="w">    </span><span class="nt">mdtf_codebase_path </span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/glade/campaign/cgd/amp/amwg/mdtf</span><span class="w">                                                                                                                                 </span>
+<span class="w">    </span><span class="nt">mdtf_codebase_loc  </span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${mdtf_codebase_path}/MDTF-diagnostics.v3.1.20230817.ADF</span><span class="w"></span>
+<span class="w">    </span><span class="nt">conda_root         </span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/glade/u/apps/opt/conda</span><span class="w"></span>
+<span class="w">    </span><span class="nt">conda_env_root     </span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${mdtf_codebase_path}/miniconda2/envs.MDTFv3.1.20230412/</span><span class="w"></span>
+<span class="w">    </span><span class="nt">OBS_DATA_ROOT      </span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${mdtf_codebase_path}/obs_data</span><span class="w"></span>
+
+<span class="w">    </span><span class="c1"># SET this to a writable dir. The ADF will place ts files here for the MDTF to read (adds the casename)</span><span class="w"></span>
+<span class="w">    </span><span class="nt">MODEL_DATA_ROOT     </span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${diag_cam_climo.cam_ts_loc}/mdtf/inputdata/model</span><span class="w">     </span>
+
+<span class="w">    </span><span class="c1"># Choose diagnostics (PODs). Full list of available PODs: https://github.com/NOAA-GFDL/MDTF-diagnostics</span><span class="w"></span>
+<span class="w">    </span><span class="nt">pod_list      </span><span class="p">:</span><span class="w">  </span><span class="p p-Indicator">[</span><span class="w"> </span><span class="s">&quot;MJO_suite&quot;</span><span class="w"> </span><span class="p p-Indicator">]</span><span class="w"></span>
+
+<span class="w">    </span><span class="c1"># Intermediate/output file settings</span><span class="w"></span>
+<span class="w">    </span><span class="nt">make_variab_tar</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span><span class="w">     </span><span class="c1"># tar up MDTF results</span><span class="w"></span>
+<span class="w">    </span><span class="nt">save_ps </span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span><span class="w">     </span><span class="c1"># save postscript figures in addition to bitmaps</span><span class="w"></span>
+<span class="w">    </span><span class="nt">save_nc </span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span><span class="w">      </span><span class="c1"># save netCDF files of processed data (recommend true when starting with new model data)</span><span class="w"></span>
+<span class="w">    </span><span class="nt">overwrite</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w">     </span><span class="c1"># overwrite results in OUTPUT_DIR; otherwise results will be saved under a unique name</span><span class="w"></span>
+
+<span class="w">    </span><span class="c1"># Settings used in debugging:</span><span class="w"></span>
+<span class="w">    </span><span class="nt">verbose  </span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3</span><span class="w">       </span><span class="c1"># Log verbosity level.</span><span class="w"></span>
+<span class="w">    </span><span class="nt">test_mode</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span><span class="w">   </span><span class="c1"># Set to true for framework test. Data is fetched but PODs are not run.</span><span class="w"></span>
+<span class="w">    </span><span class="nt">dry_run  </span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span><span class="w">   </span><span class="c1"># Framework test. No external commands are run and no remote data is copied. Implies test_mode.</span><span class="w"></span>
+
+<span class="w">    </span><span class="c1"># Settings that shouldn&#39;t change in ADF implementation for now</span><span class="w"></span>
+<span class="w">    </span><span class="nt">data_type           </span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">single_run</span><span class="w"> </span><span class="c1"># single_run or multi_run (only works with single right now)</span><span class="w"></span>
+<span class="w">    </span><span class="nt">data_manager        </span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Local_File</span><span class="w"> </span><span class="c1"># Fetch data or it is local?</span><span class="w"></span>
+<span class="w">    </span><span class="nt">environment_manager </span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Conda</span><span class="w">      </span><span class="c1"># Manage dependencies</span><span class="w"></span>
+
+
+
+<span class="c1">#+++++++++++++++++++++++++++++++++++++++++++++++++++</span><span class="w"></span>
+<span class="c1">#These variables below only matter if you are using</span><span class="w"></span>
+<span class="c1">#a non-standard method, or are adding your own</span><span class="w"></span>
+<span class="c1">#diagnostic scripts.</span><span class="w"></span>
+<span class="c1">#+++++++++++++++++++++++++++++++++++++++++++++++++++</span><span class="w"></span>
+
+<span class="c1">#Note:  If you want to pass arguments to a particular script, you can</span><span class="w"></span>
+<span class="c1">#do it like so (using the &quot;averaging_example&quot; script in this case):</span><span class="w"></span>
+<span class="c1"># - {create_climo_files: {kwargs: {clobber: true}}}</span><span class="w"></span>
+
+<span class="c1">#Name of time-averaging scripts being used to generate climatologies.</span><span class="w"></span>
+<span class="c1">#These scripts must be located in &quot;scripts/averaging&quot;:</span><span class="w"></span>
+<span class="nt">time_averaging_scripts</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">create_climo_files</span><span class="w"></span>
+<span class="w">    </span><span class="c1">#- create_TEM_files #To generate TEM files, please un-comment</span><span class="w"></span>
+
+<span class="c1">#Name of regridding scripts being used.</span><span class="w"></span>
+<span class="c1">#These scripts must be located in &quot;scripts/regridding&quot;:</span><span class="w"></span>
+<span class="nt">regridding_scripts</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">regrid_and_vert_interp</span><span class="w"></span>
+
+<span class="c1">#List of analysis scripts being used.</span><span class="w"></span>
+<span class="c1">#These scripts must be located in &quot;scripts/analysis&quot;:</span><span class="w"></span>
+<span class="nt">analysis_scripts</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">amwg_table</span><span class="w"></span>
+<span class="w">    </span><span class="c1">#- aerosol_gas_tables</span><span class="w"></span>
+
+<span class="c1">#List of plotting scripts being used.</span><span class="w"></span>
+<span class="c1">#These scripts must be located in &quot;scripts/plotting&quot;:</span><span class="w"></span>
+<span class="nt">plotting_scripts</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">global_latlon_map</span><span class="w"></span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">global_latlon_vect_map</span><span class="w"></span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">zonal_mean</span><span class="w"></span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">meridional_mean</span><span class="w"></span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">polar_map</span><span class="w"></span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cam_taylor_diagram</span><span class="w"></span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">qbo</span><span class="w"></span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ozone_diagnostics</span><span class="w"></span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MOPITT</span><span class="w"></span>
+<span class="w">    </span><span class="c1">#- tape_recorder</span><span class="w"></span>
+<span class="w">    </span><span class="c1">#- tem</span><span class="w"></span>
+<span class="w">    </span><span class="c1">#- regional_map_multicase #To use this please un-comment and fill-out</span><span class="w"></span>
+<span class="w">                              </span><span class="c1">#the &quot;region_multicase&quot; section below</span><span class="w"></span>
+
+<span class="c1">#List of CAM variables that will be processesd:</span><span class="w"></span>
+<span class="c1">#If CVDP is to be run PSL, TREFHT, TS and PRECT (or PRECC and PRECL) should be listed</span><span class="w"></span>
+<span class="nt">diag_var_list</span><span class="p">:</span><span class="w"></span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SWCF</span><span class="w"></span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">LWCF</span><span class="w"></span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PRECC</span><span class="w"></span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PRECL</span><span class="w"></span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PSL</span><span class="w"></span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Q</span><span class="w"></span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">U</span><span class="w"></span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">T</span><span class="w"></span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">RELHUM</span><span class="w"></span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">TREFHT</span><span class="w"></span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">TS</span><span class="w"></span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">TAUX</span><span class="w"></span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">TAUY</span><span class="w"></span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">FSNT</span><span class="w"></span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">FLNT</span><span class="w"></span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">LANDFRAC</span><span class="w"></span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">O3</span><span class="w"></span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">CO</span><span class="w"></span>
+
+<span class="c1">#&lt;Add more variables here.&gt;</span><span class="w"></span>
+<span class="c1"># MDTF recommended variables</span><span class="w"></span>
+<span class="c1">#    - FLUT</span><span class="w"></span>
+<span class="c1">#    - OMEGA500</span><span class="w"></span>
+<span class="c1">#    - PRECT</span><span class="w"></span>
+<span class="c1">#    - PS</span><span class="w"></span>
+<span class="c1">#    - PSL</span><span class="w"></span>
+<span class="c1">#    - U200</span><span class="w"></span>
+<span class="c1">#    - U850</span><span class="w"></span>
+<span class="c1">#    - V200</span><span class="w"></span>
+<span class="c1">#    - V850</span><span class="w"></span>
+<span class="w">    </span>
+<span class="c1"># Options for multi-case regional contour plots (./plotting/regional_map_multicase.py)</span><span class="w"></span>
+<span class="c1"># region_multicase:</span><span class="w"></span>
+<span class="c1">#     region_spec: [slat, nlat, wlon, elon]</span><span class="w"></span>
+<span class="c1">#     region_time_option: &lt;calendar | zeroanchor&gt;  # If calendar, will look for specified years. If zeroanchor will use a nyears starting from year_offset from the beginning of timeseries</span><span class="w"></span>
+<span class="c1">#     region_start_year:</span><span class="w"></span>
+<span class="c1">#     region_end_year:</span><span class="w"></span>
+<span class="c1">#     region_nyear:</span><span class="w"></span>
+<span class="c1">#     region_year_offset:</span><span class="w"></span>
+<span class="c1">#     region_month: &lt;NULL means look for season&gt;</span><span class="w"></span>
+<span class="c1">#     region_season: &lt;NULL means use annual mean&gt;</span><span class="w"></span>
+<span class="c1">#     region_variables: &lt;list of variables to try to use; allows for a subset of the total diag variables&gt;</span><span class="w"></span>
+
+<span class="c1">#END OF FILE</span><span class="w"></span>
+</pre></div>
+</div>
 <div class="toctree-wrapper compound">
 </div>
 </section>
